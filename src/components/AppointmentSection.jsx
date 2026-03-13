@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-import { hospitalData } from "../data";
+import { appointment } from "../data";
 
 const AppointmentSection = () => {
-  const { appointment } = hospitalData;
 
   return (
     <section className="py-24 bg-white overflow-hidden">

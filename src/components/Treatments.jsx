@@ -3,7 +3,7 @@ import {
   Droplets, Activity, Dna, Stethoscope, 
   HeartPulse, Zap, Bone, Smile, ArrowRight 
 } from "lucide-react";
-import { hospitalData } from "../data";
+import { treatments, treatmentsPage } from "../data";
 import { Link } from "react-router-dom";
 
 const iconMap = {
@@ -18,7 +18,6 @@ const iconMap = {
 };
 
 const Treatments = () => {
-  const { treatments, treatmentsPage } = hospitalData;
 
   return (
     <section id="treatments" className="py-24 bg-slate-50 overflow-hidden">
@@ -40,7 +39,7 @@ const Treatments = () => {
           {treatments.items.map((item, idx) => {
             const Icon = iconMap[item.icon];
             // Find corresponding image from treatmentsPage specialties
-            const specialtyData = treatmentsPage.specialties.find(s => s.title === item.title);
+            const specialtyData = treatmentsPage.specialties.find(s => s.id === item.slug || s.title === item.title);
             const displayImage = specialtyData?.image || "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800";
 
             return (
@@ -53,15 +52,17 @@ const Treatments = () => {
                 className="bg-white rounded-4xl overflow-hidden shadow-xl shadow-slate-200/60 flex flex-col group border border-slate-100"
               >
                 {/* Image Section */}
-                <div className="relative h-64 overflow-hidden">
-                  <img 
-                    src={displayImage} 
-                    alt={item.title} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                  />
-                  {/* Floating Icon Overlay */}
-                  <div className="absolute -bottom-8 right-8 w-16 h-16 rounded-full bg-hospital-navy flex items-center justify-center text-white border-4 border-white shadow-lg transition-transform duration-500 group-hover:scale-110 z-10">
-                    {Icon && <Icon className="w-7 h-7" />}
+                <div className="relative">
+                  <div className="h-64 overflow-hidden">
+                    <img 
+                      src={displayImage} 
+                      alt={item.title} 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                    />
+                  </div>
+                  {/* Floating Icon Overlay - Moved outside overflow-hidden */}
+                  <div className="absolute -bottom-6 right-8 w-14 h-14 rounded-2xl bg-hospital-navy flex items-center justify-center text-white border-4 border-white shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 z-20">
+                    {Icon && <Icon className="w-6 h-6" />}
                   </div>
                 </div>
 
@@ -77,7 +78,7 @@ const Treatments = () => {
 
                   <div className="mt-auto">
                     <Link 
-                      to="/treatments" 
+                      to={item.slug ? `/treatments/${item.slug}` : "/treatments"} 
                       className="inline-flex items-center gap-2 text-hospital-sky-blue font-black text-sm hover:gap-3 transition-all"
                     >
                       Learn More <ArrowRight size={18} />

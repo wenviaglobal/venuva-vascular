@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
-import { hospitalData } from "../data";
+import { testimonial } from "../data";
 
 const Testimonial = () => {
-  const { testimonial } = hospitalData;
-
   return (
     <section className="relative py-32 overflow-hidden">
       {/* Background with overlay */}
@@ -23,11 +21,11 @@ const Testimonial = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-hospital-skyBlue text-8xl font-serif leading-none block mb-4">“</span>
+          <span className="text-hospital-sky-blue text-8xl font-serif leading-none block mb-4">“</span>
           <p className="text-2xl md:text-3xl text-white leading-relaxed font-medium mb-8">
             {testimonial.quote}
           </p>
-          <div className="w-12 h-1 bg-hospital-skyBlue mx-auto mb-6"></div>
+          <div className="w-12 h-1 bg-hospital-sky-blue mx-auto mb-6"></div>
           <p className="text-xl font-bold text-white uppercase tracking-widest">{testimonial.author}</p>
           
           <div className="flex justify-center gap-2 mt-12">

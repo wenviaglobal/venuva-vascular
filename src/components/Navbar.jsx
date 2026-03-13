@@ -1,5 +1,5 @@
 import { Phone, Activity, Menu, X, ChevronDown, Droplets, Dna, Stethoscope, Activity as ActivityIcon } from "lucide-react";
-import { hospitalData } from "../data";
+import { header, brand, treatmentsPage } from "../data";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -12,7 +12,6 @@ const iconMap = {
 };
 
 const Navbar = () => {
-  const { header, brand, treatmentsPage } = hospitalData;
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);

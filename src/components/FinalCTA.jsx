@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-import { hospitalData } from "../data";
+import { finalCTA } from "../data";
 
 const FinalCTA = () => {
-  const { finalCTA } = hospitalData;
 
   return (
     <section className="py-24 bg-hospital-soft-blue text-center overflow-hidden">

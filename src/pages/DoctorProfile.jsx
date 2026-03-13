@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { hospitalData } from "../data";
+import { doctorsSection } from "../data";
 import PageHeader from "../components/PageHeader";
 import {
   Award,
@@ -15,7 +15,6 @@ import {
 
 const DoctorProfile = () => {
   const { id } = useParams();
-  const { doctorsSection } = hospitalData;
 
   // Find doctor by ID or Slug
   const doctor = doctorsSection.doctors.find(d =>

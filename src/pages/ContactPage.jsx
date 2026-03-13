@@ -1,13 +1,17 @@
 import PageHeader from "../components/PageHeader";
 import { motion } from "framer-motion";
-import { hospitalData } from "../data";
+import { contact } from "../data";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import SEO from "../components/utils/SEO";
 
 const ContactPage = () => {
-  const { contact } = hospitalData;
 
   return (
     <div className="bg-slate-50 min-h-screen pb-24">
+      <SEO 
+        title="Contact Venuva Vascular Center | Book Appointments & Consultation"
+        description="Get in touch with Venuva Vascular Center to schedule appointments or consultations. Expert care for varicose veins, DVT, PVD, thyroid nodules, and other vascular treatments."
+      />
       <PageHeader 
         title="Contact Us" 
         subtitle="Get in Touch with our Care Team" 

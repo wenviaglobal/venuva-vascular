@@ -1,11 +1,10 @@
 import PageHeader from "../components/PageHeader";
 import { motion } from "framer-motion";
-import { hospitalData } from "../data";
+import { doctorsSection } from "../data";
 import { Linkedin, Facebook, Instagram, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const DoctorsPage = () => {
-  const { doctorsSection } = hospitalData;
 
   return (
     <div className="bg-slate-50 min-h-screen pb-24">

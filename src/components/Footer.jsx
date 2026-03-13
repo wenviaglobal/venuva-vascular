@@ -1,9 +1,8 @@
 import { Send, Linkedin, Facebook, Instagram, Activity, MapPin, Phone, Mail } from "lucide-react";
-import { hospitalData } from "../data";
+import { brand, footer, header } from "../data";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const { brand, footer, header } = hospitalData;
 
   return (
     <footer className="bg-hospital-navy text-white pt-24 pb-12 overflow-hidden relative">

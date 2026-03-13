@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { hospitalData } from "../data";
+import { treatmentsPage } from "../data";
 import { Link } from "react-router-dom";
 import { useState, useMemo } from "react";
 import {
@@ -17,6 +17,7 @@ import {
   Search,
   TriangleAlert
 } from "lucide-react";
+import SEO from "../components/utils/SEO";
 
 const iconMap = {
   Droplets, Activity, Dna, Stethoscope,
@@ -24,7 +25,6 @@ const iconMap = {
 };
 
 const TreatmentsPage = () => {
-  const { treatmentsPage } = hospitalData;
   const { hero, specialties, whyChoose, whenToConsult, intro, categories } = treatmentsPage;
   
   const [searchQuery, setSearchQuery] = useState("");
@@ -56,6 +56,10 @@ const TreatmentsPage = () => {
 
   return (
     <div className="bg-white min-h-screen">
+      <SEO 
+        title="Vascular & Vein Treatments | Venuva Vascular Center"
+        description="Explore advanced vascular and vein treatments at Venuva Vascular Center, including varicose veins, DVT, PVD, thyroid embolization, uterine fibroid embolization, and pain interventions."
+      />
       {/* 1. Hero Section (Navkiran Style Gradient) */}
       <section className="relative pt-[120px] pb-24 overflow-hidden bg-linear-to-br from-hospital-navy via-hospital-navy to-[#0a4e7a]">
         {/* Subtle background circles */}

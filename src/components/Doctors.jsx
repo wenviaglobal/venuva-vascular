@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
 import { Linkedin, Facebook, Instagram } from "lucide-react";
-import { hospitalData } from "../data";
+import { doctorsSection } from "../data";
 import { Link } from "react-router-dom";
 
 const Doctors = () => {
-  const { doctorsSection } = hospitalData;
 
   return (
     <section id="doctors" className="py-32 bg-slate-50 overflow-hidden">

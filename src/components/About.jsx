@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { Activity } from "lucide-react";
-import { hospitalData } from "../data";
+import { about } from "../data";
 
 const About = () => {
-  const { about } = hospitalData;
 
   return (
     <section id="about" className="py-24 bg-slate-50 overflow-hidden">

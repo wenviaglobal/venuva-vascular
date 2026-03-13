@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Calendar, PhoneCall } from "lucide-react";
-import { hospitalData } from "../data";
+import { hero } from "../data";
 
 const iconMap = {
   Calendar: Calendar,
@@ -8,10 +8,9 @@ const iconMap = {
 };
 
 const Hero = () => {
-  const { hero } = hospitalData;
 
   return (
-    <section className="relative h-[calc(100vh-80px)] flex items-center overflow-hidden">
+    <section className="relative min-h-[calc(100vh-80px)] flex flex-col justify-center py-20 lg:py-0 overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{ backgroundImage: `url(${hero.image})` }}
@@ -26,7 +25,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="max-w-3xl"
         >
-          <p className="text-hospital-skyBlue font-extrabold tracking-[0.2em] mb-4 uppercase text-sm">
+          <p className="text-hospital-sky-blue font-extrabold tracking-[0.2em] mb-4 uppercase text-sm">
             {hero.subheading}
           </p>
           <h1 className="text-3xl md:text-5xl font-black text-hospital-navy leading-tight mb-6">

@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
-import { hospitalData } from "../data";
+import { whyChooseUs } from "../data";
 
 const WhyChooseUs = () => {
-  const { whyChooseUs } = hospitalData;
 
   return (
     <section className="py-32 bg-hospital-navy text-white overflow-hidden relative">
