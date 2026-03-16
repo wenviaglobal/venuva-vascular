@@ -11,9 +11,13 @@ import DoctorsPage from "./pages/DoctorsPage";
 import FAQPage from "./pages/FAQPage";
 import ContactPage from "./pages/ContactPage";
 import NewsPage from "./pages/NewsPage";
-import DoctorProfile from "./pages/DoctorProfile";
 import TreatmentDetail from "./pages/TreatmentDetail";
 import LoadingSpinner from "./components/utils/LoadingSpinner";
+import FloatingAction from "./components/utils/FloatingAction";
+
+// console.log(import.meta.env.VITE_DOCTOR_NUMBER);
+// console.log(import.meta.env.VITE_DOCTOR_EMAIL);
+
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -52,7 +56,6 @@ function App() {
             <Route path="/treatments" element={<TreatmentsPage />} />
             <Route path="/treatments/:id" element={<TreatmentDetail />} />
             <Route path="/doctors" element={<DoctorsPage />} />
-            <Route path="/doctors/:id" element={<DoctorProfile />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/news" element={<NewsPage />} />
             <Route path="/faq" element={<FAQPage />} />
@@ -60,6 +63,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <FloatingAction />
       </div>
     </Router>
   );

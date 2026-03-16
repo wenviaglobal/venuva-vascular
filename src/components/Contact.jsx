@@ -13,7 +13,7 @@ const Contact = () => {
     <section id="contact" className="py-24 bg-white">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
-          <p className="text-hospital-sky-blue font-bold tracking-[0.2em] mb-4 uppercase text-xs">
+          <p className="text-hospital-amber font-bold tracking-[0.2em] mb-4 uppercase text-xs">
             {contact.tag}
           </p>
           <h2 className="text-4xl md:text-5xl font-black text-hospital-navy">

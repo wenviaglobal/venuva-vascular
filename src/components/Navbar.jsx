@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+
 const iconMap = {
   Droplets: Droplets,
   Dna: Dna,
@@ -37,20 +38,20 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header 
+    <header
       className="fixed top-0 left-0 w-full z-50 bg-white shadow-sm border-b border-slate-100 h-[80px] flex items-center"
     >
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-hospital-navy flex items-center justify-center shadow-lg shadow-hospital-navy/20 group-hover:bg-hospital-sky-blue transition-colors">
+          <div className="w-10 h-10 rounded-xl bg-hospital-teal flex items-center justify-center shadow-lg group-hover:bg-hospital-navy transition-colors">
             <Activity className="text-white w-6 h-6" />
           </div>
           <span className="text-xl font-black tracking-tight text-hospital-navy uppercase">
             {brand.name}
           </span>
         </Link>
-        
+
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-2">
           {header.navLinks.map((link) => {
@@ -59,19 +60,18 @@ const Navbar = () => {
 
             if (isTreatments) {
               return (
-                <div 
+                <div
                   key={link.name}
                   ref={megaMenuRef}
                   className="relative h-[80px] flex items-center"
                   onMouseEnter={() => setMegaMenuOpen(true)}
                 >
-                  <Link 
+                  <Link
                     to={link.href}
-                    className={`text-[10px] font-black uppercase tracking-widest transition-all px-4 py-2 rounded-lg flex items-center gap-1 group/link ${
-                      isActive || megaMenuOpen
-                      ? "text-hospital-sky-blue" 
-                      : "text-slate-500 hover:text-hospital-navy"
-                    }`}
+                    className={`text-[10px] font-black uppercase tracking-widest transition-all px-4 py-2 rounded-lg flex items-center gap-1 group/link ${isActive || megaMenuOpen
+                        ? "text-hospital-teal"
+                        : "text-hospital-navy/70 hover:text-hospital-navy"
+                      }`}
                   >
                     {link.name}
                     <ChevronDown size={14} className={`transition-transform duration-200 ${megaMenuOpen ? 'rotate-180' : ''}`} />
@@ -94,7 +94,7 @@ const Navbar = () => {
                           </span>
                           <Link
                             to="/treatments"
-                            className="text-[10px] font-black text-hospital-sky-blue hover:text-hospital-navy no-underline transition-colors uppercase tracking-widest"
+                            className="text-[10px] font-black text-hospital-teal hover:text-hospital-navy no-underline transition-colors uppercase tracking-widest"
                           >
                             View All →
                           </Link>
@@ -110,7 +110,7 @@ const Navbar = () => {
                                   <div className="w-8 h-8 rounded-lg bg-hospital-sky-blue/10 flex items-center justify-center text-hospital-sky-blue group-hover/cat:bg-hospital-sky-blue group-hover/cat:text-white transition-all">
                                     <Icon size={16} />
                                   </div>
-                                  <span className="text-[11px] font-black tracking-wider uppercase text-hospital-navy">
+                                  <span className="text-[11px] font-black tracking-wider uppercase text-hospital-amber">
                                     {cat.title}
                                   </span>
                                 </div>
@@ -119,7 +119,7 @@ const Navbar = () => {
                                     <li key={t.slug}>
                                       <Link
                                         to={`/treatments/${t.slug}`}
-                                        className="block text-[12px] text-slate-500 hover:text-hospital-sky-blue font-bold no-underline hover:translate-x-1 transition-all duration-200"
+                                        className="block text-[12px] text-hospital-charcoal hover:text-hospital-teal font-bold no-underline hover:translate-x-1 transition-all duration-200"
                                       >
                                         {t.name}
                                       </Link>
@@ -133,11 +133,15 @@ const Navbar = () => {
 
                         {/* Bottom Footer Bar */}
                         <div className="flex items-center justify-between px-8 py-4 bg-slate-50/50 border-t border-slate-100">
-                          <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
-                            Venuva Stats: 15+ Yrs · 10k+ Patient Satisfaction
+                          <span className="text-[10px] text-hospital-navy/40 font-bold uppercase tracking-widest">
+                            Venuva Stats: 10+ Yrs · 10k+ Cases Resolved
                           </span>
-                          <button className="bg-hospital-navy text-white px-6 py-2 rounded-lg font-black text-[10px] tracking-widest uppercase hover:bg-hospital-sky-blue transition-all">
-                            Book Now
+                          <button 
+                            onClick={() => window.location.href = `tel:${header.emergency.replace(/[^\d+]/g, '')}`}
+                            className="bg-hospital-amber text-white px-6 py-2 rounded-lg font-black text-[10px] tracking-widest uppercase hover:bg-hospital-navy transition-all flex items-center gap-2"
+                          >
+                            <Phone size={14} />
+                            Call Us
                           </button>
                         </div>
                       </motion.div>
@@ -148,20 +152,19 @@ const Navbar = () => {
             }
 
             return (
-              <Link 
-                key={link.name} 
-                to={link.href} 
-                className={`text-[10px] font-black uppercase tracking-widest transition-all relative px-4 py-2 ${
-                  isActive 
-                  ? "text-hospital-sky-blue" 
-                  : "text-slate-500 hover:text-hospital-navy"
-                }`}
+              <Link
+                key={link.name}
+                to={link.href}
+                className={`text-[10px] font-black uppercase tracking-widest transition-all relative px-4 py-2 ${isActive
+                    ? "text-hospital-teal"
+                    : "text-hospital-navy/70 hover:text-hospital-navy"
+                  }`}
               >
                 {link.name}
                 {isActive && (
-                  <motion.div 
+                  <motion.div
                     layoutId="navline"
-                    className="absolute bottom-[-22px] left-4 right-4 h-0.5 bg-hospital-sky-blue"
+                    className="absolute bottom-[-22px] left-4 right-4 h-0.5 bg-hospital-teal"
                   />
                 )}
               </Link>
@@ -170,25 +173,23 @@ const Navbar = () => {
         </nav>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-6">
-          <div className="hidden xl:flex items-center gap-4 border-r border-slate-200 pr-6">
-            <Phone className="text-hospital-sky-blue w-4 h-4" />
-            <span className="font-black text-[10px] tracking-widest uppercase text-hospital-navy">
-              {header.emergency}
-            </span>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <button className="hidden sm:block bg-hospital-navy text-white px-8 py-3 rounded-xl font-black text-[10px] tracking-[0.15em] uppercase hover:bg-hospital-sky-blue transition-all shadow-xl shadow-hospital-navy/10 active:scale-95">
-              Appointment
-            </button>
-            <button 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-hospital-navy"
-            >
-              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
+        <div className="flex items-center gap-4">
+          <motion.button
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => window.location.href = `tel:${header.emergency.replace(/[^\d+]/g, '')}`}
+            className="hidden sm:flex bg-hospital-amber text-white px-8 py-4 rounded-xl font-black text-[10px] tracking-[0.2em] uppercase hover:bg-hospital-navy transition-all shadow-xl shadow-hospital-navy/10 items-center gap-3"
+          >
+            <Phone size={16} />
+            Call Us
+          </motion.button>
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2 text-hospital-navy bg-slate-50 rounded-xl"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
 
@@ -199,16 +200,16 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 overflow-hidden shadow-2xl"
+            className="lg:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-2xl overflow-y-auto max-h-[80vh]"
           >
-            <div className="container mx-auto px-6 py-8 flex flex-col gap-2">
+            <div className="container mx-auto px-6 pt-8 pb-12 flex flex-col gap-2">
               {header.navLinks.map((link) => {
                 if (link.name === "Treatments") {
                   return (
                     <div key={link.name} className="flex flex-col">
-                      <button 
+                      <button
                         onClick={() => setMobileTreatmentsOpen(!mobileTreatmentsOpen)}
-                        className="flex items-center justify-between text-lg font-black text-hospital-navy uppercase tracking-widest py-4 hover:text-hospital-sky-blue border-b border-slate-50"
+                        className="flex items-center justify-between text-lg font-black text-hospital-navy uppercase tracking-widest py-4 hover:text-hospital-teal border-b border-slate-50"
                       >
                         {link.name}
                         <ChevronDown className={`transition-transform ${mobileTreatmentsOpen ? 'rotate-180' : ''}`} />
@@ -230,11 +231,11 @@ const Navbar = () => {
                                     {cat.icon === 'Stethoscope' && <Stethoscope size={12} />}
                                     {cat.icon === 'Activity' && <ActivityIcon size={12} />}
                                   </div>
-                                  <span className="text-[10px] font-black uppercase tracking-widest text-hospital-navy">{cat.title}</span>
+                                  <span className="text-[10px] font-black uppercase tracking-widest text-hospital-amber">{cat.title}</span>
                                 </div>
                                 <div className="grid grid-cols-1 gap-3 pl-8">
                                   {cat.treatments.map((t) => (
-                                    <Link key={t.slug} to={`/treatments/${t.slug}`} className="text-sm font-bold text-slate-500 hover:text-hospital-sky-blue">
+                                    <Link key={t.slug} to={`/treatments/${t.slug}`} className="text-sm font-bold text-hospital-charcoal hover:text-hospital-teal">
                                       {t.name}
                                     </Link>
                                   ))}
@@ -248,17 +249,21 @@ const Navbar = () => {
                   );
                 }
                 return (
-                  <Link 
-                    key={link.name} 
-                    to={link.href} 
-                    className="text-lg font-black text-hospital-navy uppercase tracking-widest py-4 hover:text-hospital-sky-blue border-b border-slate-50"
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className="text-lg font-black text-hospital-navy uppercase tracking-widest py-4 hover:text-hospital-teal border-b border-slate-50"
                   >
                     {link.name}
                   </Link>
                 );
               })}
-              <button className="w-full bg-hospital-navy text-white py-5 rounded-2xl font-black uppercase tracking-widest mt-6 shadow-xl shadow-hospital-navy/20">
-                Book Appointment
+              <button 
+                onClick={() => window.location.href = `tel:${header.emergency.replace(/[^\d+]/g, '')}`}
+                className="w-full bg-hospital-amber text-white py-5 rounded-2xl font-black uppercase tracking-widest mt-6 shadow-xl shadow-hospital-amber/20 hover:bg-hospital-navy transition-all flex items-center justify-center gap-3"
+              >
+                <Phone size={20} />
+                Call Us
               </button>
             </div>
           </motion.div>

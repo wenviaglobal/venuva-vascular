@@ -1,7 +1,9 @@
 import { brand, header, footer } from './hospital';
 import { hero, about, whyChooseUs, testimonial, finalCTA, appointment } from './home';
 import { treatments, treatmentsPage } from './treatments';
-import { doctorsSection, news, contact } from './team';
+import { doctorsSection, contact } from './team';
+import { videoGallery } from './videos';
+import { reviewsData } from './reviews';
 
 export const hospitalData = {
   brand,
@@ -13,10 +15,11 @@ export const hospitalData = {
   whyChooseUs,
   doctorsSection,
   testimonial,
-  news,
   contact,
   appointment,
   finalCTA,
+  videoGallery,
+  reviewsData,
   footer,
 };
 
@@ -24,5 +27,7 @@ export {
   brand, header, footer,
   hero, about, whyChooseUs, testimonial, finalCTA, appointment,
   treatments, treatmentsPage,
-  doctorsSection, news, contact
+  doctorsSection, contact,
+  videoGallery,
+  reviewsData
 };

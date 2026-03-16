@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { 
-  Droplets, Activity, Dna, Stethoscope, 
-  HeartPulse, Zap, Bone, Smile, ArrowRight 
+import {
+  Droplets, Activity, Dna, Stethoscope,
+  HeartPulse, Zap, Bone, Smile, ArrowRight
 } from "lucide-react";
 import { treatments, treatmentsPage } from "../data";
 import { Link } from "react-router-dom";
@@ -20,70 +20,53 @@ const iconMap = {
 const Treatments = () => {
 
   return (
-    <section id="treatments" className="py-24 bg-slate-50 overflow-hidden">
+    <section id="treatments" className="py-16 bg-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="text-center mb-20 max-w-3xl mx-auto">
-          <p className="text-hospital-sky-blue font-black tracking-[0.3em] uppercase text-[10px] mb-4">
-            {treatments.tag}
-          </p>
-          <h2 className="text-4xl md:text-5xl font-black text-hospital-navy uppercase tracking-tight mb-6">
-            {treatments.heading}
-          </h2>
-          <div className="w-20 h-1.5 bg-hospital-sky-blue mx-auto mb-8 rounded-full"></div>
-          <p className="text-slate-500 text-lg font-medium leading-relaxed">
-            {treatments.description}
-          </p>
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div className="max-w-2xl">
+            <p className="text-hospital-amber font-black tracking-[0.3em] uppercase text-[10px] mb-4">
+              Expert Solutions
+            </p>
+            <h2 className="text-3xl md:text-5xl font-black text-hospital-navy uppercase tracking-tight">
+              Advanced Vascular Treatments
+            </h2>
+          </div>
+          <Link to="/treatments" className="text-[10px] font-black text-hospital-teal hover:text-hospital-navy transition-colors uppercase tracking-[0.2em] border-b-2 border-hospital-teal pb-1">
+            Browse All Procedures →
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {treatments.items.map((item, idx) => {
-            const Icon = iconMap[item.icon];
-            // Find corresponding image from treatmentsPage specialties
-            const specialtyData = treatmentsPage.specialties.find(s => s.id === item.slug || s.title === item.title);
-            const displayImage = specialtyData?.image || "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800";
-
+            const Icon = iconMap[item.icon] || Droplets;
             return (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.6 }}
-                className="bg-white rounded-4xl overflow-hidden shadow-xl shadow-slate-200/60 flex flex-col group border border-slate-100"
+                transition={{ delay: idx * 0.1 }}
+                className="bg-slate-50 rounded-4xl p-8 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-hospital-navy/5 transition-all group flex flex-col h-full"
               >
-                {/* Image Section */}
-                <div className="relative">
-                  <div className="h-64 overflow-hidden">
-                    <img 
-                      src={displayImage} 
-                      alt={item.title} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                    />
-                  </div>
-                  {/* Floating Icon Overlay - Moved outside overflow-hidden */}
-                  <div className="absolute -bottom-6 right-8 w-14 h-14 rounded-2xl bg-hospital-navy flex items-center justify-center text-white border-4 border-white shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 z-20">
-                    {Icon && <Icon className="w-6 h-6" />}
-                  </div>
+                <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-hospital-teal mb-8 group-hover:bg-hospital-teal group-hover:text-white transition-all">
+                  <Icon size={28} />
                 </div>
 
-                {/* Content Section */}
-                <div className="p-8 pb-10 flex-1 flex flex-col">
-                  <h3 className="text-xl font-black text-hospital-navy mb-4 leading-tight">
-                    {item.title}
-                  </h3>
-                  
-                  <p className="text-slate-500 text-sm leading-relaxed mb-8 font-medium line-clamp-3">
-                    {item.description}
-                  </p>
+                <h3 className="text-xl font-black text-hospital-navy mb-4 leading-tight">
+                  {item.title}
+                </h3>
 
-                  <div className="mt-auto">
-                    <Link 
-                      to={item.slug ? `/treatments/${item.slug}` : "/treatments"} 
-                      className="inline-flex items-center gap-2 text-hospital-sky-blue font-black text-sm hover:gap-3 transition-all"
-                    >
-                      Learn More <ArrowRight size={18} />
-                    </Link>
-                  </div>
+                <p className="text-hospital-charcoal text-sm leading-relaxed mb-8 font-medium line-clamp-2">
+                  {item.description}
+                </p>
+
+                <div className="mt-auto">
+                  <Link
+                    to={item.slug ? `/treatments/${item.slug}` : "/treatments"}
+                    className="inline-flex items-center gap-2 text-hospital-teal font-black text-[10px] uppercase tracking-widest hover:gap-3 transition-all"
+                  >
+                    Learn More <ArrowRight size={14} />
+                  </Link>
                 </div>
               </motion.div>
             );

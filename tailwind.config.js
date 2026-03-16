@@ -8,11 +8,11 @@ export default {
     extend: {
       colors: {
         hospital: {
-          navy: "#1A2B56",
-          darkNavy: "#16213E",
-          lightBlue: "#BFDBFE",
-          skyBlue: "#0EA5E9",
-          softBlue: "#E3EEFF",
+          navy: "#13213e",
+          darkNavy: "#0f172a",
+          lightBlue: "#ccfbf1",
+          skyBlue: "#14b8a6",
+          softBlue: "#f0fdfa",
         },
       },
       fontFamily: {

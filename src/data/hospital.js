@@ -1,7 +1,7 @@
 export const brand = {
   name: "VENUVA VASCULAR",
   tagline: "Leading the Way in Medical Excellence",
-  logoColor: "text-blue-500",
+  logoColor: "text-hospital-sky-blue",
 };
 
 export const header = {
@@ -14,7 +14,6 @@ export const header = {
     { name: "Treatments", href: "/treatments" },
     { name: "Doctors", href: "/doctors" },
     { name: "Blog", href: "/blog" },
-    { name: "News", href: "/news" },
     { name: "FAQ", href: "/faq" },
     { name: "Contact", href: "/contact" },
   ],
@@ -23,9 +22,11 @@ export const header = {
 export const footer = {
   importantLinks: ["Appointment", "Doctors", "Treatments", "About Us"],
   contactUs: {
-    phone: "(+91) 98765 43210",
-    email: "info@venuva.com",
-    address: "Address: Vascular Care Center, India",
+    address: "Venuva Vascular Center",
+    addressDetail: "123 Medical Avenue, Healthcare City, Bengaluru, Karnataka 560001",
+    whatsapp: "+91-9845543210",
+    phones: ["+91-80123456812", "+91-9845543210"],
+    email: "contact@venuvascular.com",
   },
   newsletter: "Newsletter",
 };

@@ -2,11 +2,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-hospital-navy: #1A2B56;
-  --color-hospital-dark-navy: #16213E;
-  --color-hospital-light-blue: #BFDBFE;
-  --color-hospital-sky-blue: #0EA5E9;
-  --color-hospital-soft-blue: #E3EEFF;
+  --color-hospital-navy: #0D4952; /* Authoritative Deep Teal */
+  --color-hospital-dark-navy: #022c30; /* Deepest contrast */
+  --color-hospital-teal: #0D8A7F; /* Brand primary teal */
+  --color-hospital-jade: #14B8A6; /* Lighter brand secondary */
+  --color-hospital-mint: #ecfdf5; /* Soft backgrounds */
+  --color-hospital-soft-blue: #f0fdfa; /* Existing soft background */
+  --color-hospital-emerald: #22c55e; /* Success/Healing green */
+  --color-hospital-amber: #f59e0b; /* Key Call-to-Action */
+  --color-hospital-slate: #334155; /* Modern Neutral */
+  --color-hospital-charcoal: #1e293b; /* Secondary Text */
+  
+  /* Aliases for backward compatibility */
+  --color-hospital-sky-blue: var(--color-hospital-teal);
+  --color-hospital-light-blue: var(--color-hospital-mint);
+  
   --font-sans: "Inter", "system-ui", "sans-serif";
 }
 
@@ -14,6 +24,7 @@
   html {
     scroll-behavior: smooth;
   }
+
   body {
     @apply font-sans antialiased text-[#1e293b];
   }

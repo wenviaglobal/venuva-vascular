@@ -1,6 +1,6 @@
 export const hero = {
-  subheading: "MINIMALLY INVASIVE TREATMENTS BY EXPERT SPECIALISTS",
-  heading: "Advanced Vascular & Interventional Radiology Treatments in India",
+  subheading: "Best Vascular Specialists in Bangalore",
+  heading: "Advanced Vascular & Interventional Radiology Treatments",
   description: "Get advanced, minimally invasive treatments for vascular and interventional conditions performed by experienced specialists. Our center provides expert care for varicose veins, thyroid nodules, uterine fibroids, varicocele, deep vein thrombosis (DVT), peripheral artery disease, enlarged prostate, and chronic pain conditions using modern image-guided procedures and advanced medical technology.",
   cta1: "Book an Appointment",
   cta2: "Talk to Our Specialist",

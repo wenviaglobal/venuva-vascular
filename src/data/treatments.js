@@ -123,7 +123,7 @@ export const treatmentsPage = {
       whatIs: "Varicose veins are enlarged, twisted veins that appear just beneath the skin, most commonly on the legs, ankles, or feet. While not always dangerous, untreated cases can lead to complications such as non-healing skin ulcers.",
       symptomsDetailed: ["Bulging veins on the legs", "Leg pain, heaviness, or fatigue", "Burning, itching, or swelling"],
       whyImportant: ["Worsening pain and swelling", "Skin ulcers or bleeding", "Deep vein thrombosis (DVT)"],
-      benefits: ["15+ years of experience", "Patient-centric care", "USFDA-certified technologies", "Painless day-care treatments", "Same-day recovery"],
+      benefits: ["10+ years of experience", "Patient-centric care", "USFDA-certified technologies", "Painless day-care treatments", "Same-day recovery"],
       treatmentOptions: [
         { name: "Radiofrequency Ablation (RFA)", desc: "Seals damaged veins using controlled heat. Quick and scar-free." },
         { name: "Laser Ablation (EVLA)", desc: "Precision laser treatment to close diseased veins safely." },
