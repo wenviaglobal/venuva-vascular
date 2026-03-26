@@ -5,7 +5,7 @@ import { about } from "../data";
 const About = () => {
 
   return (
-    <section id="about" className="py-16 bg-slate-50 overflow-hidden">
+    <section id="about" className="py-16 bg-hospital-soft-blue overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           {/* Text Content */}
@@ -16,8 +16,8 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="lg:w-1/2"
           >
-            <div className="inline-block px-4 py-1.5 rounded-full bg-hospital-mint mb-6 border border-hospital-amber/10">
-              <p className="text-hospital-amber font-black tracking-widest text-[10px] uppercase">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-hospital-mint mb-6 border border-hospital-emerald/10">
+              <p className="text-hospital-sun font-black tracking-widest text-[10px] uppercase">
                 {about.tag || "About us"}
               </p>
             </div>
@@ -51,12 +51,12 @@ const About = () => {
             {/* Decorative Card */}
             <div className="absolute -bottom-6 -left-6 z-20 bg-white p-6 rounded-2xl shadow-xl hidden md:block">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-hospital-soft-blue flex items-center justify-center text-hospital-amber">
-                  <Activity className="w-6 h-6" />
+                <div className="w-12 h-12 rounded-full bg-hospital-soft-blue flex items-center justify-center text-hospital-sun">
+                  <Activity className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-sm font-black text-hospital-amber uppercase tracking-tighter">10+ Years</p>
-                  <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">Experience</p>
+                  <p className="text-sm font-black text-hospital-sun uppercase tracking-tighter">10+ Years</p>
+                  <p className="text-xs text-hospital-slate font-bold uppercase tracking-widest">Experience</p>
                 </div>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Activity } from "lucide-react";
-
+import Venuvalogo from '../../assets/venuva-logo.png';
 const LoadingSpinner = () => {
   return (
     <motion.div
@@ -37,32 +37,6 @@ const LoadingSpinner = () => {
         />
 
         {/* Logo Container */}
-        <motion.div
-          animate={{
-            y: [0, -10, 0],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="relative w-24 h-24 rounded-4xl bg-hospital-navy flex items-center justify-center shadow-2xl shadow-hospital-navy/30"
-        >
-          <Activity size={48} className="text-white" />
-          
-          {/* Pulsing line overlay */}
-          <motion.div
-            animate={{
-              opacity: [0.3, 1, 0.3],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute inset-0 rounded-4xl border-2 border-hospital-sky-blue"
-          />
-        </motion.div>
       </div>
 
       {/* Loading Text */}
@@ -72,7 +46,7 @@ const LoadingSpinner = () => {
           animate={{ opacity: 1 }}
           className="block text-2xl font-black text-hospital-navy uppercase tracking-tighter"
         >
-          Venuva <span className="text-hospital-sky-blue">Vascular</span>
+         <img src={Venuvalogo} alt="Venuva Vascular"/>
         </motion.span>
         
         <div className="w-48 h-1 bg-slate-100 rounded-full mx-auto relative overflow-hidden">

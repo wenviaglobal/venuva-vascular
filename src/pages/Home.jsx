@@ -1,6 +1,7 @@
-import { useLocation } from "react-router-dom";
+  import { useLocation } from "react-router-dom";
 import SEO from "../components/utils/SEO";
-import Hero from "../components/Hero";
+import HomeSlider from "../components/HomeSlider";
+import { heroSlides } from "../data";
 import About from "../components/About";
 import Treatments from "../components/Treatments";
 import WhyChooseUs from "../components/WhyChooseUs";
@@ -27,7 +28,7 @@ const Home = () => {
           description="Discover expert vascular care at Venuva Vascular Center. We offer advanced treatments for varicose veins, DVT, PVD, and minimally invasive procedures for a healthy circulatory system."
         />
       )}
-      <Hero />
+      <HomeSlider slides={heroSlides} />
       <About />
       <Treatments />
       <RecoveryJourney />

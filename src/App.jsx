@@ -14,17 +14,29 @@ import NewsPage from "./pages/NewsPage";
 import TreatmentDetail from "./pages/TreatmentDetail";
 import LoadingSpinner from "./components/utils/LoadingSpinner";
 import FloatingAction from "./components/utils/FloatingAction";
+import { AppointmentProvider } from "./context/AppointmentContext";
+import AppointmentModal from "./components/modals/AppointmentModal";
+import Doctors from "./components/Doctors";
 
 // console.log(import.meta.env.VITE_DOCTOR_NUMBER);
 // console.log(import.meta.env.VITE_DOCTOR_EMAIL);
 
 
-// Scroll to top on route change
+// Scroll to top or hash on route change
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (hash) {
+      const element = document.getElementById(hash.replace('#', ''));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
+
   return null;
 };
 
@@ -41,30 +53,34 @@ function App() {
 
   return (
     <Router>
-      <ScrollToTop />
-      <AnimatePresence mode="wait">
-        {isLoading && <LoadingSpinner key="loader" />}
-      </AnimatePresence>
+      <AppointmentProvider>
+        <ScrollToTop />
+        <AnimatePresence mode="wait">
+          {isLoading && <LoadingSpinner key="loader" />}
+        </AnimatePresence>
 
-      <div className="min-h-screen selection:bg-hospital-sky-blue selection:text-white flex flex-col font-sans antialiased text-[#1e293b]">
-        <Navbar />
-        <main className="flex-1 pt-[80px]">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<Home />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/treatments" element={<TreatmentsPage />} />
-            <Route path="/treatments/:id" element={<TreatmentDetail />} />
-            <Route path="/doctors" element={<DoctorsPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/news" element={<NewsPage />} />
-            <Route path="/faq" element={<FAQPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-          </Routes>
-        </main>
-        <Footer />
-        <FloatingAction />
-      </div>
+        <div className="min-h-screen selection:bg-hospital-sky-blue selection:text-white flex flex-col font-sans antialiased text-hospital-charcoal">
+          <Navbar />
+          <main className="flex-1 pt-[80px]">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<Home />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/treatments" element={<TreatmentsPage />} />
+              <Route path="/treatments/:id" element={<TreatmentDetail />} />
+              <Route path="/doctors" element={<DoctorsPage />} />
+              <Route path="/doctors/:slug" element={<DoctorsPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/news" element={<NewsPage />} />
+              <Route path="/faq" element={<FAQPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+            </Routes>
+          </main>
+          <Footer />
+          <FloatingAction />
+          <AppointmentModal />
+        </div>
+      </AppointmentProvider>
     </Router>
   );
 }

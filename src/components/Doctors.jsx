@@ -1,92 +1,122 @@
 import { motion } from "framer-motion";
+import { User, Award, ArrowRight, Linkedin, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Linkedin, Facebook, GraduationCap, Stethoscope, ChevronRight, Award } from "lucide-react";
-import { doctorsSection } from "../data";
+import { doctorsSection } from "../data/team";
 
 const Doctors = () => {
   return (
-    <section id="doctors" className="py-16 bg-white overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12">
-        {/* Compact Header */}
-        <div className="text-center mb-12">
-          <p className="text-hospital-amber font-black tracking-[0.25em] mb-3 uppercase text-[10px]">
-            {doctorsSection.tag}
-          </p>
-          <h2 className="text-3xl md:text-5xl font-black text-hospital-navy uppercase leading-tight">
-            {doctorsSection.heading}
-          </h2>
-        </div>
+    <section className="py-24 bg-white relative overflow-hidden">
+      {/* Background Decorations */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-hospital-soft-blue/50 -skew-x-12 translate-x-1/2 -z-10" />
 
-        {/* Streamlined, High-Impact Doctor Profiles */}
-        <div className="flex flex-col gap-10">
-          {doctorsSection.doctors.map((doctor, idx) => (
-            <motion.div
-              key={idx}
+      <div className="container mx-auto px-6 md:px-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="max-w-2xl">
+            <motion.span
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className={`flex flex-col lg:flex-row items-center gap-8 md:gap-12 p-6 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-sm relative overflow-hidden transition-all hover:shadow-xl hover:border-hospital-sky-blue/20 ${
-                idx % 2 === 0 ? "bg-slate-50" : "bg-hospital-soft-blue lg:flex-row-reverse"
-              }`}
+              className="text-hospital-sun font-black tracking-[0.3em] uppercase text-xs mb-4 block"
             >
-              {/* Image Side - Fixed Size for consistent cards */}
-              <div className="w-full lg:w-[400px] aspect-square rounded-3xl overflow-hidden relative shadow-lg shrink-0">
-                <img 
-                  src={doctor.image} 
-                  alt={doctor.name} 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-hospital-navy/40 via-transparent to-transparent" />
-                
-                {/* Floating Socials */}
-                <div className="absolute top-4 right-4 flex flex-col gap-2">
-                   <button className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-hospital-sky-blue transition-all">
-                      <Linkedin size={18} />
-                   </button>
-                </div>
+              {doctorsSection.tag}
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-3xl md:text-4xl font-black text-hospital-navy leading-tight"
+            >
+              {doctorsSection.heading}
+            </motion.h2>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <Link
+              to="/doctors"
+              className="group flex items-center gap-3 text-hospital-navy font-black text-xs uppercase tracking-widest hover:text-hospital-sun transition-colors"
+            >
+              Meet All Specialists
+              <div className="w-10 h-10 rounded-full bg-hospital-soft-blue flex items-center justify-center group-hover:bg-hospital-sun group-hover:text-white transition-all">
+                <ArrowRight size={16} />
               </div>
+            </Link>
+          </motion.div>
+        </div>
 
-              {/* Content Side */}
-              <div className="flex-1 text-left">
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="w-6 h-[2px] bg-hospital-sky-blue" />
-                  <span className="text-hospital-amber font-black uppercase tracking-[0.3em] text-[10px]">
-                    {doctor.specialty}
-                  </span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {doctorsSection.doctors.map((doctor, index) => (
+            <motion.div
+              key={doctor.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2 }}
+              className="group relative bg-white border border-hospital-mint rounded-[32px] overflow-hidden hover:shadow-2xl hover:shadow-hospital-navy/5 transition-all duration-500"
+            >
+              <div className="flex flex-col md:flex-row h-full">
+                {/* Doctor Image */}
+                <div className="md:w-2/5 relative overflow-hidden aspect-4/5 md:aspect-auto">
+                  <img
+                    src={doctor.image}
+                    alt={doctor.name}
+                    className="w-full h-full object-cover  transition-all duration-700"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-hospital-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                    <div className="flex gap-3">
+                      <a href={doctor.linkedin} className="w-8 h-8 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-hospital-sky-blue transition-colors">
+                        <Linkedin size={14} />
+                      </a>
+                      <a href={doctor.twitter} className="w-8 h-8 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-hospital-sky-blue transition-colors">
+                        <Twitter size={14} />
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                
-                <h3 className="text-2xl md:text-3xl font-black text-hospital-navy mb-4 uppercase">
-                  {doctor.name}
-                </h3>
-                
-                <p className="text-slate-500 font-medium text-base leading-relaxed mb-6 line-clamp-3">
-                  {doctor.bio}
-                </p>
 
-                {/* Quals & Focus - Compact */}
-                <div className="flex flex-wrap gap-4 mb-8">
-                  <div className="flex items-center gap-3 px-4 py-2 bg-white rounded-2xl shadow-xs border border-slate-50">
-                    <GraduationCap size={20} className="text-hospital-sky-blue" />
-                    <span className="text-[11px] font-bold text-hospital-navy">{doctor.qualifications[0]}</span>
-                  </div>
-                  <div className="flex items-center gap-3 px-4 py-2 bg-white rounded-2xl shadow-xs border border-slate-50">
-                    <Stethoscope size={20} className="text-hospital-sky-blue" />
-                    <span className="text-[11px] font-bold text-hospital-navy">{doctor.focus[0]}</span>
-                  </div>
-                  <div className="flex items-center gap-3 px-4 py-2 bg-white rounded-2xl shadow-xs border border-slate-50">
-                    <Award size={20} className="text-hospital-sky-blue" />
-                    <span className="text-[11px] font-bold text-hospital-navy">Expert Care</span>
-                  </div>
-                </div>
+                {/* Doctor Content */}
+                <div className="md:w-3/5 p-6 md:p-8 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="px-3 py-1 bg-hospital-sky-blue/10 text-hospital-sky-blue text-[9px] font-black uppercase tracking-widest rounded-full">
+                        {doctor.role}
+                      </div>
+                      <div className="flex items-center gap-1 text-hospital-sun">
+                        <Award size={12} />
+                        <span className="text-[9px] font-black uppercase tracking-widest">{doctor.experience} Exp</span>
+                      </div>
+                    </div>
 
-                {/* High Visibility Button */}
-                <div className="flex items-center">
-                  <Link 
-                    to={`/doctors#${doctor.id}`}
-                    className="group flex items-center gap-3 bg-hospital-navy text-white px-10 py-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-hospital-amber transition-all shadow-lg hover:translate-y-[-2px] active:translate-y-0"
+                    <h3 className="text-xl font-black text-hospital-navy mb-1 group-hover:text-hospital-teal transition-colors">
+                      {doctor.name}
+                    </h3>
+                    <p className="text-hospital-sky-blue font-bold text-[10px] mb-4 uppercase tracking-wider">
+                      {doctor.specialty}
+                    </p>
+
+                    <p className="text-hospital-charcoal/70 text-xs leading-relaxed mb-6 line-clamp-3">
+                      {doctor.bio}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {doctor.focus.map((item, i) => (
+                        <span key={i} className="text-[9px] font-bold text-hospital-navy/60 bg-hospital-mint px-2.5 py-1 rounded-lg border border-hospital-mint/50">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Link
+                    to={`/doctors/${doctor.slug}`}
+                    className="inline-flex items-center gap-2 text-hospital-teal font-black text-[9px] uppercase tracking-[0.2em] group/btn"
                   >
                     View Full Profile
-                    <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
+                    <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>

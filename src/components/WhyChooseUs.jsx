@@ -8,7 +8,7 @@ const WhyChooseUs = () => {
     <section className="py-16 bg-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-20 max-w-3xl mx-auto">
-          <p className="text-hospital-amber font-black tracking-[0.3em] uppercase text-[10px] mb-4">
+          <p className="text-hospital-sun font-black tracking-[0.3em] uppercase text-[10px] mb-4">
             {whyChooseUs.tag}
           </p>
           <h2 className="text-3xl md:text-5xl font-black text-hospital-navy uppercase tracking-tight">
@@ -18,7 +18,7 @@ const WhyChooseUs = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {whyChooseUs.reasons.map((reason, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -32,7 +32,7 @@ const WhyChooseUs = () => {
               <h4 className="text-xl font-black text-hospital-navy mb-4 uppercase tracking-tight group-hover:text-hospital-teal transition-colors">
                 {reason.title}
               </h4>
-              <p className="text-slate-500 leading-relaxed font-medium">
+              <p className="text-hospital-slate leading-relaxed font-medium">
                 {reason.description}
               </p>
             </motion.div>

@@ -1,234 +1,276 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { doctorsSection } from "../data";
-import { 
-  Linkedin, Facebook, Instagram, Users, 
-  Award, GraduationCap, Stethoscope, 
-  ChevronRight, BookOpen, Briefcase, 
-  ScrollText, ShieldCheck 
+import { useState, useEffect } from "react";
+import { useParams, useLocation } from "react-router-dom";
+import {
+  User,
+  Award,
+  BookOpen,
+  GraduationCap,
+  Briefcase,
+  FileText,
+  Users,
+  ChevronRight,
+  Stethoscope,
+  HeartPulse,
+  Mail,
+  Phone,
+  Linkedin,
+  Twitter
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { doctorsSection } from "../data/team";
+import SEO from "../components/utils/SEO";
+import PageHeader from "../components/PageHeader";
 
 const DoctorsPage = () => {
-  const [activeTabs, setActiveTabs] = useState(
-    doctorsSection.doctors.reduce((acc, doc) => ({ ...acc, [doc.id]: 'biography' }), {})
-  );
+  const { slug } = useParams();
+  const location = useLocation();
+  const [activeTabs, setActiveTabs] = useState({});
 
-  const handleTabChange = (docId, tab) => {
-    setActiveTabs(prev => ({ ...prev, [docId]: tab }));
+  // Initialize active tabs for each doctor
+  useEffect(() => {
+    const initialTabs = {};
+    doctorsSection.doctors.forEach(doc => {
+      initialTabs[doc.id] = 'biography';
+    });
+    setActiveTabs(initialTabs);
+  }, []);
+
+  // Handle scrolling to specific doctor if slug is provided
+  useEffect(() => {
+    if (slug) {
+      const element = document.getElementById(slug);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }, [slug]);
+
+  const toggleTab = (doctorId, tab) => {
+    setActiveTabs(prev => ({
+      ...prev,
+      [doctorId]: tab
+    }));
   };
 
-  const tabs = [
-    { id: 'biography', label: 'Biography', icon: BookOpen },
-    { id: 'expertise', label: 'Expertise', icon: ShieldCheck },
-    { id: 'education', label: 'Education', icon: GraduationCap },
-    { id: 'publications', label: 'Publications', icon: ScrollText },
-    { id: 'memberships', label: 'Memberships', icon: Award }
-  ];
+  const tabIcons = {
+    biography: <User size={16} />,
+    expertise: <Stethoscope size={16} />,
+    education: <GraduationCap size={16} />,
+    publications: <BookOpen size={16} />,
+    memberships: <Users size={16} />
+  };
 
   return (
-    <div className="bg-white min-h-screen">
-      {/* Hero Section - Matching Reference */}
-      <section className="bg-hospital-teal py-24 text-center">
-        <div className="container mx-auto px-6">
-          <h1 className="text-4xl md:text-6xl font-black text-white uppercase mb-6 tracking-tight">
-            Meet Our Doctors
-          </h1>
-          <p className="text-white/90 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-12">
-            Fellowship-trained specialists with {doctorsSection.doctors[0].experience} of experience, committed to delivering the highest standard of care in Bangalore.
-          </p>
-          
-          {/* Nav Pills */}
-          <div className="flex flex-wrap justify-center gap-4">
-            {doctorsSection.doctors.map((doctor) => (
-              <a 
-                key={doctor.id}
-                href={`#${doctor.id}`}
-                className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-2.5 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-[#0D8A7F] transition-all flex items-center gap-2"
-              >
-                {doctor.name} <ChevronRight size={14} className="rotate-90" />
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+    <div className="bg-hospital-soft-blue/30 min-h-screen pb-24">
+      <SEO
+        title="Our Expert Specialists | Venuva Vascular Center"
+        description="Meet our highly qualified vascular and interventional specialists dedicated to providing advanced minimally invasive care."
+      />
 
-      {/* Specialist Featured Sections */}
-      <div className="py-12 flex flex-col gap-0">
-        {doctorsSection.doctors.map((doctor, idx) => (
-          <section 
-            id={doctor.id} 
-            key={doctor.id}
-            className={`py-24 ${idx % 2 === 0 ? 'bg-white' : 'bg-[#fff5f5]'}`}
-          >
-            <div className="container mx-auto px-6 md:px-12">
-              <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-20">
-                {/* Image Side */}
-                <div className="w-full lg:w-[450px] space-y-8">
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    className="relative rounded-[2.5rem] overflow-hidden shadow-2xl bg-slate-100"
-                  >
-                    <img 
-                      src={doctor.image} 
-                      alt={doctor.name} 
-                      className="w-full aspect-4/5 object-cover"
+      <PageHeader
+        title="Our Medical Team"
+        subtitle="World-class specialists dedicated to your vascular health and recovery."
+      />
+
+      <div className="container mx-auto px-6 md:px-12 mt-12">
+        <div className="space-y-20">
+          {doctorsSection.doctors.map((doctor, index) => (
+            <motion.section
+              key={doctor.id}
+              id={doctor.slug}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="relative"
+            >
+              {/* Decorative Number */}
+              <div className="absolute -top-10 -left-2 text-[80px] font-black text-hospital-mint/50 leading-none -z-10 select-none">
+                0{index + 1}
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-hospital-navy">
+                {/* Left Column: Image & Basic Info */}
+                <div className="lg:col-span-4 sticky top-[100px]">
+                  <div className="relative rounded-[32px] overflow-hidden shadow-xl shadow-hospital-navy/5 group">
+                    <img
+                      src={doctor.image}
+                      alt={doctor.name}
+                      className="w-full max-h-[60vh] lg:aspect-4/5 object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     />
-                    
-                    {/* Experience Badge */}
-                    <div className="absolute bottom-10 -right-4 bg-hospital-amber text-white p-4 pr-8 rounded-2xl shadow-xl flex items-center gap-3 border-4 border-white">
-                       <div className="bg-white/20 p-2 rounded-lg">
-                         <Stethoscope size={24} />
-                       </div>
-                       <div>
-                         <p className="text-xl font-black leading-none">{doctor.experience}</p>
-                         <p className="text-[10px] font-bold uppercase tracking-widest opacity-80">Experience</p>
-                       </div>
+                    <div className="absolute inset-0 bg-linear-to-t from-hospital-navy/90 via-transparent to-transparent flex flex-col justify-end p-6">
+                      <h2 className="text-2xl font-black text-white mb-1">{doctor.name}</h2>
+                      <p className="text-hospital-sky-blue font-bold text-[10px] uppercase tracking-widest">{doctor.specialty}</p>
                     </div>
-                  </motion.div>
-
-                  {/* Info Summary Boxes */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                     <div className="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-[#0D8A7F]/10 flex items-center justify-center text-[#0D8A7F]">
-                          <Briefcase size={20} />
-                        </div>
-                        <div>
-                           <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Current Role</p>
-                           <p className="text-xs font-bold text-hospital-navy">{doctor.role}</p>
-                        </div>
-                     </div>
-                     <div className="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-full bg-[#0D8A7F]/10 flex items-center justify-center text-[#0D8A7F]">
-                          <ShieldCheck size={20} />
-                        </div>
-                        <div>
-                           <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Specialisation</p>
-                           <p className="text-xs font-bold text-hospital-navy leading-tight">{doctor.specialty.split('&')[0]}</p>
-                        </div>
-                     </div>
                   </div>
 
-                  <button className="bg-hospital-amber text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-white hover:text-hospital-navy transition-all flex items-center justify-center gap-2">
-                    Book a Consultation <ChevronRight size={18} />
-                  </button>
+                  <div className="mt-6 gap-3 grid grid-cols-2">
+                    <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-hospital-mint">
+                      <div className="w-10 h-10 rounded-lg bg-hospital-teal/10 flex items-center justify-center text-hospital-teal shrink-0">
+                        <Award size={18} />
+                      </div>
+                      <div>
+                        <p className="text-[8px] font-black uppercase tracking-widest text-hospital-slate">Experience</p>
+                        <p className="text-[12px] font-black text-hospital-navy">{doctor.experience}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-hospital-mint">
+                      <div className="w-10 h-10 rounded-lg bg-hospital-sky-blue/10 flex items-center justify-center text-hospital-sky-blue shrink-0">
+                        <Briefcase size={18} />
+                      </div>
+                      <div>
+                        <p className="text-[8px] font-black uppercase tracking-widest text-hospital-slate">Position</p>
+                        <p className="text-[12px] font-black text-hospital-navy truncate">{doctor.role}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex gap-3">
+                    <button className="flex-1 bg-hospital-navy text-white px-6 py-3 rounded-lg font-black text-[9px] tracking-widest uppercase hover:bg-hospital-teal transition-all flex items-center justify-center gap-2">
+                      <Mail size={12} /> Contact
+                    </button>
+                    <div className="flex gap-2">
+                      <a href={doctor.linkedin} className="w-10 h-10 rounded-lg border border-hospital-mint flex items-center justify-center text-hospital-navy hover:bg-hospital-sky-blue hover:text-white hover:border-hospital-sky-blue transition-all">
+                        <Linkedin size={16} />
+                      </a>
+                      <a href={doctor.twitter} className="w-10 h-10 rounded-lg border border-hospital-mint flex items-center justify-center text-hospital-navy hover:bg-hospital-sky-blue hover:text-white hover:border-hospital-sky-blue transition-all">
+                        <Twitter size={16} />
+                      </a>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Content Side */}
-                <div className="flex-1 lg:pt-10">
-                  <div className="mb-12">
-                    <p className="text-hospital-amber font-black tracking-[0.3em] uppercase text-[10px] mb-4">
-                      {idx === 0 ? "Founder & Lead Specialist" : "Co-Lead Specialist"}
-                    </p>
-                    <h2 className="text-4xl md:text-5xl font-black text-hospital-navy mb-4 uppercase">
-                      {doctor.name}
-                    </h2>
-                    <p className="text-hospital-teal font-bold text-sm tracking-wide">
-                      {doctor.specialty}
-                    </p>
-                    <p className="text-slate-500 mt-6 text-lg font-medium leading-relaxed">
-                      Fellowship Trained {doctor.specialty.split('&')[1] || "Specialist"}, Experienced {doctor.specialty.split('&')[0]}
-                    </p>
+                {/* Right Column: Detailed Tabs */}
+                <div className="lg:col-span-8 bg-white rounded-[32px] p-6 md:p-8 border border-slate-100 shadow-sm">
+                  {/* Tab Navigation */}
+                  <div className="flex flex-wrap gap-2 mb-8 border-b border-slate-50 pb-4">
+                    {Object.keys(doctor.tabs).map((tab) => (
+                      <button
+                        key={tab}
+                        onClick={() => toggleTab(doctor.id, tab)}
+                        className={`px-4 py-2.5 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${activeTabs[doctor.id] === tab
+                            ? "bg-hospital-teal text-white shadow-md shadow-hospital-teal/20"
+                            : "bg-hospital-soft-blue text-hospital-navy/60 hover:bg-hospital-mint"
+                          }`}
+                      >
+                        {tabIcons[tab]}
+                        {tab}
+                      </button>
+                    ))}
                   </div>
 
-                  {/* Tabbed Interface */}
-                  <div className="bg-white rounded-4xl border border-slate-100 shadow-sm overflow-hidden mt-12">
-                    <div className="flex flex-wrap border-b border-slate-50 overflow-x-auto scroller-hide bg-slate-50/50">
-                      {tabs.map((tab) => {
-                        const Icon = tab.icon;
-                        const isActive = activeTabs[doctor.id] === tab.id;
-                        return (
-                          <button
-                            key={tab.id}
-                            onClick={() => handleTabChange(doctor.id, tab.id)}
-                            className={`flex items-center gap-2 px-6 py-4 text-[10px] font-black uppercase tracking-widest transition-all relative shrink-0 ${
-                              isActive ? 'text-[#0D8A7F]' : 'text-slate-400 hover:text-slate-600'
-                            }`}
-                          >
-                            <Icon size={14} />
-                            {tab.label}
-                            {isActive && (
-                              <motion.div 
-                                layoutId={`tab-line-${doctor.id}`}
-                                className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0D8A7F]"
-                              />
-                            )}
-                          </button>
-                        );
-                      })}
-                    </div>
-
-                    <div className="p-8 md:p-10 min-h-[300px]">
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={activeTabs[doctor.id]}
-                          initial={{ opacity: 0, x: 10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: -10 }}
-                          transition={{ duration: 0.2 }}
-                          className="prose prose-slate max-w-none"
-                        >
-                          {activeTabs[doctor.id] === 'biography' && (
-                            <p className="text-slate-600 font-medium text-lg leading-relaxed whitespace-pre-wrap">
+                  {/* Tab Content */}
+                  <div className="min-h-[300px]">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeTabs[doctor.id]}
+                        initial={{ opacity: 0, x: 10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -10 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {activeTabs[doctor.id] === 'biography' && (
+                          <div className="space-y-4">
+                            <h4 className="text-lg font-black flex items-center gap-2">
+                              <User size={18} className="text-hospital-teal" />
+                              Professional Biography
+                            </h4>
+                            <p className="text-hospital-charcoal font-medium leading-relaxed bg-hospital-soft-blue p-6 rounded-2xl border-l-4 border-hospital-teal text-sm md:text-base italic whitespace-pre-line">
                               {doctor.tabs.biography}
                             </p>
-                          )}
-                          {activeTabs[doctor.id] === 'expertise' && (
-                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                              {doctor.tabs.expertise.map((item, i) => (
-                                <li key={i} className="flex items-center gap-3 text-slate-600 font-bold text-sm">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-6">
+                              {doctor.qualifications.map((qual, i) => (
+                                <div key={i} className="flex items-center gap-2 p-3 bg-slate-50/50 rounded-xl">
                                   <div className="w-1.5 h-1.5 rounded-full bg-hospital-teal" />
-                                  {item}
-                                </li>
+                                  <span className="text-xs font-bold text-hospital-navy">{qual}</span>
+                                </div>
                               ))}
-                            </ul>
-                          )}
-                          {activeTabs[doctor.id] === 'education' && (
-                            <div className="space-y-6">
+                            </div>
+                          </div>
+                        )}
+
+                        {activeTabs[doctor.id] === 'expertise' && (
+                          <div className="space-y-8">
+                            <h4 className="text-xl font-black flex items-center gap-3">
+                              <Stethoscope className="text-hospital-teal" />
+                              Clinical Expertise & Focus
+                            </h4>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              {doctor.tabs.expertise.map((item, i) => (
+                                <div key={i} className="group p-6 bg-slate-50 rounded-3xl border border-transparent hover:border-hospital-teal/20 transition-all">
+                                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-hospital-teal mb-4 shadow-sm">
+                                    <HeartPulse size={20} />
+                                  </div>
+                                  <p className="font-black text-hospital-navy">{item}</p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {activeTabs[doctor.id] === 'education' && (
+                          <div className="space-y-8">
+                            <h4 className="text-xl font-black flex items-center gap-3">
+                              <GraduationCap className="text-hospital-teal" />
+                              Academic Background
+                            </h4>
+                            <div className="space-y-4">
                               {doctor.tabs.education.map((item, i) => (
-                                <div key={i} className="flex gap-4">
-                                  <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center shrink-0">
-                                    <GraduationCap className="text-[#0D8A7F]" />
+                                <div key={i} className="flex items-start gap-6 p-6 bg-slate-50 rounded-3xl">
+                                  <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-hospital-navy shrink-0 shadow-sm">
+                                    <GraduationCap size={20} />
                                   </div>
-                                  <p className="text-slate-600 font-bold text-base pt-2">{item}</p>
+                                  <div>
+                                    <p className="font-bold text-hospital-navy leading-relaxed">{item}</p>
+                                  </div>
                                 </div>
                               ))}
                             </div>
-                          )}
-                          {activeTabs[doctor.id] === 'publications' && (
-                            <div className="space-y-6">
+                          </div>
+                        )}
+
+                        {activeTabs[doctor.id] === 'publications' && (
+                          <div className="space-y-8">
+                            <h4 className="text-xl font-black flex items-center gap-3">
+                              <FileText className="text-hospital-teal" />
+                              Research & Publications
+                            </h4>
+                            <div className="space-y-4">
                               {doctor.tabs.publications.map((item, i) => (
-                                <div key={i} className="flex gap-4">
-                                  <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center shrink-0">
-                                    <ScrollText className="text-[#0D8A7F]" />
-                                  </div>
-                                  <p className="text-slate-600 font-bold text-base pt-2 italic underline decoration-[#0D8A7F]/20">{item}</p>
+                                <div key={i} className="flex items-center gap-4 p-6 bg-slate-50 rounded-3xl hover:bg-white hover:shadow-xl hover:shadow-hospital-navy/5 transition-all group">
+                                  <div className="w-2 h-12 bg-hospital-sun rounded-full group-hover:bg-hospital-teal transition-colors" />
+                                  <p className="font-bold text-hospital-navy italic">"{item}"</p>
                                 </div>
                               ))}
                             </div>
-                          )}
-                          {activeTabs[doctor.id] === 'memberships' && (
-                            <div className="space-y-6">
+                          </div>
+                        )}
+
+                        {activeTabs[doctor.id] === 'memberships' && (
+                          <div className="space-y-8">
+                            <h4 className="text-xl font-black flex items-center gap-3">
+                              <Users className="text-hospital-teal" />
+                              Professional Affiliations
+                            </h4>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                               {doctor.tabs.memberships.map((item, i) => (
-                                <div key={i} className="flex gap-4">
-                                  <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center shrink-0">
-                                    <Award className="text-[#0D8A7F]" />
+                                <div key={i} className="flex items-center gap-4 p-6 bg-slate-50 rounded-3xl">
+                                  <div className="w-10 h-10 rounded-xl bg-hospital-navy/5 flex items-center justify-center text-hospital-navy">
+                                    <ChevronRight size={16} />
                                   </div>
-                                  <p className="text-slate-600 font-bold text-base pt-2">{item}</p>
+                                  <p className="text-sm font-black text-hospital-navy">{item}</p>
                                 </div>
                               ))}
                             </div>
-                          )}
-                        </motion.div>
-                      </AnimatePresence>
-                    </div>
+                          </div>
+                        )}
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
-        ))}
+            </motion.section>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -41,7 +41,7 @@ export const videoGallery = {
     },
     {
       id: "uS1RGbW8UbQ",
-      title: "DVT Treatment Guide",
+      title: "Deep Vein Thrombosis (DVT) Guide",
       description: "Understanding Deep Vein Thrombosis and how modern treatments clear blood clots.",
       category: "Vascular Care",
       thumbnail: "https://img.youtube.com/vi/uS1RGbW8UbQ/hqdefault.jpg",

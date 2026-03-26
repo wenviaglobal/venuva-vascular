@@ -1,113 +1,109 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { treatmentsPage } from "../data";
-import { Link } from "react-router-dom";
-import { useState, useMemo } from "react";
-import {
-  CheckCircle2,
-  Droplets,
-  Activity,
-  Dna,
-  Stethoscope,
-  HeartPulse,
-  Zap,
-  Bone,
-  Smile,
-  Calendar,
-  ChevronRight,
-  Search,
-  TriangleAlert
-} from "lucide-react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useAppointment } from "../context/AppointmentContext";
+import { useState, useMemo, useEffect } from "react";
 import SEO from "../components/utils/SEO";
 
-const iconMap = {
-  Droplets, Activity, Dna, Stethoscope,
-  HeartPulse, Zap, Bone, Smile
-};
-
 const TreatmentsPage = () => {
+  const { openModal } = useAppointment();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { hero, specialties, whyChoose, whenToConsult, intro, categories } = treatmentsPage;
-  
+
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState(location.state?.category || "all");
+
+  useEffect(() => {
+    if (location.state?.category) {
+      setActiveCategory(location.state.category);
+    }
+  }, [location.state]);
 
   // Filter logic
   const filteredSpecialties = useMemo(() => {
     let result = specialties;
-    
+
     // Filter by Category
     if (activeCategory !== "all") {
       const category = categories.find(c => c.id === activeCategory);
       const treatmentSlugs = category ? category.treatments.map(t => t.slug) : [];
       result = result.filter(s => treatmentSlugs.includes(s.id));
     }
-    
+
     // Filter by Search Query
     if (searchQuery.trim() !== "") {
       const q = searchQuery.toLowerCase();
-      result = result.filter(s => 
-        s.title.toLowerCase().includes(q) || 
+      result = result.filter(s =>
+        s.title.toLowerCase().includes(q) ||
         s.description.toLowerCase().includes(q) ||
-        s.benefits.some(b => b.toLowerCase().includes(q))
+        s.benefits?.some(b => b.toLowerCase().includes(q)) ||
+        s.treatmentOptions?.some(o => o.name.toLowerCase().includes(q))
       );
     }
-    
+
     return result;
   }, [searchQuery, activeCategory, specialties, categories]);
 
   return (
     <div className="bg-white min-h-screen">
-      <SEO 
+      <SEO
         title="Vascular & Vein Treatments | Venuva Vascular Center"
         description="Explore advanced vascular and vein treatments at Venuva Vascular Center, including varicose veins, DVT, PVD, thyroid embolization, uterine fibroid embolization, and pain interventions."
       />
-      {/* 1. Hero Section (Navkiran Style Gradient) */}
-      <section className="relative pt-[120px] pb-24 overflow-hidden bg-linear-to-br from-hospital-navy via-hospital-navy to-[#0a4e7a]">
-        {/* Subtle background circles */}
-        <div className="absolute -top-20 -right-20 w-96 h-96 bg-hospital-sky-blue/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-hospital-sky-blue/10 rounded-full blur-3xl pointer-events-none" />
-        
+      <section className="relative pt-32 pb-16 overflow-hidden bg-linear-to-br from-hospital-navy via-[#1e3a8a] to-[#0f4c81]">
+        {/* Ambient Animated Glowing Meshes */}
+        <motion.div 
+          animate={{ y: [0, -30, 0], x: [0, 20, 0], scale: [1, 1.1, 1] }} 
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl pointer-events-none"
+        />
+        <motion.div 
+          animate={{ y: [0, 40, 0], x: [0, -20, 0], scale: [1, 1.2, 1] }} 
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-0 left-0 w-80 h-80 bg-hospital-sky-blue/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-3xl pointer-events-none"
+        />
+
         <div className="container mx-auto px-6 md:px-12 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-2 rounded-full text-[10px] font-black tracking-widest uppercase mb-8"
+            className="inline-flex items-center bg-white/10 text-white px-5 py-2 rounded-full text-[10px] font-black tracking-widest uppercase mb-6"
           >
-            <Activity size={14} className="text-hospital-sky-blue" />
             {hero.subheading}
           </motion.div>
-          
-          <motion.h1 
+
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-7xl font-black text-white leading-tight mb-8 uppercase tracking-tighter"
+            className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.1] mb-8 uppercase tracking-tighter"
           >
-            Advanced <span className="text-hospital-sky-blue">Vascular</span> <br className="hidden md:block"/> Treatments
+            Advanced <span className="text-hospital-sky-blue">Vascular</span> <br className="hidden md:block" /> Treatments
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-slate-300 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto font-medium mb-12"
+            className="text-white/70 text-sm md:text-base leading-relaxed max-w-2xl mx-auto font-medium mb-8"
           >
             {intro.description}
           </motion.p>
 
           {/* Search Bar - Center Piece */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3 }}
             className="relative max-w-2xl mx-auto"
           >
-            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-            <input 
-              type="text" 
-              placeholder="Search for a treatment or condition..." 
+            <input
+              type="text"
+              placeholder="Search for a treatment or condition..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-16 pr-8 py-6 rounded-2xl bg-white text-hospital-navy placeholder-slate-400 font-bold shadow-2xl focus:outline-none focus:ring-4 focus:ring-hospital-sky-blue/20 transition-all text-lg"
+              className="w-full px-8 py-5 rounded-2xl bg-white text-hospital-navy placeholder-hospital-slate italic font-bold shadow-2xl focus:outline-none focus:ring-4 focus:ring-hospital-teal/20 transition-all text-base"
             />
           </motion.div>
         </div>
@@ -117,25 +113,23 @@ const TreatmentsPage = () => {
       <div className="sticky top-[80px] z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm py-4">
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex items-center gap-3 overflow-x-auto pb-1 scrollbar-hide no-scrollbar">
-            <button 
+            <button
               onClick={() => setActiveCategory("all")}
-              className={`shrink-0 px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all border ${
-                activeCategory === "all" 
-                ? "bg-hospital-navy text-white border-hospital-navy shadow-lg" 
+              className={`shrink-0 px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all border ${activeCategory === "all"
+                ? "bg-hospital-navy text-white border-hospital-navy shadow-lg"
                 : "bg-white text-slate-500 border-slate-200 hover:border-hospital-sky-blue hover:text-hospital-navy"
-              }`}
+                }`}
             >
               All Treatments
             </button>
             {categories.map((cat) => (
-              <button 
+              <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`shrink-0 px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all border flex items-center gap-2 ${
-                  activeCategory === cat.id 
-                  ? "bg-hospital-navy text-white border-hospital-navy shadow-lg" 
-                  : "bg-white text-slate-500 border-slate-200 hover:border-hospital-sky-blue hover:text-hospital-navy"
-                }`}
+                className={`shrink-0 px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all border flex items-center gap-2 ${activeCategory === cat.id
+                  ? "bg-hospital-navy text-white border-hospital-navy shadow-lg"
+                  : "bg-white text-hospital-slate border-hospital-mint hover:border-hospital-teal hover:text-hospital-navy"
+                  }`}
               >
                 {cat.title}
               </button>
@@ -145,72 +139,67 @@ const TreatmentsPage = () => {
       </div>
 
       {/* 3. Main Content Area */}
-      <div className="bg-slate-50/30">
+      <div className="bg-hospital-soft-blue/30">
         <section className="py-20">
           <div className="container mx-auto px-6 md:px-12">
             <AnimatePresence mode="popLayout">
               {filteredSpecialties.length > 0 ? (
-                <div className="grid grid-cols-1 gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                   {filteredSpecialties.map((item, idx) => {
-                    const Icon = iconMap[item.icon] || Stethoscope;
+                    // Find current category to label the tag cleanly
+                    const currentCategory = categories.find(c => c.treatments.some(t => t.slug === item.id))?.title || "Specialty";
                     return (
                       <motion.div
                         layout
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ duration: 0.4 }}
                         key={item.id}
-                        className="bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-card-xl hover:shadow-2xl transition-all group"
+                        className="group bg-white rounded-3xl overflow-hidden border border-hospital-mint shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col hover:-translate-y-2"
                       >
-                        <div className="flex flex-col lg:flex-row items-stretch">
-                          {/* Image Component */}
-                          <div className="lg:w-[45%] h-[300px] lg:h-auto relative overflow-hidden">
-                            <img 
-                              src={item.image} 
-                              alt={item.title} 
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                            />
-                            <div className="absolute top-6 left-6 w-14 h-14 rounded-2xl bg-white/90 backdrop-blur-md flex items-center justify-center text-hospital-navy shadow-xl">
-                              <Icon size={28} />
-                            </div>
+                        {/* Image Header */}
+                        <Link to={`/treatments/${item.id}`} className="block relative h-64 overflow-hidden bg-slate-100 cursor-pointer">
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-hospital-dark-navy/80 via-hospital-navy/20 to-transparent" />
+                        </Link>
+
+                        {/* Content Body */}
+                        <div className="p-8 flex flex-col grow relative">
+                          <div className="flex items-center gap-2 mb-4">
+                            <span className="w-6 h-px bg-hospital-sun"></span>
+                            <span className="text-hospital-sun font-black tracking-widest uppercase text-[9px]">
+                              {currentCategory}
+                            </span>
                           </div>
                           
-                          {/* Text Component */}
-                          <div className="lg:w-[55%] p-8 md:p-12 flex flex-col justify-center space-y-8">
-                            <div>
-                              <div className="flex items-center gap-3 mb-4">
-                                <span className="w-8 h-px bg-hospital-sky-blue"></span>
-                                <span className="text-hospital-sky-blue font-black tracking-[0.3em] uppercase text-[10px]">Medical Specialty</span>
-                              </div>
-                              <h3 className="text-2xl md:text-4xl font-black text-hospital-navy mb-6 uppercase tracking-tight leading-tight">
-                                {item.title}
-                              </h3>
-                              <p className="text-slate-500 text-lg leading-relaxed font-medium">
-                                {item.description}
-                              </p>
-                            </div>
+                          <Link to={`/treatments/${item.id}`}>
+                            <h3 className="text-2xl font-black text-hospital-navy mb-4 uppercase tracking-tight leading-tight group-hover:text-hospital-sky-blue transition-colors line-clamp-2">
+                              {item.title}
+                            </h3>
+                          </Link>
+                          
+                          <p className="text-hospital-slate text-[15px] leading-relaxed font-medium mb-8 line-clamp-3">
+                            {item.description}
+                          </p>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                              {item.benefits.map((benefit, i) => (
-                                <div key={i} className="flex items-center gap-3 text-hospital-navy font-bold text-[11px] uppercase tracking-wider">
-                                  <CheckCircle2 size={16} className="text-hospital-sky-blue shrink-0" />
-                                  <span>{benefit}</span>
-                                </div>
-                              ))}
-                            </div>
-
-                            <div className="pt-8 border-t border-slate-100 flex items-center justify-between">
-                              <Link 
-                                to={`/treatments/${item.id}`} 
-                                className="inline-flex items-center gap-2 text-hospital-sky-blue font-black text-[10px] uppercase tracking-[0.2em] group"
-                              >
-                                Full Procedure Details <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                              </Link>
-                              <button className="bg-hospital-navy text-white px-6 py-3 rounded-xl font-black text-[10px] tracking-widest uppercase hover:bg-hospital-sky-blue transition-all">
-                                Consult Now
-                              </button>
-                            </div>
+                          <div className="mt-auto flex items-center justify-between pt-6 border-t border-hospital-mint border-dashed">
+                            <Link
+                              to={`/treatments/${item.id}`}
+                              className="text-[10px] font-black uppercase tracking-[0.2em] text-hospital-navy group-hover:text-hospital-sky-blue flex items-center transition-colors"
+                            >
+                              Explore Details
+                            </Link>
+                            <button
+                              onClick={() => openModal()}
+                              className="bg-hospital-navy text-white px-5 py-2.5 rounded-xl font-black text-[9px] tracking-widest uppercase hover:bg-hospital-emerald transition-all shadow-md"
+                            >
+                              Consult
+                            </button>
                           </div>
                         </div>
                       </motion.div>
@@ -218,18 +207,15 @@ const TreatmentsPage = () => {
                   })}
                 </div>
               ) : (
-                <motion.div 
-                  initial={{ opacity: 0 }} 
-                  animate={{ opacity: 1 }} 
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   className="py-32 text-center"
                 >
-                  <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-400">
-                    <Search size={32} />
-                  </div>
                   <h3 className="text-2xl font-black text-hospital-navy uppercase tracking-tight mb-2">No treatments found</h3>
                   <p className="text-slate-500 font-medium">Try adjusting your search or category filters.</p>
-                  <button 
-                    onClick={() => {setSearchQuery(""); setActiveCategory("all");}}
+                  <button
+                    onClick={() => { setSearchQuery(""); setActiveCategory("all"); }}
                     className="mt-8 text-hospital-sky-blue font-black text-xs uppercase tracking-widest hover:underline"
                   >
                     Clear All Filters
@@ -245,16 +231,12 @@ const TreatmentsPage = () => {
           <div className="container mx-auto px-6 md:px-12">
             <div className="bg-amber-50 rounded-[2.5rem] p-10 md:p-16 border border-amber-100 flex flex-col lg:flex-row gap-12 items-center">
               <div className="lg:w-1/3 text-center lg:text-left">
-                <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center text-amber-600 mb-6 mx-auto lg:mx-0">
-                  <TriangleAlert size={32} />
-                </div>
                 <h3 className="text-3xl font-black text-amber-900 uppercase tracking-tighter leading-none mb-4">{whenToConsult.title}</h3>
                 <p className="text-amber-800/80 font-medium italic">{whenToConsult.outro}</p>
               </div>
               <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {whenToConsult.symptoms.map((symptom, i) => (
                   <div key={i} className="flex items-center gap-4 bg-white/60 p-5 rounded-2xl border border-amber-200/50">
-                    <CheckCircle2 size={18} className="text-amber-500" />
                     <span className="font-black text-amber-900 text-[10px] uppercase tracking-widest">{symptom}</span>
                   </div>
                 ))}
@@ -276,12 +258,12 @@ const TreatmentsPage = () => {
                   Join 10,000+ patients who chose Venuva for minimally invasive, image-guided treatments.
                 </p>
                 <div className="pt-6">
-                  <Link 
-                    to="/contact"
-                    className="inline-flex items-center gap-4 bg-white text-hospital-navy px-12 py-6 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-hospital-sky-blue hover:text-white transition-all transform hover:scale-105"
+                  <button
+                    onClick={() => openModal()}
+                    className="inline-flex items-center bg-white text-hospital-navy px-12 py-6 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-hospital-sun hover:text-white transition-all transform hover:scale-105"
                   >
-                    <Calendar size={18} /> Book A Consultation
-                  </Link>
+                    Book A Consultation
+                  </button>
                 </div>
               </div>
             </div>

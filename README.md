@@ -1,16 +1,75 @@
-# React + Vite
+# Venuva Vascular – Advanced Interventional Radiology Center
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Venuva Vascular is a premium, high-authority medical platform designed for a leading vascular and interventional radiology clinic in Bangalore. The application provides patients with a transparent, educational, and high-performance experience to understand minimally invasive treatments.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🏥 Key Features
 
-## React Compiler
+### 🔹 Advanced Treatment Gallery
+Comprehensive showcases for specialized interventional radiology procedures, including:
+*   **Varicose Veins**: US-FDA approved laser and radiofrequency treatments.
+*   **Thyroid Nodule Ablation**: Non-surgical thermal reduction.
+*   **Uterine Fibroid Embolization (UFE)**: Uterus-preserving fibroid treatment.
+*   **DVT Management**: Catheter-directed thrombolysis for blood clots.
+*   **Prostate and Varicocele Embolization**: Pinhole solutions for men's health.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🔝 Multi-Case Recovery Journey
+An interactive, data-driven gallery of patient success stories.
+*   **"Depth-Shift" Animations**: A custom-built transition system (Scale + Blur + Fade) specifically designed for clinical authority.
+*   **Before/After Sliders**: Integrated clinical comparison tools allowing users to visualize treatment outcomes.
+*   **Dynamic Timelines**: Specific recovery milestones for every treatment type.
 
-## Expanding the ESLint configuration
+### 👨‍⚕️ SEO-Friendly Specialist Profiles
+Dedicated, high-performance doctor pages with optimized routing.
+*   **Clean URL Structure**: SEO-ready routes (e.g., `/doctors/dr-harsha-m-t`).
+*   **Consolidated Routing**: Unified single-file architecture (`DoctorsPage.jsx`) for easy maintenance and speed.
+*   **Professional Medical Tabs**: Detailed views for Expertise, Publications, and Education.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+*   **Core**: React 19 + Vite (JavaScript)
+*   **Styling**: Tailwind CSS 4
+*   **Animation**: Framer Motion 12
+*   **Icons**: Lucide React
+*   **Routing**: React Router 7
+*   **Interactivity**: React Compare Slider
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+*   Node.js (LTS version recommended)
+*   npm or yarn
+
+### Installation
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+### Project Structure
+*   `src/data/`: Centralized content management for treatments, doctors, and recovery cases.
+*   `src/components/`: Reusable medical-grade UI components.
+*   `src/pages/`: Dynamic views for home, treatment details, and specialist profiles.
+*   `public/before-after/`: High-resolution clinical assets for treatment success stories.
+
+---
+
+## 🎨 Design Philosophy
+
+The project adheres to a "Clinical-Premium" aesthetic:
+*   **Typography**: Clean, high-authority sans-serif fonts.
+*   **Color Palette**: Hospital Teal, Deep Navy, and Amber accents for trust and warmth.
+*   **Animations**: Purposeful micro-interactions that emphasize precision and quality of care.
+
+---
+*Developed with focus on medical excellence and patient-first digital experiences.*

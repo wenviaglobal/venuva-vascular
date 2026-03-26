@@ -1,3 +1,6 @@
+import imgHarsha from '../assets/doctor-images/Dr.-Harsha-M-T.webp';
+import imgMonish from '../assets/doctor-images/Dr. Monish V.webp';
+
 export const doctorsSection = {
   tag: "EXPERT MEDICAL TEAM",
   heading: "Experienced Vascular & Interventional Specialists",
@@ -5,9 +8,10 @@ export const doctorsSection = {
   doctors: [
     {
       id: "expert-specialist-1",
+      slug: "dr-harsha-m-t",
       name: "Dr. Harsha M T",
       specialty: "Vascular Specialist & Interventional Radiologist",
-      image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=800&auto=format&fit=crop",
+      image: imgHarsha,
       bio: "Dr. Harsha M T is a renowned Vascular Specialist and Interventional Radiologist with over 10+ years of experience in performing complex minimally invasive procedures. He specializes in image-guided treatments that offer patients a safe alternative to traditional surgery.",
       qualifications: ["MBBS", "MD Radiology", "Fellowship in Interventional Radiology"],
       certifications: ["Indian Society of Vascular & Interventional Radiology", "Fellow of Royal College of Radiologists (FRCR)"],
@@ -16,7 +20,7 @@ export const doctorsSection = {
       linkedin: "#",
       twitter: "#",
       experience: "10+ Years",
-      role: "Lead Specialist",
+      role: "Consultant",
       tabs: {
         biography: "Dr. Harsha M T is a renowned Vascular Specialist and Interventional Radiologist with over 10+ years of experience in performing complex minimally invasive procedures. He is one of the finest specialists in Bangalore, highly qualified in image-guided treatments. He relocated to Bangalore and has been instrumental in establishing advanced interventional radiology practices.",
         expertise: ["Endovenous Laser Ablation (EVLA)", "Radiofrequency Ablation (RFA)", "Uterine Fibroid Embolization", "Prostate Artery Embolization", "Deep Vein Thrombosis (DVT) management"],
@@ -27,9 +31,10 @@ export const doctorsSection = {
     },
     {
       id: "expert-specialist-2",
-      name: "Dr. Shishir Kumar",
-      specialty: "Interventional Radiologist",
-      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=800&auto=format&fit=crop",
+      slug: "Dr. Monish V",
+      name: "Dr. Monish V",
+      specialty: "Vascular Interventional Radiologist ",
+      image: imgMonish,
       bio: "An expert in interventional radiology, Dr. Shishir Kumar specializes in minimally invasive treatments for DVT, Peripheral Angioplasty, and other complex vascular conditions.",
       qualifications: ["MBBS", "MD Radiology", "DNB"],
       certifications: ["Vascular Society of India", "ISVIR member"],
@@ -37,10 +42,12 @@ export const doctorsSection = {
       focus: ["DVT Treatment", "Peripheral Angioplasty", "Aortic Aneurysm Repair"],
       linkedin: "#",
       twitter: "#",
-      experience: "10+ Years",
-      role: "Co-Specialist",
+      experience: "12+ Years",
+      role: "Senior Consultant",
       tabs: {
-        biography: "Dr. Shishir Kumar is a distinguished Interventional Radiologist specializing in minimally invasive treatments. He has extensive experience in managing deep vein thrombosis and peripheral artery diseases using the latest endovascular techniques.",
+        biography: `Dr. Monish V is a Vascular Interventional Radiologist with over a decade of experience in minimally invasive, image-guided treatments. He specializes in helping patients avoid major surgery by providing proven non-surgical and catheter-based solutions wherever possible.\n
+         His clinical focus includes conditions such as varicose veins, varicocele, uterine fibroids, thyroid nodules, enlarged prostate, blocked leg arteries, and selected cases of deep vein thrombosis. Most procedures are performed as day-care treatments with faster recovery, minimal discomfort, and no surgical scars.\n
+         Dr. Monish has been published in reputed national and international journals and has presented his work at leading interventional radiology conferences. He is actively involved in advancing evidence-based, minimally invasive care.`,
         expertise: ["Catheter-directed Thrombolysis", "Peripheral Angioplasty & Stenting", "Thyroid Nodule Ablation", "Pain Intervention Procedures"],
         education: ["MBBS", "MD Radiology", "DNB"],
         publications: ["Advancements in DVT Treatment - Vascular Journal", "Minimal Access Procedures in Modern Medicine"],

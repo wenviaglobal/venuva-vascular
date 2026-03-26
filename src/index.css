@@ -1,23 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-hospital-navy: #0D4952; /* Authoritative Deep Teal */
-  --color-hospital-dark-navy: #022c30; /* Deepest contrast */
-  --color-hospital-teal: #0D8A7F; /* Brand primary teal */
-  --color-hospital-jade: #14B8A6; /* Lighter brand secondary */
-  --color-hospital-mint: #ecfdf5; /* Soft backgrounds */
-  --color-hospital-soft-blue: #f0fdfa; /* Existing soft background */
-  --color-hospital-emerald: #22c55e; /* Success/Healing green */
-  --color-hospital-amber: #f59e0b; /* Key Call-to-Action */
-  --color-hospital-slate: #334155; /* Modern Neutral */
-  --color-hospital-charcoal: #1e293b; /* Secondary Text */
-  
+  --color-hospital-navy: #1E1B4B;
+  /* Deep Indigo / Professional Primary */
+  --color-hospital-dark-navy: #0F172A;
+  /* Slate-950 / Deepest Contrast */
+  --color-hospital-teal: #0891B2;
+  /* Cyan-600 / Medical Primary Blue */
+  --color-hospital-jade: #0284C7;
+  /* Sky-700 / Professional Secondary */
+  --color-hospital-mint: #F0F9FF;
+  /* Soft Sky Background */
+  --color-hospital-soft-blue: #F8FAFC;
+  /* Slate-50 / Clean Layout BG */
+  --color-hospital-emerald: #10B981;
+  /* Emerald-500 / Healing Green Accent */
+  --color-hospital-slate: #64748B;
+  /* Slate-500 / Modern Neutral */
+  --color-hospital-charcoal: #334155;
+  /* Slate-700 / Deep Text */
+  --color-hospital-sun: #F59E0B;
+  /* Amber-500 / Sunheading Accent */
+
   /* Aliases for backward compatibility */
   --color-hospital-sky-blue: var(--color-hospital-teal);
   --color-hospital-light-blue: var(--color-hospital-mint);
-  
-  --font-sans: "Inter", "system-ui", "sans-serif";
+
+  --font-sans: "Outfit", "system-ui", "sans-serif";
 }
 
 @layer base {
@@ -26,6 +36,6 @@
   }
 
   body {
-    @apply font-sans antialiased text-[#1e293b];
+    @apply font-sans antialiased text-hospital-charcoal;
   }
 }

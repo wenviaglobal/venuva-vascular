@@ -1,19 +1,57 @@
-export const hero = {
-  subheading: "Best Vascular Specialists in Bangalore",
-  heading: "Advanced Vascular & Interventional Radiology Treatments",
-  description: "Get advanced, minimally invasive treatments for vascular and interventional conditions performed by experienced specialists. Our center provides expert care for varicose veins, thyroid nodules, uterine fibroids, varicocele, deep vein thrombosis (DVT), peripheral artery disease, enlarged prostate, and chronic pain conditions using modern image-guided procedures and advanced medical technology.",
-  cta1: "Book an Appointment",
-  cta2: "Talk to Our Specialist",
-  image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=2000&auto=format&fit=crop",
-  bottomCards: [
-    {
-      title: "Book an Appointment",
-      icon: "Calendar",
-      bg: "bg-hospital-navy",
-      textColor: "text-white",
-    }
-  ],
-};
+import slide1 from "../assets/1st-Slide.webp";
+import slide2 from "../assets/2nd-slide.webp";
+import slide3 from "../assets/3rd_slide.webp";
+
+export const heroSlides = [
+  {
+    subheading: "Best Vascular Specialists in Bangalore",
+    heading: "Advanced Vascular & Interventional Radiology Treatments",
+    description: "Expert care for varicose veins, thyroid nodules, uterine fibroids, and more using modern image-guided procedures and advanced medical technology.",
+    image: slide1,
+    stats: [
+      { label: "Day-Care Procedure", value: "30", suffix: "Min", icon: "Zap", color: "text-hospital-sun" },
+      { label: "Patients Treated", value: "10,000", suffix: "+", icon: "UserCheck", color: "text-hospital-sky-blue" },
+      { label: "Experience", value: "10", suffix: "+ Yrs", icon: "Calendar", color: "text-hospital-sun" },
+      { label: "Facility Available", value: "Insurance", suffix: "", icon: "ShieldCheck", color: "text-hospital-sky-blue" }
+    ]
+  },
+  {
+    subheading: "Varicose Veins Specialist",
+    heading: "Painless Laser Treatment for Varicose Veins",
+    description: "Walk in, Walk out procedures with zero incisions. Get relief from leg pain, swelling, and visible veins with our advanced endovenous laser treatment.",
+    image: slide2,
+    stats: [
+      { label: "Recovery Time", value: "24", suffix: "Hrs", icon: "Zap", color: "text-hospital-sun" },
+      { label: "Success Rate", value: "99", suffix: "%", icon: "ShieldCheck", color: "text-hospital-sky-blue" },
+      { label: "Laser Tech", value: "Modern", suffix: "", icon: "CheckCircle", color: "text-hospital-sun" },
+      { label: "Facility Available", value: "Insurance", suffix: "", icon: "ShieldCheck", color: "text-hospital-sky-blue" }
+    ]
+  },
+  {
+    subheading: "Uterine Fibroid Embolization",
+    heading: "Non-Surgical Solution for Uterine Fibroids",
+    description: "Preserve your uterus and avoid major surgery. UFE is a proven, minimally invasive alternative to hysterectomy with faster recovery.",
+    image: slide3,
+    stats: [
+      { label: "Non-Surgical", value: "100", suffix: "%", icon: "ShieldCheck", color: "text-hospital-sun" },
+      { label: "Typical Stay", value: "1", suffix: "Day", icon: "Calendar", color: "text-hospital-sky-blue" },
+      { label: "Specialists", value: "Expert", suffix: "", icon: "UserCheck", color: "text-hospital-sun" },
+      { label: "Facility Available", value: "Insurance", suffix: "", icon: "ShieldCheck", color: "text-hospital-sky-blue" }
+    ]
+  },
+  {
+    subheading: "Advanced Prostate Care (PAE)",
+    heading: "Effective Treatment for Enlarged Prostate (BPH)",
+    description: "Prostate Artery Embolization (PAE) offers a surgical-grade result without the risks of traditional surgery. No hospital stay required in most cases.",
+    image: slide3,
+    stats: [
+      { label: "No Surgery", value: "Safe", suffix: "", icon: "ShieldCheck", color: "text-hospital-sun" },
+      { label: "Outpatient", value: "Same", suffix: "Day", icon: "Zap", color: "text-hospital-sky-blue" },
+      { label: "Result", value: "Long", suffix: "Term", icon: "UserCheck", color: "text-hospital-sun" },
+      { label: "Facility Available", value: "Insurance", suffix: "", icon: "ShieldCheck", color: "text-hospital-sky-blue" }
+    ]
+  }
+];
 
 export const about = {
   tag: "LEADING CENTER",

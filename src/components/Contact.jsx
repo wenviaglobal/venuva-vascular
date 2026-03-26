@@ -13,7 +13,7 @@ const Contact = () => {
     <section id="contact" className="py-24 bg-white">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
-          <p className="text-hospital-amber font-bold tracking-[0.2em] mb-4 uppercase text-xs">
+          <p className="text-hospital-sun font-bold tracking-[0.2em] mb-4 uppercase text-xs">
             {contact.tag}
           </p>
           <h2 className="text-4xl md:text-5xl font-black text-hospital-navy">
@@ -25,8 +25,8 @@ const Contact = () => {
           {contact.cards.map((card, idx) => {
             const Icon = iconMap[card.icon];
             return (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className={`${card.color} ${card.textColor || 'text-hospital-navy'} p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center`}
               >
                 <div className="mb-6">

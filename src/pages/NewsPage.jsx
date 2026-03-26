@@ -19,7 +19,7 @@ const NewsPage = () => {
   ];
 
   return (
-    <div className="bg-white min-h-screen pb-24">
+    <div className="bg-hospital-soft-blue/20 min-h-screen pb-24">
       <PageHeader
         title="Hospital News"
         subtitle="Operational Updates & Institutional Milestones"
@@ -34,7 +34,7 @@ const NewsPage = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className="flex flex-col md:flex-row gap-8 bg-slate-50 p-8 rounded-[3rem] border border-slate-100 group hover:shadow-2xl transition-all"
+              className="flex flex-col md:flex-row gap-8 bg-white p-8 rounded-[3rem] border border-hospital-mint group hover:shadow-2xl transition-all"
             >
               <div className="md:w-1/3 aspect-video md:aspect-auto h-64 overflow-hidden rounded-2xl shadow-lg">
                 <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
@@ -43,13 +43,13 @@ const NewsPage = () => {
                 <div className="flex items-center gap-4 text-hospital-sky-blue text-xs font-black uppercase tracking-widest mb-4">
                   <Megaphone size={16} />
                   <span>Update</span>
-                  <span className="text-slate-300">|</span>
-                  <span className="flex items-center gap-2 text-slate-400 capitalize"><Calendar size={14} /> {item.date}</span>
+                  <span className="text-hospital-mint">|</span>
+                  <span className="flex items-center gap-2 text-hospital-slate capitalize"><Calendar size={14} /> {item.date}</span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-black text-hospital-navy mb-4 leading-tight group-hover:text-hospital-sky-blue transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-slate-500 font-medium leading-relaxed mb-6">
+                <p className="text-hospital-charcoal font-medium leading-relaxed mb-6">
                   {item.excerpt}
                 </p>
                 <button className="flex items-center gap-3 font-black text-xs uppercase tracking-[0.2em] text-hospital-navy group/btn">

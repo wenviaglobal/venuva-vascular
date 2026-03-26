@@ -26,7 +26,7 @@ const ServicesPage = () => {
       title: "International Patient Desk",
       desc: "Personalized assistance for global patients including travel, accommodation, and documentation.",
       icon: Shield,
-      color: "bg-emerald-50 text-emerald-600"
+      color: "bg-amber-50 text-amber-600"
     },
     {
       title: "Specialist Consultation",
@@ -58,13 +58,13 @@ const ServicesPage = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: idx * 0.1 }}
-              className="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-slate-200/50 transition-all group"
+              className="p-10 rounded-[2.5rem] bg-hospital-soft-blue border border-hospital-mint hover:bg-white hover:shadow-2xl hover:shadow-hospital-navy/5 transition-all group"
             >
               <div className={`w-16 h-16 rounded-2xl ${service.color} flex items-center justify-center mb-8 group-hover:scale-110 transition-transform`}>
                 <service.icon size={32} />
               </div>
               <h3 className="text-2xl font-black text-hospital-navy mb-4">{service.title}</h3>
-              <p className="text-slate-500 leading-relaxed font-medium">
+              <p className="text-hospital-charcoal leading-relaxed font-medium">
                 {service.desc}
               </p>
             </motion.div>

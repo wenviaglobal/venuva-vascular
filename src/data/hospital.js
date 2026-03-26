@@ -1,7 +1,7 @@
 export const brand = {
   name: "VENUVA VASCULAR",
   tagline: "Leading the Way in Medical Excellence",
-  logoColor: "text-hospital-sky-blue",
+  logo: "/src/assets/logo.png",
 };
 
 export const header = {
@@ -26,7 +26,7 @@ export const footer = {
     addressDetail: "123 Medical Avenue, Healthcare City, Bengaluru, Karnataka 560001",
     whatsapp: "+91-9845543210",
     phones: ["+91-80123456812", "+91-9845543210"],
-    email: "contact@venuvascular.com",
+    email: "venuvavascular@gmail.com",
   },
   newsletter: "Newsletter",
 };

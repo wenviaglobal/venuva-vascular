@@ -8,15 +8,16 @@ export default {
     extend: {
       colors: {
         hospital: {
-          navy: "#13213e",
-          darkNavy: "#0f172a",
-          lightBlue: "#ccfbf1",
-          skyBlue: "#14b8a6",
-          softBlue: "#f0fdfa",
+          navy: "#1E3A8A", /* Vibrant Royal Navy */
+          darkNavy: "#0F172A",
+          lightBlue: "#F0F9FF",
+          skyBlue: "#0891B2",
+          softBlue: "#F8FAFC",
+          sun: "#F59E0B",
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Outfit', 'system-ui', 'sans-serif'],
       },
     },
   },

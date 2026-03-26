@@ -34,7 +34,7 @@ const FAQPage = () => {
   ];
 
   return (
-    <div className="bg-slate-50 min-h-screen pb-24">
+    <div className="bg-hospital-soft-blue min-h-screen pb-24">
       <PageHeader
         title="Patient FAQ"
         subtitle="Common Questions & Expert Answers"
@@ -49,7 +49,7 @@ const FAQPage = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.05 }}
-              className={`bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-md transition-all ${openIdx === idx ? 'shadow-xl' : ''}`}
+              className={`bg-white rounded-3xl border border-hospital-mint overflow-hidden shadow-md transition-all ${openIdx === idx ? 'shadow-xl' : ''}`}
             >
               <button
                 onClick={() => setOpenIdx(openIdx === idx ? -1 : idx)}
@@ -70,7 +70,7 @@ const FAQPage = () => {
                   animate={{ height: "auto", opacity: 1 }}
                   className="px-8 pb-8 pt-0"
                 >
-                  <p className="text-slate-500 font-medium leading-relaxed pl-12">
+                  <p className="text-hospital-slate font-medium leading-relaxed pl-12">
                     {faq.a}
                   </p>
                 </motion.div>

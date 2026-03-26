@@ -32,7 +32,7 @@ const BlogPage = () => {
   ];
 
   return (
-    <div className="bg-slate-50 min-h-screen pb-24">
+    <div className="bg-hospital-soft-blue min-h-screen pb-24">
       <PageHeader
         title="Medical Blog"
         subtitle="Insights & Health Tips from Specialists"
@@ -47,7 +47,7 @@ const BlogPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-white rounded-2xl overflow-hidden shadow-xl shadow-slate-200/50 group"
+              className="bg-white rounded-2xl overflow-hidden shadow-xl shadow-hospital-navy/5 group"
             >
               <div className="h-64 overflow-hidden relative">
                 <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
@@ -56,14 +56,14 @@ const BlogPage = () => {
                 </div>
               </div>
               <div className="p-8">
-                <div className="flex items-center gap-6 text-slate-400 text-xs font-bold uppercase tracking-widest mb-4">
+                <div className="flex items-center gap-6 text-hospital-slate text-xs font-bold uppercase tracking-widest mb-4">
                   <span className="flex items-center gap-2"><Calendar size={14} className="text-hospital-sky-blue" /> {post.date}</span>
                   <span className="flex items-center gap-2"><User size={14} className="text-hospital-sky-blue" /> {post.author}</span>
                 </div>
                 <h3 className="text-xl font-black text-hospital-navy mb-4 leading-tight group-hover:text-hospital-sky-blue transition-colors">
                   {post.title}
                 </h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                <p className="text-hospital-charcoal text-sm leading-relaxed mb-6">
                   {post.excerpt}
                 </p>
                 <button className="flex items-center gap-2 text-hospital-navy font-black text-xs uppercase tracking-widest group/btn">
