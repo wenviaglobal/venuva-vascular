@@ -51,22 +51,22 @@ const BlogPage = () => {
             >
               <div className="h-64 overflow-hidden relative">
                 <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-hospital-sky-blue text-white text-[10px] font-black uppercase tracking-widest">
+                <div className="absolute top-6 left-6 px-4 py-1.5 rounded-full bg-hospital-sky-blue text-white text-xs font-black uppercase tracking-wider">
                   {post.category}
                 </div>
               </div>
               <div className="p-8">
-                <div className="flex items-center gap-6 text-hospital-slate text-xs font-bold uppercase tracking-widest mb-4">
+                <div className="flex items-center gap-6 text-hospital-slate text-sm font-bold uppercase tracking-wider mb-4">
                   <span className="flex items-center gap-2"><Calendar size={14} className="text-hospital-sky-blue" /> {post.date}</span>
                   <span className="flex items-center gap-2"><User size={14} className="text-hospital-sky-blue" /> {post.author}</span>
                 </div>
                 <h3 className="text-xl font-black text-hospital-navy mb-4 leading-tight group-hover:text-hospital-sky-blue transition-colors">
                   {post.title}
                 </h3>
-                <p className="text-hospital-charcoal text-sm leading-relaxed mb-6">
+                <p className="text-hospital-charcoal text-base leading-relaxed mb-6">
                   {post.excerpt}
                 </p>
-                <button className="flex items-center gap-2 text-hospital-navy font-black text-xs uppercase tracking-widest group/btn">
+                <button className="flex items-center gap-2 text-hospital-navy font-black text-sm uppercase tracking-wider group/btn">
                   Read More
                   <ArrowRight size={16} className="text-hospital-sky-blue group-hover/btn:translate-x-2 transition-transform" />
                 </button>

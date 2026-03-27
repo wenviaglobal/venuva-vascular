@@ -27,7 +27,7 @@ const Footer = () => {
         className="absolute bottom-0 left-0 w-80 h-80 bg-hospital-sky-blue/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-3xl pointer-events-none"
       />
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 border-b border-white/10 pb-20">
 
           {/* Brand Column */}
@@ -37,7 +37,7 @@ const Footer = () => {
                 <img src={logo} alt="Venuva Vascular" className="h-[65px] md:h-[75px] w-auto object-contain  group-hover:scale-110 transition-transform" />
                
               </div>
-              <span className="text-[10px] font-bold text-hospital-sun tracking-[0.3em] uppercase">
+              <span className="text-xs font-bold text-hospital-sun tracking-[0.3em] uppercase">
                 {brand.tagline || "Medical Excellence"}
               </span>
             </Link>
@@ -152,7 +152,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-[11px] font-bold text-white/40">
+        <div className="pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-bold text-white/40">
           <p>© 2026 {brand.name}. All rights reserved.</p>
           <div className="flex gap-8">
             <button className="hover:text-white transition-colors uppercase tracking-widest">Privacy Policy</button>

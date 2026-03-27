@@ -6,7 +6,7 @@ const About = () => {
 
   return (
     <section id="about" className="py-16 bg-hospital-soft-blue overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           {/* Text Content */}
           <motion.div
@@ -17,7 +17,7 @@ const About = () => {
             className="lg:w-1/2"
           >
             <div className="inline-block px-4 py-1.5 rounded-full bg-hospital-mint mb-6 border border-hospital-emerald/10">
-              <p className="text-hospital-sun font-black tracking-widest text-[10px] uppercase">
+              <p className="text-hospital-sun font-black tracking-widest text-xs uppercase">
                 {about.tag || "About us"}
               </p>
             </div>

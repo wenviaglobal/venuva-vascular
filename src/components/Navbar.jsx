@@ -49,7 +49,7 @@ const Navbar = () => {
     <header
       className="fixed top-0 left-0 w-full z-50 bg-white shadow-sm border-b border-hospital-mint h-[80px] flex items-center"
     >
-      <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" onClick={handleHomeClick} className="flex items-center gap-4 group">
           <img src={logo} alt="Venuva Vascular" className="h-[65px] md:h-[75px] w-auto object-contain transition-transform group-hover:scale-110" />
@@ -71,7 +71,7 @@ const Navbar = () => {
                 >
                   <Link
                     to={link.href}
-                    className={`text-[10px] font-black uppercase tracking-widest transition-all px-4 py-2 rounded-lg flex items-center gap-1 group/link ${isActive || megaMenuOpen
+                    className={`text-xs font-black uppercase tracking-widest transition-all px-4 py-2 rounded-lg flex items-center gap-1 group/link ${isActive || megaMenuOpen
                       ? "text-hospital-teal"
                       : "text-hospital-navy/70 hover:text-hospital-navy"
                       }`}
@@ -134,12 +134,12 @@ const Navbar = () => {
 
                         {/* Bottom Footer Bar */}
                         <div className="flex items-center justify-between px-8 py-4 bg-hospital-soft-blue/50 border-t border-hospital-mint">
-                          <span className="text-[10px] text-hospital-navy/40 font-bold uppercase tracking-widest">
+                          <span className="text-xs text-hospital-navy/40 font-bold uppercase tracking-widest">
                             Venuva Stats: 10+ Yrs · 10k+ Cases Resolved
                           </span>
                           <button
                             onClick={() => window.location.href = `tel:${header.emergency.replace(/[^\d+]/g, '')}`}
-                            className="bg-hospital-emerald text-white px-6 py-2 rounded-lg font-black text-[10px] tracking-widest uppercase hover:bg-hospital-navy transition-all flex items-center gap-2"
+                            className="bg-hospital-emerald text-white px-6 py-2 rounded-lg font-black text-xs tracking-widest uppercase hover:bg-hospital-navy transition-all flex items-center gap-2"
                           >
                             <Phone size={14} />
                             Call Us
@@ -156,7 +156,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className={`text-[10px] font-black uppercase tracking-widest transition-all relative px-4 py-2 ${isActive
+                className={`text-xs font-black uppercase tracking-widest transition-all relative px-4 py-2 ${isActive
                   ? "text-hospital-teal"
                   : "text-hospital-navy/70 hover:text-hospital-navy"
                   }`}
@@ -179,7 +179,7 @@ const Navbar = () => {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => window.location.href = `tel:${header.emergency.replace(/[^\d+]/g, '')}`}
-            className="hidden sm:flex bg-hospital-emerald text-white px-8 py-4 rounded-xl font-black text-[10px] tracking-[0.2em] uppercase hover:bg-hospital-navy transition-all shadow-xl shadow-hospital-navy/10 items-center gap-3"
+            className="hidden sm:flex bg-hospital-emerald text-white px-8 py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase hover:bg-hospital-navy transition-all shadow-xl shadow-hospital-navy/10 items-center gap-3"
           >
             <Phone size={16} />
             Call Us
@@ -232,7 +232,7 @@ const Navbar = () => {
                                     {cat.icon === 'Stethoscope' && <Stethoscope size={12} />}
                                     {cat.icon === 'Activity' && <ActivityIcon size={12} />}
                                   </div>
-                                  <span className="text-[10px] font-black uppercase tracking-widest text-hospital-sun">{cat.title}</span>
+                                  <span className="text-xs font-black uppercase tracking-widest text-hospital-sun">{cat.title}</span>
                                 </div>
                                 <div className="grid grid-cols-1 gap-3 pl-8">
                                   {cat.treatments.map((t) => (

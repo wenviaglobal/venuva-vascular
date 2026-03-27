@@ -68,7 +68,7 @@ const TreatmentsPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center bg-white/10 text-white px-5 py-2 rounded-full text-[10px] font-black tracking-widest uppercase mb-6"
+            className="inline-flex items-center bg-white/10 text-white px-5 py-2 rounded-full text-xs font-black tracking-widest uppercase mb-6"
           >
             {hero.subheading}
           </motion.div>
@@ -115,7 +115,7 @@ const TreatmentsPage = () => {
           <div className="flex items-center gap-3 overflow-x-auto pb-1 scrollbar-hide no-scrollbar">
             <button
               onClick={() => setActiveCategory("all")}
-              className={`shrink-0 px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all border ${activeCategory === "all"
+              className={`shrink-0 px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-wider transition-all border ${activeCategory === "all"
                 ? "bg-hospital-navy text-white border-hospital-navy shadow-lg"
                 : "bg-white text-slate-500 border-slate-200 hover:border-hospital-sky-blue hover:text-hospital-navy"
                 }`}
@@ -126,7 +126,7 @@ const TreatmentsPage = () => {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`shrink-0 px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all border flex items-center gap-2 ${activeCategory === cat.id
+                className={`shrink-0 px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-wider transition-all border flex items-center gap-2 ${activeCategory === cat.id
                   ? "bg-hospital-navy text-white border-hospital-navy shadow-lg"
                   : "bg-white text-hospital-slate border-hospital-mint hover:border-hospital-teal hover:text-hospital-navy"
                   }`}
@@ -172,7 +172,7 @@ const TreatmentsPage = () => {
                         <div className="p-8 flex flex-col grow relative">
                           <div className="flex items-center gap-2 mb-4">
                             <span className="w-6 h-px bg-hospital-sun"></span>
-                            <span className="text-hospital-sun font-black tracking-widest uppercase text-[9px]">
+                            <span className="text-hospital-sun font-black tracking-widest uppercase text-xs">
                               {currentCategory}
                             </span>
                           </div>
@@ -190,13 +190,13 @@ const TreatmentsPage = () => {
                           <div className="mt-auto flex items-center justify-between pt-6 border-t border-hospital-mint border-dashed">
                             <Link
                               to={`/treatments/${item.id}`}
-                              className="text-[10px] font-black uppercase tracking-[0.2em] text-hospital-navy group-hover:text-hospital-sky-blue flex items-center transition-colors"
+                              className="text-xs font-black uppercase tracking-[0.15em] text-hospital-navy group-hover:text-hospital-sky-blue flex items-center transition-colors"
                             >
                               Explore Details
                             </Link>
                             <button
                               onClick={() => openModal()}
-                              className="bg-hospital-navy text-white px-5 py-2.5 rounded-xl font-black text-[9px] tracking-widest uppercase hover:bg-hospital-emerald transition-all shadow-md"
+                              className="bg-hospital-navy text-white px-5 py-2.5 rounded-xl font-black text-xs tracking-wider uppercase hover:bg-hospital-emerald transition-all shadow-md"
                             >
                               Consult
                             </button>
@@ -237,7 +237,7 @@ const TreatmentsPage = () => {
               <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {whenToConsult.symptoms.map((symptom, i) => (
                   <div key={i} className="flex items-center gap-4 bg-white/60 p-5 rounded-2xl border border-amber-200/50">
-                    <span className="font-black text-amber-900 text-[10px] uppercase tracking-widest">{symptom}</span>
+                    <span className="font-black text-amber-900 text-xs uppercase tracking-wider">{symptom}</span>
                   </div>
                 ))}
               </div>
@@ -260,7 +260,7 @@ const TreatmentsPage = () => {
                 <div className="pt-6">
                   <button
                     onClick={() => openModal()}
-                    className="inline-flex items-center bg-white text-hospital-navy px-12 py-6 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-hospital-sun hover:text-white transition-all transform hover:scale-105"
+                    className="inline-flex items-center bg-white text-hospital-navy px-12 py-6 rounded-2xl font-black text-sm uppercase tracking-[0.15em] shadow-xl hover:bg-hospital-sun hover:text-white transition-all transform hover:scale-105"
                   >
                     Book A Consultation
                   </button>

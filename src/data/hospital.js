@@ -7,9 +7,9 @@ export const brand = {
 };
 
 export const header = {
-  emergency: "(+91) 98765 43210",
+  emergency: "(+91) 90199 00716",
   workHours: "09:00 - 20:00 Everyday",
-  location: "Vascular Care Center, India",
+  location: "Padma Apartments, Malleshwaram, Bengaluru 560003",
   navLinks: [
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
@@ -24,10 +24,10 @@ export const header = {
 export const footer = {
   importantLinks: ["Appointment", "Doctors", "Treatments", "About Us"],
   contactUs: {
-    address: "Venuva Vascular Center",
-    addressDetail: "123 Medical Avenue, Healthcare City, Bengaluru, Karnataka 560001",
-    whatsapp: "+91-9845543210",
-    phones: ["+91-80123456812", "+91-9845543210"],
+    address: "Padma Apartments",
+    addressDetail: "No.38, 8th Cross road, 5th Main Rd, Malleshwaram, Bengaluru, Karnataka 560003",
+    whatsapp: "+91-9019900716",
+    phones: ["+91-9019900716"],
     email: "venuvavascular@gmail.com",
   },
   newsletter: "Newsletter",

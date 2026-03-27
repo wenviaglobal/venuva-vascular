@@ -45,7 +45,7 @@ const RecoveryJourney = () => {
           <div className="text-center mb-16">
             <div className="flex justify-center items-center gap-2 mb-4">
               <Sparkles className="text-hospital-sun w-5 h-5" />
-              <span className="text-hospital-teal font-black uppercase tracking-[0.4em] text-[10px]">
+              <span className="text-hospital-teal font-black uppercase tracking-[0.4em] text-xs">
                 {recoveryJourney.tag}
               </span>
             </div>
@@ -59,7 +59,7 @@ const RecoveryJourney = () => {
                 <button
                   key={treatment.id}
                   onClick={() => setActiveCaseId(treatment.id)}
-                  className={`px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 border-2 ${activeCaseId === treatment.id
+                  className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-widest transition-all duration-300 border-2 ${activeCaseId === treatment.id
                       ? "bg-hospital-navy border-hospital-navy text-white shadow-xl scale-105"
                       : "bg-white border-hospital-soft-blue text-hospital-slate hover:border-hospital-teal hover:text-hospital-teal"
                     }`}
@@ -103,14 +103,14 @@ const RecoveryJourney = () => {
                     {activeCase.timeline.map((item, idx) => (
                       <div key={idx} className="flex gap-5 group">
                         <div className="w-12 h-12 rounded-2xl bg-white border border-hospital-mint flex flex-col items-center justify-center text-hospital-teal shrink-0 shadow-sm group-hover:border-hospital-teal transition-colors">
-                          <span className="text-[10px] font-black leading-none mb-0.5">{item.week.split(' ')[0]}</span>
-                          <span className="text-[8px] font-bold opacity-60 leading-none uppercase">{item.week.split(' ')[1]}</span>
+                          <span className="text-xs font-black leading-none mb-0.5">{item.week.split(' ')[0]}</span>
+                          <span className="text-[11px] font-bold opacity-60 leading-none uppercase">{item.week.split(' ')[1]}</span>
                         </div>
                         <div className="pt-1">
-                          <h4 className="text-[11px] font-black text-hospital-navy uppercase tracking-wider mb-1 flex items-center gap-2">
+                          <h4 className="text-sm font-black text-hospital-navy uppercase tracking-wider mb-1 flex items-center gap-2">
                             {item.title} <ChevronRight size={12} className="opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
                           </h4>
-                          <p className="text-[10px] text-hospital-slate font-medium leading-relaxed max-w-xs transition-colors group-hover:text-hospital-charcoal">
+                          <p className="text-sm text-hospital-slate font-medium leading-relaxed max-w-xs transition-colors group-hover:text-hospital-charcoal">
                             {item.description}
                           </p>
                         </div>
@@ -121,11 +121,11 @@ const RecoveryJourney = () => {
                   <div className="mt-12 flex items-center gap-6">
                     <div className="flex items-center gap-2 px-4 py-2 bg-white/50 backdrop-blur-sm rounded-xl border border-white/50 shadow-sm">
                       <ShieldCheck size={16} className="text-hospital-teal" />
-                      <span className="text-[9px] font-black text-hospital-navy uppercase tracking-widest">Post-Procedure</span>
+                      <span className="text-xs font-black text-hospital-navy uppercase tracking-widest">Post-Procedure</span>
                     </div>
                     <div className="flex items-center gap-2 px-4 py-2 bg-white/50 backdrop-blur-sm rounded-xl border border-white/50 shadow-sm">
                       <Activity size={16} className="text-hospital-teal" />
-                      <span className="text-[9px] font-black text-hospital-navy uppercase tracking-widest">Rapid Healing</span>
+                      <span className="text-xs font-black text-hospital-navy uppercase tracking-widest">Rapid Healing</span>
                     </div>
                   </div>
                 </div>
@@ -142,7 +142,7 @@ const RecoveryJourney = () => {
                             className="object-cover h-[300px] md:h-[450px] w-full brightness-95 grayscale-20"
                           />
                           <div className="absolute top-6 left-6 bg-hospital-navy/90 backdrop-blur-xl px-5 py-2 rounded-2xl border border-white/20">
-                            <span className="text-white font-black text-[10px] uppercase tracking-[0.2em]">
+                            <span className="text-white font-black text-xs uppercase tracking-[0.2em]">
                               {activeCase.comparison.before.label}
                             </span>
                           </div>
@@ -156,7 +156,7 @@ const RecoveryJourney = () => {
                             className="object-cover h-[300px] md:h-[450px] w-full shadow-inner"
                           />
                           <div className="absolute top-6 right-6 bg-hospital-teal/90 backdrop-blur-xl px-5 py-2 rounded-2xl border border-white/20">
-                            <span className="text-white font-black text-[10px] uppercase tracking-[0.2em]">
+                            <span className="text-white font-black text-xs uppercase tracking-[0.2em]">
                               {activeCase.comparison.after.label}
                             </span>
                           </div>
@@ -169,7 +169,7 @@ const RecoveryJourney = () => {
                     <div className="absolute inset-x-0 bottom-8 flex justify-center pointer-events-none opacity-0 group-hover/slider:opacity-100 transition-opacity duration-500">
                       <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20 ring-1 ring-black/5">
                         <Sparkles size={16} className="text-white animate-pulse" />
-                        <span className="text-white font-black text-[9px] uppercase tracking-[0.2em]">
+                        <span className="text-white font-black text-xs uppercase tracking-[0.2em]">
                           Slide for result
                         </span>
                       </div>
@@ -183,7 +183,7 @@ const RecoveryJourney = () => {
           <div className="mt-12 text-center">
             <button
               onClick={() => openModal()}
-              className="bg-hospital-navy text-white px-12 py-5 rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-hospital-sun transition-all shadow-2xl hover:scale-105 active:scale-95"
+              className="bg-hospital-navy text-white px-12 py-5 rounded-2xl font-black text-sm uppercase tracking-[0.2em] hover:bg-hospital-sun transition-all shadow-2xl hover:scale-105 active:scale-95"
             >
               Start Your Recovery Today
             </button>

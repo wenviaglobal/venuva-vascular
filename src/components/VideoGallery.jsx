@@ -31,7 +31,7 @@ const VideoGallery = () => {
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 mb-3">
               <span className="w-12 h-0.5 bg-hospital-sun rounded-full" />
-              <span className="text-hospital-sun font-black uppercase tracking-[0.3em] text-[10px]">
+              <span className="text-hospital-sun font-black uppercase tracking-[0.3em] text-xs">
                 {videoGallery.tag}
               </span>
             </div>
@@ -126,7 +126,7 @@ const VideoGallery = () => {
                       {/* Video Info Overlay */}
                       <div className={`absolute bottom-4 left-6 right-6 md:bottom-6 md:left-8 md:right-8 transition-opacity duration-300 ${isCenter ? 'opacity-100' : 'opacity-0'}`}>
                         <div className="flex items-center gap-2 mb-1 md:mb-2">
-                          <span className="px-2 py-0.5 md:px-3 md:py-1 bg-hospital-sun rounded-full text-white text-[7px] md:text-[8px] font-black uppercase tracking-widest">
+                          <span className="px-2 py-0.5 md:px-3 md:py-1 bg-hospital-sun rounded-full text-white text-[11px] font-black uppercase tracking-wider">
                             {video.category}
                           </span>
                         </div>

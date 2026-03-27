@@ -28,7 +28,7 @@ const Reviews = () => {
 
   return (
     <section className="py-16 bg-hospital-soft-blue overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 text-center">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 text-center">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -46,7 +46,7 @@ const Reviews = () => {
 
         {/* 3D Carousel Section */}
         <div
-          className="relative h-[500px] flex items-center justify-center"
+          className="relative hidden md:flex h-[500px] items-center justify-center"
           style={{ perspective: "1000px" }}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -85,7 +85,7 @@ const Reviews = () => {
                     </div>
                     <div className="text-left">
                       <h4 className="font-black text-hospital-navy uppercase text-sm leading-none">{review.name}</h4>
-                      <p className="text-hospital-slate text-[10px] font-bold uppercase mt-1.5 flex items-center gap-1.5">
+                      <p className="text-hospital-slate text-xs font-bold uppercase mt-1.5 flex items-center gap-1.5">
                         <span className="w-1 h-1 bg-hospital-sun rounded-full" />
                         {review.location}
                       </p>
@@ -120,17 +120,72 @@ const Reviews = () => {
           </div>
         </div>
 
+        <div className="md:hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={reviewsData.reviews[currentIndex].id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="w-full max-w-md mx-auto p-6 bg-white rounded-[32px] shadow-xl border border-hospital-soft-blue"
+            >
+              <div className="flex items-center gap-4 mb-6 text-left">
+                <div className="w-14 h-14 rounded-full overflow-hidden bg-hospital-soft-blue border-2 border-hospital-teal/20 shrink-0">
+                  <img
+                    src={reviewsData.reviews[currentIndex].image}
+                    alt={reviewsData.reviews[currentIndex].name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-black text-hospital-navy uppercase text-sm leading-none">
+                    {reviewsData.reviews[currentIndex].name}
+                  </h4>
+                  <p className="text-hospital-slate text-xs font-bold uppercase mt-1.5 flex items-center gap-1.5">
+                    <span className="w-1 h-1 bg-hospital-sun rounded-full" />
+                    {reviewsData.reviews[currentIndex].location}
+                  </p>
+                </div>
+              </div>
+
+              <div className="relative mb-6 text-left">
+                <Quote className="absolute -top-3 -left-2 text-hospital-mint w-10 h-10 -z-10" />
+                <p className="text-slate-600 font-medium text-base leading-relaxed italic">
+                  "{reviewsData.reviews[currentIndex].content}"
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between pt-5 border-t border-hospital-soft-blue">
+                <div className="flex gap-1 text-hospital-sun">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      size={18}
+                      fill={i < Math.floor(reviewsData.reviews[currentIndex].rating) ? "currentColor" : "none"}
+                      stroke="currentColor"
+                    />
+                  ))}
+                </div>
+                <span className="text-hospital-navy font-black text-lg">
+                  {reviewsData.reviews[currentIndex].rating}
+                </span>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
         {/* Controls */}
-        <div className="flex items-center justify-center gap-6 mt-12">
+        <div className="flex items-center justify-center gap-4 sm:gap-6 mt-8 sm:mt-12">
           <button
             onClick={prevReview}
-            className="w-14 h-14 rounded-full border border-hospital-soft-blue bg-white text-hospital-navy hover:bg-hospital-teal hover:text-white hover:border-hospital-teal transition-all duration-300 flex items-center justify-center shadow-lg"
+            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-hospital-soft-blue bg-white text-hospital-navy hover:bg-hospital-teal hover:text-white hover:border-hospital-teal transition-all duration-300 flex items-center justify-center shadow-lg"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={nextReview}
-            className="w-14 h-14 rounded-full border border-slate-200 bg-white text-hospital-navy hover:bg-hospital-teal hover:text-white hover:border-hospital-teal transition-all duration-300 flex items-center justify-center shadow-lg"
+            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-slate-200 bg-white text-hospital-navy hover:bg-hospital-teal hover:text-white hover:border-hospital-teal transition-all duration-300 flex items-center justify-center shadow-lg"
           >
             <ChevronRight size={24} />
           </button>

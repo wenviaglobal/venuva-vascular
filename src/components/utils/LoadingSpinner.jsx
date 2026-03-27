@@ -63,7 +63,7 @@ const LoadingSpinner = () => {
           />
         </div>
 
-        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">
+        <p className="text-xs font-black text-slate-400 uppercase tracking-[0.2em]">
           Setting Global Standards
         </p>
       </div>

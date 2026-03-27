@@ -9,7 +9,7 @@ const Doctors = () => {
       {/* Background Decorations */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-hospital-soft-blue/50 -skew-x-12 translate-x-1/2 -z-10" />
 
-      <div className="container mx-auto px-6 md:px-12">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">
             <motion.span
@@ -60,7 +60,7 @@ const Doctors = () => {
             >
               <div className="flex flex-col md:flex-row h-full">
                 {/* Doctor Image */}
-                <div className="md:w-2/5 relative overflow-hidden aspect-4/5 md:aspect-auto">
+                <div className="md:w-2/5 relative overflow-hidden aspect-[3/4] md:aspect-auto">
                   <img
                     src={doctor.image}
                     alt={doctor.name}
@@ -82,29 +82,29 @@ const Doctors = () => {
                 <div className="md:w-3/5 p-6 md:p-8 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="px-3 py-1 bg-hospital-sky-blue/10 text-hospital-sky-blue text-[9px] font-black uppercase tracking-widest rounded-full">
+                      <div className="px-3 py-1 bg-hospital-sky-blue/10 text-hospital-sky-blue text-xs font-black uppercase tracking-widest rounded-full">
                         {doctor.role}
                       </div>
                       <div className="flex items-center gap-1 text-hospital-sun">
                         <Award size={12} />
-                        <span className="text-[9px] font-black uppercase tracking-widest">{doctor.experience} Exp</span>
+                        <span className="text-xs font-black uppercase tracking-widest">{doctor.experience} Exp</span>
                       </div>
                     </div>
 
                     <h3 className="text-xl font-black text-hospital-navy mb-1 group-hover:text-hospital-teal transition-colors">
                       {doctor.name}
                     </h3>
-                    <p className="text-hospital-sky-blue font-bold text-[10px] mb-4 uppercase tracking-wider">
+                    <p className="text-hospital-sky-blue font-bold text-xs mb-4 uppercase tracking-wider">
                       {doctor.specialty}
                     </p>
 
-                    <p className="text-hospital-charcoal/70 text-xs leading-relaxed mb-6 line-clamp-3">
+                    <p className="text-hospital-charcoal/70 text-sm leading-relaxed mb-6 line-clamp-3">
                       {doctor.bio}
                     </p>
 
                     <div className="flex flex-wrap gap-2 mb-6">
                       {doctor.focus.map((item, i) => (
-                        <span key={i} className="text-[9px] font-bold text-hospital-navy/60 bg-hospital-mint px-2.5 py-1 rounded-lg border border-hospital-mint/50">
+                        <span key={i} className="text-xs font-bold text-hospital-navy/60 bg-hospital-mint px-2.5 py-1 rounded-lg border border-hospital-mint/50">
                           {item}
                         </span>
                       ))}
@@ -113,7 +113,7 @@ const Doctors = () => {
 
                   <Link
                     to={`/doctors/${doctor.slug}`}
-                    className="inline-flex items-center gap-2 text-hospital-teal font-black text-[9px] uppercase tracking-[0.2em] group/btn"
+                    className="inline-flex items-center gap-2 text-hospital-teal font-black text-xs uppercase tracking-[0.15em] group/btn"
                   >
                     View Full Profile
                     <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />

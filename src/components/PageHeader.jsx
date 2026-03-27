@@ -15,7 +15,7 @@ const PageHeader = ({ title, subtitle, image }) => {
         className="absolute bottom-0 left-0 w-80 h-80 bg-hospital-sky-blue/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-3xl pointer-events-none"
       />
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10 text-center">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

@@ -31,7 +31,7 @@ export const doctorsSection = {
     },
     {
       id: "expert-specialist-2",
-      slug: "Dr. Monish V",
+      slug: "dr-monish-v",
       name: "Dr. Monish V",
       specialty: "Vascular Interventional Radiologist ",
       image: imgMonish,
@@ -88,7 +88,7 @@ export const contact = {
   cards: [
     {
       title: "Call Us",
-      info1: "(+91) 98765 43210",
+      info1: "(+91) 90199 00716",
       info2: "Emergency & Appointments",
       icon: "PhoneCall",
       color: "bg-hospital-navy",
@@ -97,7 +97,7 @@ export const contact = {
     },
     {
       title: "Email Us",
-      info1: "info@venuva.com",
+      info1: "venuvavascular@gmail.com",
       info2: "For general inquiries",
       icon: "Mail",
       color: "bg-white",
@@ -106,8 +106,8 @@ export const contact = {
     },
     {
       title: "Visit Us",
-      info1: "Vascular Care Center",
-      info2: "Main Hospital Road, India",
+      info1: "Padma Apartments",
+      info2: "No.38, 8th Cross road, 5th Main Rd, Malleshwaram, Bengaluru, Karnataka 560003",
       icon: "MapPin",
       color: "bg-white",
       textColor: "text-hospital-navy",

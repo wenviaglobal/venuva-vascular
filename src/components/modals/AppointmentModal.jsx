@@ -92,7 +92,7 @@ const AppointmentModal = () => {
                 <form onSubmit={handleWhatsAppSubmit} className="space-y-6">
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-hospital-slate ml-4">Full Name</label>
+                      <label className="text-xs font-black uppercase tracking-widest text-hospital-slate ml-4">Full Name</label>
                       <div className="relative">
                         <User className="absolute left-4 top-1/2 -translate-y-1/2 text-hospital-slate/50" size={18} />
                         <input
@@ -108,7 +108,7 @@ const AppointmentModal = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-hospital-slate ml-4">Phone Number</label>
+                      <label className="text-xs font-black uppercase tracking-widest text-hospital-slate ml-4">Phone Number</label>
                       <div className="relative">
                         <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
                         <input
@@ -127,14 +127,14 @@ const AppointmentModal = () => {
                   </div>
 
                   <div className="bg-hospital-soft-blue/50 p-4 rounded-2xl mb-8">
-                    <p className="text-[10px] text-hospital-navy font-bold leading-relaxed">
+                    <p className="text-xs text-hospital-navy font-bold leading-relaxed">
                       * By clicking the button below, you will be redirected to WhatsApp to confirm your slot with our care coordinator.
                     </p>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-hospital-sun text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:shadow-hospital-sun/20 hover:bg-hospital-sun transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3"
+                    className="w-full bg-hospital-sun text-white py-5 rounded-2xl font-black text-sm uppercase tracking-[0.15em] shadow-xl hover:shadow-hospital-sun/20 hover:bg-hospital-sun transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3"
                   >
                     Confirm Appointment <Send size={16} />
                   </button>

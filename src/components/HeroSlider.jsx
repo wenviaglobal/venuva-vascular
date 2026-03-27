@@ -87,11 +87,11 @@ const HeroSlider = () => {
       />
 
       {/* 4. LAYER: CONTENT LAYER (Z-30) */}
-      <div className="container mx-auto px-6 md:px-12 relative z-30 py-20 lg:py-0">
-        <div className="flex flex-col lg:flex-row items-center gap-16 xl:gap-24">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-30 py-12 sm:py-16 lg:py-0">
+        <div className="flex flex-col lg:flex-row items-center gap-10 sm:gap-12 lg:gap-16 xl:gap-24">
           
           {/* Left Column: Dynamic Slide Content */}
-          <div className="lg:w-[58%] text-left min-h-[450px] flex flex-col justify-center">
+          <div className="lg:w-[58%] text-left min-h-[380px] sm:min-h-[420px] lg:min-h-[450px] flex flex-col justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
@@ -101,40 +101,40 @@ const HeroSlider = () => {
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className="relative"
               >
-                <div className="inline-flex items-center bg-hospital-sun/20 text-hospital-sun px-6 py-2.5 rounded-full text-[10px] font-black tracking-[0.2em] uppercase mb-8 border border-hospital-sun/30 backdrop-blur-md">
+                <div className="inline-flex max-w-full items-center bg-hospital-sun/20 text-hospital-sun px-4 sm:px-6 py-2.5 rounded-full text-xs font-black tracking-[0.15em] uppercase mb-6 sm:mb-8 border border-hospital-sun/30 backdrop-blur-md leading-relaxed">
                   {heroSlides[currentSlide].subheading}
                 </div>
 
-                <h1 className="text-3xl md:text-5xl xl:text-6xl font-black text-white leading-[1.05] mb-8 uppercase tracking-tighter">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-black text-white leading-[1.05] mb-6 sm:mb-8 uppercase tracking-tighter">
                   {heroSlides[currentSlide].heading.split(' ').map((word, i) => {
                     const highlight = ['Vascular', 'Varicose', 'Uterine', 'Prostate', 'Enlarged'].includes(word);
                     return <span key={i} className={highlight ? "text-hospital-sky-blue" : ""}>{word} </span>;
                   })}
                 </h1>
 
-                <p className="text-lg text-white/70 leading-relaxed max-w-xl mb-12 font-medium">
+                <p className="text-base sm:text-lg text-white/70 leading-relaxed max-w-xl mb-8 sm:mb-12 font-medium">
                   {heroSlides[currentSlide].description}
                 </p>
 
                 {/* Micro-Stats Grid */}
-                <div className="grid grid-cols-2 gap-8 pt-10 border-t border-white/10 max-w-lg">
+                <div className="grid grid-cols-1 min-[420px]:grid-cols-2 gap-4 sm:gap-8 pt-6 sm:pt-10 border-t border-white/10 max-w-xl">
                   {heroSlides[currentSlide].stats.slice(0, 2).map((stat, idx) => {
                     const Icon = iconMap[stat.icon] || Zap;
                     return (
-                      <div key={idx} className="flex items-start gap-4 group">
-                        <div className="w-12 h-12 rounded-2xl bg-white/5 backdrop-blur-xl flex items-center justify-center shrink-0 border border-white/10 group-hover:border-hospital-sky-blue/30 transition-colors">
-                          <Icon size={24} className="text-hospital-sky-blue" />
+                      <div key={idx} className="flex items-start gap-3 sm:gap-4 group">
+                        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white/5 backdrop-blur-xl flex items-center justify-center shrink-0 border border-white/10 group-hover:border-hospital-sky-blue/30 transition-colors">
+                          <Icon size={22} className="text-hospital-sky-blue" />
                         </div>
                         <div>
                           <div className="flex items-baseline gap-1">
-                            <span className="text-3xl font-black text-white leading-none">
+                            <span className="text-2xl sm:text-3xl font-black text-white leading-none">
                               {stat.value}
                             </span>
-                            <span className="text-hospital-sun text-[10px] font-black uppercase">
+                            <span className="text-hospital-sun text-xs font-black uppercase">
                               {stat.suffix}
                             </span>
                           </div>
-                          <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.15em] mt-1.5 font-sans">
+                          <p className="text-xs font-black text-white/40 uppercase tracking-[0.15em] mt-1.5 font-sans">
                             {stat.label}
                           </p>
                         </div>
@@ -146,8 +146,8 @@ const HeroSlider = () => {
             </AnimatePresence>
 
             {/* Premium Pagination Controls */}
-            <div className="flex items-center gap-10 mt-16">
-              <div className="flex gap-4">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 mt-10 sm:mt-16">
+              <div className="flex gap-3 sm:gap-4">
                 {heroSlides.map((_, idx) => (
                   <button
                     key={idx}

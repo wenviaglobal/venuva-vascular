@@ -114,7 +114,7 @@ const TreatmentDetail = () => {
 
         <div className="container mx-auto px-6 md:px-8 relative z-10">
           {/* Breadcrumbs */}
-          <nav className="flex items-center flex-wrap gap-4 mb-8 text-[10px] font-black uppercase tracking-widest text-white/60">
+          <nav className="flex items-center flex-wrap gap-4 mb-8 text-xs font-black uppercase tracking-wider text-white/60">
             <Link to="/" className="hover:text-white transition-colors">Home</Link>
             <Link to="/treatments" className="hover:text-white transition-colors">Treatments</Link>
             {category && (
@@ -126,7 +126,7 @@ const TreatmentDetail = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end pb-16">
             {/* Left Content */}
             <div className="space-y-5">
-              <div className="inline-flex items-center bg-white/10 text-white px-5 py-2 rounded-full text-[10px] font-black tracking-widest uppercase">
+              <div className="inline-flex items-center bg-white/10 text-white px-5 py-2 rounded-full text-xs font-black tracking-widest uppercase">
                 {category?.title || "Specialized Treatment"}
               </div>
               <h1 className="text-4xl md:text-5xl font-black text-white leading-tight uppercase tracking-tighter">
@@ -138,7 +138,7 @@ const TreatmentDetail = () => {
               <div className="pt-2">
                 <button
                   onClick={() => openModal()}
-                  className="bg-hospital-sky-blue text-white px-8 py-4 rounded-xl font-black text-xs uppercase tracking-[0.2em] shadow-2xl inline-flex items-center hover:bg-white hover:text-hospital-navy transition-all"
+                  className="bg-hospital-sky-blue text-white px-8 py-4 rounded-xl font-black text-sm uppercase tracking-[0.15em] shadow-2xl inline-flex items-center hover:bg-white hover:text-hospital-navy transition-all"
                 >
                   Schedule Consultation
                 </button>
@@ -318,7 +318,7 @@ const TreatmentDetail = () => {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {treatment.benefits.map((benefit, i) => (
                           <div key={i} className="flex items-center gap-3 bg-hospital-soft-blue/30 p-4 rounded-xl border border-hospital-teal/10 text-center justify-center">
-                            <p className="font-bold text-hospital-navy text-[10px] uppercase tracking-widest">
+                            <p className="font-bold text-hospital-navy text-xs uppercase tracking-wider">
                               {benefit}
                             </p>
                           </div>
@@ -372,14 +372,14 @@ const TreatmentDetail = () => {
                         to={`/treatments/${t.id}`}
                         className="group bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex items-center gap-4"
                       >
-                        <div className="w-12 h-12 rounded-xl bg-hospital-soft-blue flex items-center justify-center text-hospital-navy group-hover:bg-hospital-navy group-hover:text-white transition-colors shrink-0 font-black text-[10px]">
+                        <div className="w-12 h-12 rounded-xl bg-hospital-soft-blue flex items-center justify-center text-hospital-navy group-hover:bg-hospital-navy group-hover:text-white transition-colors shrink-0 font-black text-xs">
                           T
                         </div>
                         <div>
                           <h4 className="font-black text-hospital-navy group-hover:text-hospital-teal transition-colors uppercase tracking-tight text-xs line-clamp-1">
                             {t.title}
                           </h4>
-                          <span className="text-[9px] font-bold text-hospital-slate uppercase tracking-widest">Learn More →</span>
+                          <span className="text-xs font-bold text-hospital-slate uppercase tracking-wider">Learn More →</span>
                         </div>
                       </Link>
                     ))}
@@ -391,7 +391,7 @@ const TreatmentDetail = () => {
               <div>
                 <Link
                   to="/treatments"
-                  className="inline-flex items-center text-slate-400 hover:text-hospital-navy font-black text-[10px] uppercase tracking-widest transition-colors"
+                  className="inline-flex items-center text-slate-400 hover:text-hospital-navy font-black text-xs uppercase tracking-wider transition-colors"
                 >
                   Back to all Treatments
                 </Link>
@@ -412,18 +412,18 @@ const TreatmentDetail = () => {
                 </p>
                 <button
                   onClick={() => openModal()}
-                  className="bg-white text-hospital-navy w-full py-4 rounded-xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center hover:bg-hospital-sky-blue hover:text-white transition-all shadow-md"
+                  className="bg-white text-hospital-navy w-full py-4 rounded-xl font-black text-xs uppercase tracking-wider flex items-center justify-center hover:bg-hospital-sky-blue hover:text-white transition-all shadow-md"
                 >
                   Book Now
                 </button>
-                <div className="mt-5 flex items-center gap-3 text-[9px] font-black uppercase tracking-widest text-slate-400">
+                <div className="mt-5 flex items-center gap-3 text-xs font-black uppercase tracking-wider text-slate-400">
                   <span>Emergency: {header.emergency}</span>
                 </div>
               </div>
 
               {/* Specialist Widget */}
               <div className="bg-white rounded-4xl p-6 border border-slate-100 shadow-sm space-y-5">
-                <h3 className="text-[10px] font-black text-hospital-navy uppercase tracking-widest">
+                <h3 className="text-xs font-black text-hospital-navy uppercase tracking-widest">
                   Our Specialists
                 </h3>
                 <div className="space-y-3">
@@ -438,8 +438,8 @@ const TreatmentDetail = () => {
                         <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
                       </div>
                       <div className="min-w-0">
-                        <p className="font-black text-hospital-navy text-[11px] uppercase tracking-tight leading-relaxed truncate">{doc.name}</p>
-                        <p className="text-[8px] font-bold text-hospital-slate uppercase tracking-widest line-clamp-1">{doc.specialty}</p>
+                        <p className="font-black text-hospital-navy text-sm uppercase tracking-tight leading-relaxed truncate">{doc.name}</p>
+                        <p className="text-[11px] font-bold text-hospital-slate uppercase tracking-wider line-clamp-1">{doc.specialty}</p>
                       </div>
                     </div>
                   ))}
@@ -462,7 +462,7 @@ const TreatmentDetail = () => {
                         : 'bg-hospital-soft-blue border-transparent text-hospital-slate hover:border-hospital-mint'
                         }`}
                     >
-                      <span className="text-[9px] font-black uppercase tracking-widest">{cat.title}</span>
+                      <span className="text-xs font-black uppercase tracking-wider">{cat.title}</span>
                     </Link>
                   ))}
                 </div>

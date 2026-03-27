@@ -15,7 +15,7 @@ const FinalCTA = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
         >
-          <p className="text-hospital-sun font-black tracking-[0.4em] uppercase text-[10px] mb-8">
+          <p className="text-hospital-sun font-black tracking-[0.3em] uppercase text-xs mb-8">
             Take the first step
           </p>
           <h2 className="text-4xl md:text-6xl font-black text-hospital-navy mb-10 leading-[1.1] uppercase tracking-tighter">
@@ -28,7 +28,7 @@ const FinalCTA = () => {
             whileHover={{ y: -5 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => openModal()}
-            className="bg-hospital-emerald text-white px-12 py-6 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-2xl hover:bg-hospital-navy transition-all"
+            className="bg-hospital-emerald text-white px-12 py-6 rounded-2xl font-black text-sm uppercase tracking-[0.15em] shadow-2xl hover:bg-hospital-navy transition-all"
           >
             {finalCTA.cta}
           </motion.button>

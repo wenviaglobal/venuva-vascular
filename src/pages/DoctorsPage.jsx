@@ -72,7 +72,7 @@ const DoctorsPage = () => {
         subtitle="World-class specialists dedicated to your vascular health and recovery."
       />
 
-      <div className="container mx-auto px-6 md:px-12 mt-12">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 mt-12">
         <div className="space-y-20">
           {doctorsSection.doctors.map((doctor, index) => (
             <motion.section
@@ -90,7 +90,7 @@ const DoctorsPage = () => {
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-hospital-navy">
                 {/* Left Column: Image & Basic Info */}
-                <div className="lg:col-span-4 sticky top-[100px]">
+                <div className="lg:col-span-4 lg:sticky lg:top-[100px]">
                   <div className="relative rounded-[32px] overflow-hidden shadow-xl shadow-hospital-navy/5 group">
                     <img
                       src={doctor.image}
@@ -99,7 +99,7 @@ const DoctorsPage = () => {
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-hospital-navy/90 via-transparent to-transparent flex flex-col justify-end p-6">
                       <h2 className="text-2xl font-black text-white mb-1">{doctor.name}</h2>
-                      <p className="text-hospital-sky-blue font-bold text-[10px] uppercase tracking-widest">{doctor.specialty}</p>
+                      <p className="text-hospital-sky-blue font-bold text-xs uppercase tracking-widest">{doctor.specialty}</p>
                     </div>
                   </div>
 
@@ -109,8 +109,8 @@ const DoctorsPage = () => {
                         <Award size={18} />
                       </div>
                       <div>
-                        <p className="text-[8px] font-black uppercase tracking-widest text-hospital-slate">Experience</p>
-                        <p className="text-[12px] font-black text-hospital-navy">{doctor.experience}</p>
+                        <p className="text-[11px] font-black uppercase tracking-widest text-hospital-slate">Experience</p>
+                        <p className="text-sm font-black text-hospital-navy">{doctor.experience}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-hospital-mint">
@@ -118,14 +118,14 @@ const DoctorsPage = () => {
                         <Briefcase size={18} />
                       </div>
                       <div>
-                        <p className="text-[8px] font-black uppercase tracking-widest text-hospital-slate">Position</p>
-                        <p className="text-[12px] font-black text-hospital-navy truncate">{doctor.role}</p>
+                        <p className="text-[11px] font-black uppercase tracking-widest text-hospital-slate">Position</p>
+                        <p className="text-sm font-black text-hospital-navy truncate">{doctor.role}</p>
                       </div>
                     </div>
                   </div>
 
                   <div className="mt-6 flex gap-3">
-                    <button className="flex-1 bg-hospital-navy text-white px-6 py-3 rounded-lg font-black text-[9px] tracking-widest uppercase hover:bg-hospital-teal transition-all flex items-center justify-center gap-2">
+                    <button className="flex-1 bg-hospital-navy text-white px-6 py-3 rounded-lg font-black text-xs tracking-widest uppercase hover:bg-hospital-teal transition-all flex items-center justify-center gap-2">
                       <Mail size={12} /> Contact
                     </button>
                     <div className="flex gap-2">
@@ -140,14 +140,14 @@ const DoctorsPage = () => {
                 </div>
 
                 {/* Right Column: Detailed Tabs */}
-                <div className="lg:col-span-8 bg-white rounded-[32px] p-6 md:p-8 border border-slate-100 shadow-sm">
+                <div className="lg:col-span-8 bg-white rounded-2xl sm:rounded-[32px] p-4 sm:p-6 md:p-8 border border-slate-100 shadow-sm">
                   {/* Tab Navigation */}
-                  <div className="flex flex-wrap gap-2 mb-8 border-b border-slate-50 pb-4">
+                  <div className="flex flex-wrap gap-2 mb-8 border-b border-slate-50 pb-4 overflow-x-auto">
                     {Object.keys(doctor.tabs).map((tab) => (
                       <button
                         key={tab}
                         onClick={() => toggleTab(doctor.id, tab)}
-                        className={`px-4 py-2.5 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${activeTabs[doctor.id] === tab
+                        className={`px-4 py-2.5 rounded-lg text-xs font-black uppercase tracking-wider transition-all flex items-center gap-2 ${activeTabs[doctor.id] === tab
                             ? "bg-hospital-teal text-white shadow-md shadow-hospital-teal/20"
                             : "bg-hospital-soft-blue text-hospital-navy/60 hover:bg-hospital-mint"
                           }`}

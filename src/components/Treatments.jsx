@@ -116,7 +116,7 @@ const Treatments = () => {
       </motion.div>
       
       <div className="container mx-auto px-6 md:px-12 mt-16 text-center">
-        <Link to="/treatments" className="inline-flex items-center gap-3 bg-hospital-navy text-white px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-hospital-sky-blue transition-all shadow-lg hover:shadow-hospital-sky-blue/30">
+        <Link to="/treatments" className="inline-flex items-center gap-3 bg-hospital-navy text-white px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-hospital-sky-blue transition-all shadow-lg hover:shadow-hospital-sky-blue/30">
           View All Treatments <ArrowRight size={16} />
         </Link>
       </div>

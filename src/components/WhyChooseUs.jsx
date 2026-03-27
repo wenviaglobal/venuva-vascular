@@ -8,7 +8,7 @@ const WhyChooseUs = () => {
     <section className="py-16 bg-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-20 max-w-3xl mx-auto">
-          <p className="text-hospital-sun font-black tracking-[0.3em] uppercase text-[10px] mb-4">
+          <p className="text-hospital-sun font-black tracking-[0.3em] uppercase text-xs mb-4">
             {whyChooseUs.tag}
           </p>
           <h2 className="text-3xl md:text-5xl font-black text-hospital-navy uppercase tracking-tight">

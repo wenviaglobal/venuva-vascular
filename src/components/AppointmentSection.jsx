@@ -44,7 +44,7 @@ const AppointmentSection = () => {
               </p>
               <button
                 onClick={() => openModal()}
-                className="bg-hospital-emerald text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl hover:bg-hospital-sun transition-all"
+                className="bg-hospital-emerald text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-[0.15em] shadow-xl hover:bg-hospital-sun transition-all"
               >
                 {appointment.cta}
               </button>
@@ -57,14 +57,14 @@ const AppointmentSection = () => {
               viewport={{ once: true }}
               className="mt-8 lg:mt-0 w-full bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl shadow-hospital-navy/10 border border-white relative z-20"
             >
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-hospital-sky-blue text-white px-6 py-2 rounded-full font-black text-[10px] uppercase tracking-widest shadow-lg whitespace-nowrap">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-hospital-sky-blue text-white px-6 py-2 rounded-full font-black text-xs uppercase tracking-widest shadow-lg whitespace-nowrap">
                 Direct Appointment Booking
               </div>
 
               <form onSubmit={handleWhatsAppSubmit} className="space-y-6 mt-4">
                 <div className="space-y-2 text-center mb-8">
                   <h3 className="text-xl font-black text-hospital-navy uppercase">Book Appointment</h3>
-                  <p className="text-xs text-hospital-slate font-bold uppercase tracking-widest">No Booking Fee • Consultation at Earliest</p>
+                  <p className="text-sm text-hospital-slate font-bold uppercase tracking-wider">No Booking Fee • Consultation at Earliest</p>
                 </div>
 
                 <div className="space-y-4">
@@ -92,12 +92,12 @@ const AppointmentSection = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-hospital-sun text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-hospital-sun/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full bg-hospital-sun text-white py-5 rounded-2xl font-black text-sm uppercase tracking-[0.15em] shadow-xl shadow-hospital-sun/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Book Appointment Now
                 </button>
-                <p className="text-[10px] text-center text-hospital-slate font-bold uppercase tracking-widest mt-4">
-                  Or Call us: <span className="text-hospital-navy">+91 91089 57077</span>
+                <p className="text-xs text-center text-hospital-slate font-bold uppercase tracking-widest mt-4">
+                  Or Call us: <span className="text-hospital-navy">+91 90199 00716</span>
                 </p>
               </form>
             </motion.div>

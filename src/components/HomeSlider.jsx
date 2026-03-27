@@ -30,7 +30,7 @@ const HomeSlider = ({ slides }) => {
   if (!slides || slides.length === 0) return null;
 
   return (
-    <div className="relative w-full h-[calc(100vh-80px)] min-h-[700px] overflow-hidden bg-hospital-navy flex items-center group">
+    <div className="relative w-full h-[calc(100vh-80px)] min-h-[550px] md:min-h-[700px] overflow-hidden bg-hospital-navy flex items-center group">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -68,7 +68,7 @@ const HomeSlider = ({ slides }) => {
       </button>
 
       {/* Main Content Container */}
-      <div className="absolute inset-0 z-10 container mx-auto px-6 md:px-12 flex flex-col justify-center pb-40 md:pb-24">
+      <div className="absolute inset-0 z-10 container mx-auto px-4 sm:px-6 md:px-12 flex flex-col justify-center pb-32 sm:pb-40 md:pb-24">
         <div className="w-full md:w-2/3 lg:w-[55%]">
           <AnimatePresence mode="wait">
             <motion.div
@@ -117,8 +117,8 @@ const HomeSlider = ({ slides }) => {
       </div>
       {/* Dynamic Stats Banner along the Bottom */}
       <div className="absolute bottom-0 left-0 w-full z-30 bg-hospital-navy/80 backdrop-blur-xl border-t border-white/10 py-6">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="container mx-auto px-4 sm:px-6 md:px-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <AnimatePresence mode="wait">
               {slides[currentSlide].stats.map((stat, idx) => {
                 const Icon = iconMap[stat.icon] || Zap;
@@ -139,11 +139,11 @@ const HomeSlider = ({ slides }) => {
                         <span className="text-2xl font-black text-white leading-none">
                           {stat.value}
                         </span>
-                        <span className="text-hospital-sun text-[10px] font-black uppercase tracking-widest">
+                        <span className="text-hospital-sun text-xs font-black uppercase tracking-widest">
                           {stat.suffix}
                         </span>
                       </div>
-                      <p className="text-[10px] font-bold text-hospital-slate uppercase tracking-widest mt-1">
+                      <p className="text-xs font-bold text-hospital-slate uppercase tracking-widest mt-1">
                         {stat.label}
                       </p>
                     </div>
