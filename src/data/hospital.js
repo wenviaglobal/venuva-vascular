@@ -1,7 +1,9 @@
+import brandLogo from "../assets/logo.png";
+
 export const brand = {
   name: "VENUVA VASCULAR",
   tagline: "Leading the Way in Medical Excellence",
-  logo: "/src/assets/logo.png",
+  logo: brandLogo,
 };
 
 export const header = {

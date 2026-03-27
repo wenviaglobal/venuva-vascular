@@ -1,6 +1,6 @@
 import slide1 from "../assets/1st-Slide.webp";
 import slide2 from "../assets/2nd-slide.webp";
-import slide3 from "../assets/3rd_slide.webp";
+import slide3 from "../assets/3rd_Slide.webp";
 
 export const heroSlides = [
   {
