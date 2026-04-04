@@ -31,27 +31,27 @@ const HeroSlider = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const handleWhatsAppSubmit = (e) => {
-    e.preventDefault();
-    const message = `Hello Venuva Vascular! I would like to book an appointment.\n\n*Details:*\n- Patient Name: ${formData.name}\n- Mobile Number: ${formData.phone}\n\nPlease let me know the availability.`;
-    const whatsappUrl = `https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  };
+  // const handleWhatsAppSubmit = (e) => {
+  //   e.preventDefault();
+  //   const message = `Hello Venuva Vascular! I would like to book an appointment.\n\n*Details:*\n- Patient Name: ${formData.name}\n- Mobile Number: ${formData.phone}\n\nPlease let me know the availability.`;
+  //   const whatsappUrl = `https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  //   window.open(whatsappUrl, '_blank');
+  // };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData(prev => ({ ...prev, [name]: value }));
+  // };
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
 
   return (
     <section className="relative min-h-[calc(100vh-80px)] lg:h-[800px] flex items-center bg-hospital-navy overflow-hidden">
-      
+
       {/* 1. LAYER: SOLID BASE */}
       <div className="absolute inset-0 bg-hospital-navy" />
-      
+
       {/* 2. LAYER: FULL CLARITY SLIDING IMAGES (Z-10) */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -65,7 +65,7 @@ const HeroSlider = () => {
           <img
             src={heroSlides[currentSlide].image}
             alt={heroSlides[currentSlide].heading}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top"
           />
         </motion.div>
       </AnimatePresence>
@@ -75,13 +75,13 @@ const HeroSlider = () => {
       <div className="absolute inset-0 bg-linear-to-r from-hospital-navy via-hospital-navy/40 to-transparent z-20 pointer-events-none" />
 
       {/* 4. LAYER: AMBIENT GLOW MESHES (Shared visual identity) */}
-      <motion.div 
-        animate={{ y: [0, -30, 0], x: [0, 20, 0], scale: [1, 1.1, 1] }} 
+      <motion.div
+        animate={{ y: [0, -30, 0], x: [0, 20, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-[100px] pointer-events-none z-20"
       />
-      <motion.div 
-        animate={{ y: [0, 40, 0], x: [0, -20, 0], scale: [1, 1.2, 1] }} 
+      <motion.div
+        animate={{ y: [0, 40, 0], x: [0, -20, 0], scale: [1, 1.2, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-hospital-sky-blue/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-[100px] pointer-events-none z-20"
       />
@@ -89,7 +89,7 @@ const HeroSlider = () => {
       {/* 4. LAYER: CONTENT LAYER (Z-30) */}
       <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-30 py-12 sm:py-16 lg:py-0">
         <div className="flex flex-col lg:flex-row items-center gap-10 sm:gap-12 lg:gap-16 xl:gap-24">
-          
+
           {/* Left Column: Dynamic Slide Content */}
           <div className="lg:w-[58%] text-left min-h-[380px] sm:min-h-[420px] lg:min-h-[450px] flex flex-col justify-center">
             <AnimatePresence mode="wait">
@@ -101,7 +101,7 @@ const HeroSlider = () => {
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className="relative"
               >
-                <div className="inline-flex max-w-full items-center bg-hospital-sun/20 text-hospital-sun px-4 sm:px-6 py-2.5 rounded-full text-xs font-black tracking-[0.15em] uppercase mb-6 sm:mb-8 border border-hospital-sun/30 backdrop-blur-md leading-relaxed">
+                <div className="inline-flex max-w-full items-center bg-hospital-sun/20 text-hospital-sun px-4 sm:px-6 py-2.5 rounded-full text-xs font-black tracking-[0.4em] uppercase mb-6 sm:mb-8 border border-hospital-sun/30 backdrop-blur-md leading-relaxed">
                   {heroSlides[currentSlide].subheading}
                 </div>
 
@@ -134,7 +134,7 @@ const HeroSlider = () => {
                               {stat.suffix}
                             </span>
                           </div>
-                          <p className="text-xs font-black text-white/40 uppercase tracking-[0.15em] mt-1.5 font-sans">
+                          <p className="text-xs font-black text-white/40 uppercase tracking-[0.4em] mt-1.5 font-sans">
                             {stat.label}
                           </p>
                         </div>
@@ -155,7 +155,7 @@ const HeroSlider = () => {
                     className={`group relative h-1.5 rounded-full transition-all duration-500 overflow-hidden ${currentSlide === idx ? "w-12 bg-white/20" : "w-6 bg-white/10"}`}
                   >
                     {currentSlide === idx && (
-                      <motion.div 
+                      <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: "100%" }}
                         transition={{ duration: 6, ease: "linear" }}

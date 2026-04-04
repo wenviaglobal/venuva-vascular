@@ -1,6 +1,40 @@
 import slide1 from "../assets/1st-Slide.webp";
 import slide2 from "../assets/2nd-slide.webp";
 import slide3 from "../assets/3rd_Slide.webp";
+import slide4 from '../assets/4th-Slide.webp'
+import aboutUsImage from '../assets/images/AboutUs.webp'
+
+
+export const treatmentSEO = {
+  "varicose-veins": {
+    title: "Varicose Veins Treatment | EVLA & Minimally Invasive Care | Venuva Vascular Center",
+    description: "Get relief from varicose veins at Venuva Vascular Center. Our minimally invasive EVLA and Venaseal treatments provide fast recovery, high success, and improved leg circulation."
+  },
+  "thyroid-ablation": {
+    title: "Thyroid Nodule Embolization | Non-Surgical Thyroid Treatment | Venuva Vascular Center",
+    description: "Reduce benign thyroid nodules safely with minimally invasive embolization at Venuva Vascular Center. Preserve thyroid function and avoid surgery with expert care."
+  },
+  "ufe": {
+    title: "Uterine Fibroid Embolization (UFE) | Non-Surgical Fibroid Treatment | Venuva Vascular Center",
+    description: "Treat uterine fibroids effectively with non-surgical uterine artery embolization at Venuva Vascular Center. Enjoy quick recovery, minimal discomfort, and long-lasting relief."
+  },
+  "varicocele": {
+    title: "Varicocele Embolization | Fertility-Preserving Treatment | Venuva Vascular Center",
+    description: "Preserve fertility and treat varicocele with minimally invasive embolization at Venuva Vascular Center. Safe, fast, and effective procedure with high success rates."
+  },
+  "dvt": {
+    title: "Deep Vein Thrombosis (DVT) Treatment | Catheter-Directed Thrombolysis | Venuva Vascular Center",
+    description: "Restore healthy leg circulation with catheter-directed thrombolysis for DVT at Venuva Vascular Center. Minimize complications with minimally invasive, high-success treatment."
+  },
+  "peripheral-angioplasty": {
+    title: "Peripheral Vascular Disease (PVD) Treatment | Angioplasty & Stenting | Venuva Vascular Center",
+    description: "Treat blocked leg arteries safely with pinhole angioplasty and stenting at Venuva Vascular Center. Improve blood flow, reduce pain, and regain mobility."
+  },
+  "pain-intervention": {
+    title: "Pain Interventions | Minimally Invasive Pain Management | Venuva Vascular Center",
+    description: "Relieve chronic pain with minimally invasive pain interventions at Venuva Vascular Center. Expert nerve blocks, RFA, and joint injections for fast, effective results."
+  }
+};
 
 export const heroSlides = [
   {
@@ -43,7 +77,7 @@ export const heroSlides = [
     subheading: "Advanced Prostate Care (PAE)",
     heading: "Effective Treatment for Enlarged Prostate (BPH)",
     description: "Prostate Artery Embolization (PAE) offers a surgical-grade result without the risks of traditional surgery. No hospital stay required in most cases.",
-    image: slide3,
+    image: slide4,
     stats: [
       { label: "No Surgery", value: "Safe", suffix: "", icon: "ShieldCheck", color: "text-hospital-sun" },
       { label: "Outpatient", value: "Same", suffix: "Day", icon: "Zap", color: "text-hospital-sky-blue" },
@@ -54,10 +88,9 @@ export const heroSlides = [
 ];
 
 export const about = {
-  tag: "LEADING CENTER",
   title: "About us",
-  heading: "Leading Center for Vascular & Interventional Treatments",
-  description: "Our hospital is a trusted center specializing in vascular and interventional radiology treatments. With advanced imaging technology and highly skilled specialists, we provide safe, effective, and minimally invasive solutions for complex medical conditions. Our focus is on image-guided procedures that reduce the need for open surgery, allowing patients to experience faster recovery, minimal pain, and shorter hospital stays. We are committed to delivering personalized treatment plans and high-quality care tailored to each patient’s needs.",
+  heading: "Advanced Vascular Care. Minimally Invasive Precision.",
+  description: "Bengaluru’s premier center for Vascular & Interventional Radiology. We specialize in image-guided treatments that replace open surgery, ensuring faster recovery and superior clinical outcomes.",
   features: [
     "Advanced Imaging Technology",
     "Highly Skilled Specialists",
@@ -66,7 +99,7 @@ export const about = {
     "Personalized Treatment Plans",
     "High-Quality Care",
   ],
-  image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1000&auto=format&fit=crop",
+  image: aboutUsImage,
 };
 
 export const whyChooseUs = {

@@ -60,13 +60,14 @@ const Doctors = () => {
             >
               <div className="flex flex-col md:flex-row h-full">
                 {/* Doctor Image */}
-                <div className="md:w-2/5 relative overflow-hidden aspect-[3/4] md:aspect-auto">
+                <div className="md:w-2/5 relative overflow-hidden aspect-3/4 md:aspect-auto">
                   <img
                     src={doctor.image}
                     alt={doctor.name}
                     className="w-full h-full object-cover  transition-all duration-700"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-hospital-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                  {/* Doctors Social Links In home Page  */}
+                  {/* <div className="absolute inset-0 bg-linear-to-t from-hospital-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
                     <div className="flex gap-3">
                       <a href={doctor.linkedin} className="w-8 h-8 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-hospital-sky-blue transition-colors">
                         <Linkedin size={14} />
@@ -75,7 +76,7 @@ const Doctors = () => {
                         <Twitter size={14} />
                       </a>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Doctor Content */}

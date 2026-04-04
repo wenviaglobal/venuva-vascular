@@ -12,6 +12,7 @@ import FAQPage from "./pages/FAQPage";
 import ContactPage from "./pages/ContactPage";
 import NewsPage from "./pages/NewsPage";
 import TreatmentDetail from "./pages/TreatmentDetail";
+import LandingPage from "./pages/LandingPage";
 import LoadingSpinner from "./components/utils/LoadingSpinner";
 import FloatingAction from "./components/utils/FloatingAction";
 import { AppointmentProvider } from "./context/AppointmentContext";
@@ -40,11 +41,12 @@ const ScrollToTop = () => {
   return null;
 };
 
-function App() {
+function AppContent() {
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
+  const isLandingPage = location.pathname === "/checkup-offer";
 
   useEffect(() => {
-    // Artificial delay to show the branded experience
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1500);
@@ -52,35 +54,42 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <AppointmentProvider>
-        <ScrollToTop />
-        <AnimatePresence mode="wait">
-          {isLoading && <LoadingSpinner key="loader" />}
-        </AnimatePresence>
+    <AppointmentProvider>
+      <ScrollToTop />
+      <AnimatePresence mode="wait">
+        {isLoading && <LoadingSpinner key="loader" />}
+      </AnimatePresence>
 
-        <div className="min-h-screen selection:bg-hospital-sky-blue selection:text-white flex flex-col font-sans antialiased text-hospital-charcoal">
-          <Navbar />
-          <main className="flex-1 pt-[80px]">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<Home />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/treatments" element={<TreatmentsPage />} />
-              <Route path="/treatments/:id" element={<TreatmentDetail />} />
-              <Route path="/doctors" element={<DoctorsPage />} />
-              <Route path="/doctors/:slug" element={<DoctorsPage />} />
-              <Route path="/blog" element={<BlogPage />} />
-              <Route path="/news" element={<NewsPage />} />
-              <Route path="/faq" element={<FAQPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-            </Routes>
-          </main>
-          <Footer />
-          <FloatingAction />
-          <AppointmentModal />
-        </div>
-      </AppointmentProvider>
+      <div className={`min-h-screen selection:bg-hospital-sky-blue selection:text-white flex flex-col font-sans antialiased text-hospital-charcoal ${isLandingPage ? "" : ""}`}>
+        {!isLandingPage && <Navbar />}
+        <main className={`flex-1 ${isLandingPage ? "" : "pt-[80px]"}`}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<Home />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/treatments" element={<TreatmentsPage />} />
+            <Route path="/treatments/:id" element={<TreatmentDetail />} />
+            <Route path="/doctors" element={<DoctorsPage />} />
+            <Route path="/doctors/:slug" element={<DoctorsPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/faq" element={<FAQPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/checkup-offer" element={<LandingPage />} />
+          </Routes>
+        </main>
+        {!isLandingPage && <Footer />}
+        {!isLandingPage && <FloatingAction />}
+        <AppointmentModal />
+      </div>
+    </AppointmentProvider>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

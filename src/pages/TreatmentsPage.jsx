@@ -53,13 +53,13 @@ const TreatmentsPage = () => {
       />
       <section className="relative pt-32 pb-16 overflow-hidden bg-linear-to-br from-hospital-navy via-[#1e3a8a] to-[#0f4c81]">
         {/* Ambient Animated Glowing Meshes */}
-        <motion.div 
-          animate={{ y: [0, -30, 0], x: [0, 20, 0], scale: [1, 1.1, 1] }} 
+        <motion.div
+          animate={{ y: [0, -30, 0], x: [0, 20, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl pointer-events-none"
         />
-        <motion.div 
-          animate={{ y: [0, 40, 0], x: [0, -20, 0], scale: [1, 1.2, 1] }} 
+        <motion.div
+          animate={{ y: [0, 40, 0], x: [0, -20, 0], scale: [1, 1.2, 1] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute bottom-0 left-0 w-80 h-80 bg-hospital-sky-blue/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-3xl pointer-events-none"
         />
@@ -165,7 +165,7 @@ const TreatmentsPage = () => {
                             alt={item.title}
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-hospital-dark-navy/80 via-hospital-navy/20 to-transparent" />
+                          <div className="absolute inset-0 bg-linear-to-t from-hospital-dark-navy/80 via-hospital-navy/20 to-transparent" />
                         </Link>
 
                         {/* Content Body */}
@@ -176,13 +176,13 @@ const TreatmentsPage = () => {
                               {currentCategory}
                             </span>
                           </div>
-                          
+
                           <Link to={`/treatments/${item.id}`}>
                             <h3 className="text-2xl font-black text-hospital-navy mb-4 uppercase tracking-tight leading-tight group-hover:text-hospital-sky-blue transition-colors line-clamp-2">
                               {item.title}
                             </h3>
                           </Link>
-                          
+
                           <p className="text-hospital-slate text-[15px] leading-relaxed font-medium mb-8 line-clamp-3">
                             {item.description}
                           </p>

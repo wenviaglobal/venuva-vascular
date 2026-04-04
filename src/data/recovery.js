@@ -1,3 +1,17 @@
+import AfterDVT from "../assets/before-after/After_DVT.png";
+import AfterUltra from "../assets/before-after/After_Ultra.webp";
+import BeforeDVT from "../assets/before-after/Before_DVT.png";
+import BeforeUltra from "../assets/before-after/Before_Ultra.webp";
+import PAEAfter from "../assets/before-after/PAE_After.webp";
+import PAEBefore from "../assets/before-after/PAE_Before.webp";
+import PVDBefore from "../assets/before-after/PVD_Before.png";
+import ThyroidAfter from "../assets/before-after/Thyroid_After.webp";
+import ThyroidBefore from "../assets/before-after/Thyroid_Before.webp";
+import UFEAfter from "../assets/before-after/UFE_After.webp";
+import UFEBefore from "../assets/before-after/UFE_Before.webp";
+import VaricoceleAfter from "../assets/before-after/Varicocele_After.webp";
+import VaricoceleBefore from "../assets/before-after/Varicocele_Before.webp";
+
 export const recoveryJourney = {
   tag: "REAL SUCCESS STORIES",
   heading: "Modern Recovery Excellence",
@@ -9,11 +23,11 @@ export const recoveryJourney = {
       subtitle: "Laser Ablation Results",
       comparison: {
         before: {
-          image: "/before-after/Before_Ultra.webp",
+          image: BeforeUltra,
           label: "Before Treatment"
         },
         after: {
-          image: "/before-after/After_Ultra.webp",
+          image: AfterUltra,
           label: "After treatment"
         }
       },
@@ -29,12 +43,12 @@ export const recoveryJourney = {
       subtitle: "Thrombolysis Success",
       comparison: {
         before: {
-          image: "/before-after/Before_DVT.png",
-          label: "Severe Swelling"
+          image: BeforeDVT,
+          label: "Before Treatment"
         },
         after: {
-          image: "/before-after/After_DVT.png",
-          label: "Normal Circulation"
+          image: AfterDVT,
+          label: "After treatment"
         }
       },
       timeline: [
@@ -49,12 +63,12 @@ export const recoveryJourney = {
       subtitle: "Thermal Reduction",
       comparison: {
         before: {
-          image: "/before-after/Thyroid_Before.png",
-          label: "Large Nodule"
+          image: ThyroidBefore,
+          label: "Before Treatment"
         },
         after: {
-          image: "/before-after/Thyroid_After.png",
-          label: "Healthy Shrinkage"
+          image: ThyroidAfter,
+          label: "After Treatment"
         }
       },
       timeline: [
@@ -69,12 +83,12 @@ export const recoveryJourney = {
       subtitle: "Fibroid Embolization",
       comparison: {
         before: {
-          image: "/before-after/UFE_Before.png",
-          label: "Large Fibroids"
+          image: UFEBefore,
+          label: "Before Treatment"
         },
         after: {
-          image: "/before-after/UFE_After.png",
-          label: "Normal Uterus"
+          image: UFEAfter,
+          label: "After Treatment"
         }
       },
       timeline: [
@@ -89,12 +103,12 @@ export const recoveryJourney = {
       subtitle: "Pinhole Embolization",
       comparison: {
         before: {
-          image: "/before-after/Varicocele_Before.png",
-          label: "Enlarged Veins"
+          image: VaricoceleBefore,
+          label: "Before Treatment"
         },
         after: {
-          image: "/before-after/Varicocele_After.png",
-          label: "Normal Flow"
+          image: VaricoceleAfter,
+          label: "After treatment"
         }
       },
       timeline: [
@@ -109,12 +123,12 @@ export const recoveryJourney = {
       subtitle: "Prostate Reduction",
       comparison: {
         before: {
-          image: "/before-after/PAE_Before.png",
-          label: "Enlarged Gland"
+          image: PAEBefore,
+          label: "Before Treatment"
         },
         after: {
-          image: "/before-after/PAE_After.png",
-          label: "Shrunken Gland"
+          image: PAEAfter,
+          label: "After treatment"
         }
       },
       timeline: [
@@ -129,12 +143,12 @@ export const recoveryJourney = {
       subtitle: "Limb Rescue",
       comparison: {
         before: {
-          image: "/before-after/PVD_Before.png",
-          label: "Severe Blockage"
+          image: PVDBefore,
+          label: "Before Treatment"
         },
         after: {
-          image: "/before-after/PVD_Before.png", 
-          label: "Restored Flow"
+          image: PVDBefore,
+          label: "After treatment"
         }
       },
       timeline: [

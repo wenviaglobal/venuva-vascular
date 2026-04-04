@@ -12,8 +12,8 @@ export const doctorsSection = {
       name: "Dr. Harsha M T",
       specialty: "Vascular Specialist & Interventional Radiologist",
       image: imgHarsha,
-      bio: "Dr. Harsha M T is a renowned Vascular Specialist and Interventional Radiologist with over 10+ years of experience in performing complex minimally invasive procedures. He specializes in image-guided treatments that offer patients a safe alternative to traditional surgery.",
-      qualifications: ["MBBS", "MD Radiology", "Fellowship in Interventional Radiology"],
+      bio: "Dr Harsha M T is a highly experienced Vascular and Interventional Radiologist in Bengaluru, known for performing advanced minimally invasive image-guided procedures that replace traditional open surgeries. \n \n With extensive international training and experience, Dr Harsha specializes in treating complex vascular and non-vascular conditions using advanced imaging technologies such as CT, Ultrasound, and Fluoroscopy. \n \n  His patient-focused approach combines the precision of radiology with the expertise of a surgeon to deliver effective treatments with minimal pain, faster recovery, and no large surgical scars.",
+      // qualifications: ["MBBS", "MD", " FVIR (AIIMS)","EBIR","EDiR","Dip. ICRI"],
       certifications: ["Indian Society of Vascular & Interventional Radiology", "Fellow of Royal College of Radiologists (FRCR)"],
       achievements: ["5000+ Successful Procedures", "Best Interventional Radiologist Award 2023"],
       focus: ["Varicose Veins", "Thyroid Nodule Ablation", "Uterine Fibroid Embolization"],
@@ -22,11 +22,11 @@ export const doctorsSection = {
       experience: "10+ Years",
       role: "Consultant",
       tabs: {
-        biography: "Dr. Harsha M T is a renowned Vascular Specialist and Interventional Radiologist with over 10+ years of experience in performing complex minimally invasive procedures. He is one of the finest specialists in Bangalore, highly qualified in image-guided treatments. He relocated to Bangalore and has been instrumental in establishing advanced interventional radiology practices.",
-        expertise: ["Endovenous Laser Ablation (EVLA)", "Radiofrequency Ablation (RFA)", "Uterine Fibroid Embolization", "Prostate Artery Embolization", "Deep Vein Thrombosis (DVT) management"],
-        education: ["MBBS - Rajiv Gandhi University of Health Sciences", "MD Radiology", "Fellowship in Interventional Radiology"],
+        biography: "Dr. Harsha M T is a renowned Vascular Specialist and Interventional Radiologist with over 10+ years of experience in performing complex minimally invasive procedures. He is one of the finest specialists in Bangalore, highly qualified in image-guided treatments. He relocated to Bangalore and has been instrumental in establishing advanced interventional radiology practices. \n \n With extensive international training and experience, Dr Harsha specializes in treating complex vascular and non-vascular conditions using advanced imaging technologies such as CT, Ultrasound, and Fluoroscopy. \n \n His patient-focused approach combines the precision of radiology with the expertise of a surgeon to deliver effective treatments with minimal pain, faster recovery, and no large surgical scars. \n \n Director – Venuva Vascular Center \n Dr Harsha M T at Venuva Vascular Center, a specialized facility focused on minimally invasive vascular and interventional radiology treatments through pinhole-sized access.",
+        expertise: ["Varicose Veins Treatment", "Thyroid Nodule Ablation", "Uterine Fibroid Embolization", "Prostate Artery Embolization","Peripheral Vascular Disease Treatment", "Deep Vein Thrombosis (DVT) management","Varicocele Embolisation","Liver Cancer Interventions","Dialysis Access Procedures"],
+        education: ["MBBS", "MD – Radio-Diagnosis (PGIMER Chandigarh)", "FVIR (AIIMS Rishikesh)"," Fellowship in Vascular interventional Radiology - SNUH SOUTH KOREA","European Board of Interventional Radiology (EBIR)","European Diploma in Radiology (EDiR)","Diplomate of the Indian College of Radiology and Imaging (Dip. ICRI)"],
         publications: ["Modern Approaches to Varicose Vein Treatment - Indian Journal of Radiology", "Case Study: Successful UFE on symptomatic fibroids"],
-        memberships: ["Indian Society of Vascular & Interventional Radiology (ISVIR)", "Fellow of Royal College of Radiologists (FRCR)"]
+        memberships: [" Indian Society of Vascular and Interventional Radiology (ISVIR) ", "Cardiovascular and Interventional Radiological Society of Europe (CIRSE)","Indian Radiological and Imaging Association (IRIA)"," Korean Society of Radiology (KSR)"]
       }
     },
     {
@@ -36,7 +36,7 @@ export const doctorsSection = {
       specialty: "Vascular Interventional Radiologist ",
       image: imgMonish,
       bio: "An expert in interventional radiology, Dr. Shishir Kumar specializes in minimally invasive treatments for DVT, Peripheral Angioplasty, and other complex vascular conditions.",
-      qualifications: ["MBBS", "MD Radiology", "DNB"],
+      // qualifications: ["MBBS", "MD Radiology", "DNB"],
       certifications: ["Vascular Society of India", "ISVIR member"],
       achievements: ["Success in 3000+ Vascular Interventions", "Renowned Specialist in Bangalore"],
       focus: ["DVT Treatment", "Peripheral Angioplasty", "Aortic Aneurysm Repair"],
@@ -57,30 +57,6 @@ export const doctorsSection = {
   ],
 };
 
-// export const news = {
-//   tag: "LATEST UPDATES",
-//   title: "News & Healthcare Articles",
-//   posts: [
-//     {
-//       date: "May 15, 2024",
-//       author: "Medical Team",
-//       title: "New Minimally Invasive Treatment for Varicose Veins Now Available",
-//       description: "We are excited to introduce advanced EVLA and Venaseal treatments to provide safer and more effective solutions for varicose veins.",
-//       image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?q=80&w=800",
-//       views: "1.2k",
-//       likes: "85",
-//     },
-//     {
-//       date: "April 10, 2024",
-//       author: "Radiology Specialist",
-//       title: "Understanding the Benefits of Non-Surgical Thyroid Nodule Ablation",
-//       description: "Learn how thermal ablation can safely shrink thyroid nodules without the need for traditional open surgery.",
-//       image: "https://images.unsplash.com/photo-1504813184591-01572f98c85f?q=80&w=800",
-//       views: "950",
-//       likes: "112",
-//     },
-//   ],
-// };
 
 export const contact = {
   tag: "GET IN TOUCH",

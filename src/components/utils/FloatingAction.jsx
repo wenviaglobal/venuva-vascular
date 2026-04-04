@@ -25,8 +25,8 @@ const FloatingAction = () => {
           <>
             {/* WhatsApp Button */}
             <motion.a
-              href={footer?.contactUs?.whatsapp === "#" ? "#" : `https://wa.me/${(footer?.contactUs?.whatsapp || '').replace(/\D/g, '')}`}
-              target={footer?.contactUs?.whatsapp === "#" ? "_self" : "_blank"}
+              href={footer?.contactUs?.whatsapp === "#" ? "#" : `https://wa.me/${(footer?.contactUs?.whatsapp || '919019900716').replace(/\D/g, '')}`}
+              target="_self"
               rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.5, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}

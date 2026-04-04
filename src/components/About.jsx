@@ -5,8 +5,8 @@ import { about } from "../data";
 const About = () => {
 
   return (
-    <section id="about" className="py-16 bg-hospital-soft-blue overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 md:px-12">
+    <section id="about" className="py-5 bg-hospital-soft-blue overflow-hidden">
+      <div className="container mx-auto px-6 sm:px-8 md:px-16">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           {/* Text Content */}
           <motion.div
@@ -16,12 +16,15 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="lg:w-1/2"
           >
-            <div className="inline-block px-4 py-1.5 rounded-full bg-hospital-mint mb-6 border border-hospital-emerald/10">
-              <p className="text-hospital-sun font-black tracking-widest text-xs uppercase">
-                {about.tag || "About us"}
+            <div className="inline-flex items-center px-4 py-1 rounded-full bg-linear-to-r from-hospital-mint/30 to-hospital-mint/10 border border-hospital-emerald/20 shadow-sm mb-6">
+              <span className="relative flex h-2 w-2 mr-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-hospital-emerald opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-hospital-emerald"></span>
+              </span>
+              <p className="text-shadow-hospital-emerald font-extrabold tracking-wider text-lg capitalize">
+                {about.title || "About us"}
               </p>
             </div>
-
             <h2 className="text-4xl md:text-5xl font-black text-hospital-navy mb-8 leading-[1.1]">
               {about.heading}
             </h2>
@@ -39,7 +42,7 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="lg:w-1/2 relative group"
           >
-            <div className="relative z-10 rounded-4xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+            <div className="relative mt-12 z-10 rounded-4xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
               <img
                 src={about.image}
                 alt="Vascular Specialists"

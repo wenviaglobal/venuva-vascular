@@ -38,14 +38,14 @@ const RecoveryJourney = () => {
   };
 
   return (
-    <section className="py-20 bg-white overflow-hidden">
+    <section className="bg-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
         <div className="max-w-6xl mx-auto">
           {/* Header Area */}
           <div className="text-center mb-16">
             <div className="flex justify-center items-center gap-2 mb-4">
               <Sparkles className="text-hospital-sun w-5 h-5" />
-              <span className="text-hospital-teal font-black uppercase tracking-[0.4em] text-xs">
+              <span className="text-hospital-sun font-black uppercase tracking-[0.4em] text-xs">
                 {recoveryJourney.tag}
               </span>
             </div>
@@ -132,14 +132,14 @@ const RecoveryJourney = () => {
 
                 {/* Right: The Comparison Visual */}
                 <div className="lg:col-span-7">
-                  <div className="relative rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(30,27,75,0.1)] border-[6px] border-white bg-white group/slider">
+                  <div className="relative rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(30,27,75,0.1)]  bg-white group/slider">
                     <ReactCompareSlider
                       itemOne={
                         <div className="relative h-full">
                           <ReactCompareSliderImage
                             src={activeCase.comparison.before.image}
                             alt={activeCase.comparison.before.label}
-                            className="object-cover h-[300px] md:h-[450px] w-full brightness-95 grayscale-20"
+                            className="object-cover w-full h-[400px] md:h-[550px] brightness-95 grayscale-20"
                           />
                           <div className="absolute top-6 left-6 bg-hospital-navy/90 backdrop-blur-xl px-5 py-2 rounded-2xl border border-white/20">
                             <span className="text-white font-black text-xs uppercase tracking-[0.2em]">
@@ -153,7 +153,7 @@ const RecoveryJourney = () => {
                           <ReactCompareSliderImage
                             src={activeCase.comparison.after.image}
                             alt={activeCase.comparison.after.label}
-                            className="object-cover h-[300px] md:h-[450px] w-full shadow-inner"
+                            className="object-cover w-full h-[400px] md:h-[550px] shadow-inner"
                           />
                           <div className="absolute top-6 right-6 bg-hospital-teal/90 backdrop-blur-xl px-5 py-2 rounded-2xl border border-white/20">
                             <span className="text-white font-black text-xs uppercase tracking-[0.2em]">

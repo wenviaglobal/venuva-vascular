@@ -30,7 +30,9 @@ const HomeSlider = ({ slides }) => {
   if (!slides || slides.length === 0) return null;
 
   return (
-    <div className="relative w-full h-[calc(100vh-80px)] min-h-[550px] md:min-h-[700px] overflow-hidden bg-hospital-navy flex items-center group">
+    <div className="relative w-full h-[calc(100vh-80px)] min-h-[550px] md:min-h-full overflow-hidden bg-hospital-navy flex items-center group">
+      
+      {/* 1. Background Layers */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -40,34 +42,16 @@ const HomeSlider = ({ slides }) => {
           transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0 z-0"
         >
-          {/* Main Background Image */}
           <img
             src={slides[currentSlide].image}
             alt={slides[currentSlide].heading}
-            className="w-full h-full object-cover object-right"
+            className="w-full h-full object-cover object-top"
           />
-          {/* Subtle Contrast Mask - Left side only to keep text neat and clear */}
           <div className="absolute inset-x-0 inset-y-0 bg-linear-to-r from-hospital-navy/60 via-hospital-navy/10 to-transparent z-10" />
         </motion.div>
       </AnimatePresence>
 
-      {/* Left Arrow */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 md:left-8 top-[46%] -translate-y-1/2 z-40 w-12 h-12 md:w-14 md:h-14 rounded-full bg-hospital-navy/20 hover:bg-white text-white hover:text-hospital-navy flex items-center justify-center backdrop-blur-md transition-opacity duration-500 border border-white/20 shadow-lg md:opacity-0 md:group-hover:opacity-100"
-      >
-        <ChevronLeft size={24} />
-      </button>
-
-      {/* Right Arrow */}
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 md:right-8 top-[46%] -translate-y-1/2 z-40 w-12 h-12 md:w-14 md:h-14 rounded-full bg-hospital-navy/20 hover:bg-white text-white hover:text-hospital-navy flex items-center justify-center backdrop-blur-md transition-opacity duration-500 border border-white/20 shadow-lg md:opacity-0 md:group-hover:opacity-100"
-      >
-        <ChevronRight size={24} />
-      </button>
-
-      {/* Main Content Container */}
+      {/* 2. Content Layer */}
       <div className="absolute inset-0 z-10 container mx-auto px-4 sm:px-6 md:px-12 flex flex-col justify-center pb-32 sm:pb-40 md:pb-24">
         <div className="w-full md:w-2/3 lg:w-[55%]">
           <AnimatePresence mode="wait">
@@ -79,47 +63,64 @@ const HomeSlider = ({ slides }) => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex flex-col"
             >
-
-
-              {/* Subheading */}
-              <p className="text-hospital-sun font-black tracking-[0.2em] mb-4 uppercase text-sm">
+              <p className="text-hospital-sun font-black tracking-[0.4em] mb-4 uppercase text-sm">
                 {slides[currentSlide].subheading}
               </p>
 
-              {/* Main Heading */}
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 md:mb-6">
                 {slides[currentSlide].heading}
               </h1>
 
-              {/* Description */}
               <p className="text-base md:text-lg text-white/80 leading-relaxed font-medium mb-6 md:mb-10 max-w-lg">
                 {slides[currentSlide].description}
               </p>
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 mb-8 md:mb-12 transition-opacity duration-700 md:opacity-0 md:group-hover:opacity-100">
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-4">
                 <button
                   onClick={openModal}
-                  className="bg-hospital-sun hover:bg-amber-400 text-white px-8 py-4 rounded-xl font-black text-xs uppercase tracking-widest transition-all shadow-xl"
+                  className="flex items-center gap-3 bg-hospital-navy hover:bg-hospital-navy/90 text-white px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest transition-all shadow-xl group/btn"
                 >
-                  Book Appointment
+                  <Calendar size={16} className="text-hospital-sky-blue" />
+                  <span>Book Appointment</span>
                 </button>
+
                 <Link
                   to="/treatments"
-                  className="border border-white/40 hover:bg-white hover:text-hospital-navy text-white px-8 py-4 rounded-xl font-black text-xs uppercase tracking-widest transition-all backdrop-blur-sm"
+                  className="bg-black/30 hover:bg-black/50 text-white px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest transition-all backdrop-blur-md border border-white/5"
                 >
-                  Explore Treatments
+                  Explore Services
                 </Link>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
-      {/* Dynamic Stats Banner along the Bottom */}
+
+      {/* 3. Stationary Navigation Arrows */}
+      <div className="absolute bottom-28 md:bottom-32 left-0 w-full z-40 pointer-events-none">
+        <div className="container mx-auto px-4 sm:px-6 md:px-12 flex justify-center">
+          <div className="flex items-center gap-2 pointer-events-auto">
+            <button
+              onClick={prevSlide}
+              className="w-12 h-12 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-lg border border-white/10 transition-all shadow-xl"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="w-12 h-12 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-lg border border-white/10 transition-all shadow-xl"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* 4. Stats Banner */}
       <div className="absolute bottom-0 left-0 w-full z-30 bg-hospital-navy/80 backdrop-blur-xl border-t border-white/10 py-6">
         <div className="container mx-auto px-4 sm:px-6 md:px-12">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="popLayout">
               {slides[currentSlide].stats.map((stat, idx) => {
                 const Icon = iconMap[stat.icon] || Zap;
                 return (
@@ -154,6 +155,7 @@ const HomeSlider = ({ slides }) => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };

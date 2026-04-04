@@ -7,16 +7,6 @@ import {
 import { treatmentsPage } from "../data";
 import { Link } from "react-router-dom";
 
-const iconMap = {
-  Droplets,
-  Activity,
-  Dna,
-  Stethoscope,
-  HeartPulse,
-  Zap,
-  Bone,
-  Smile
-};
 
 const Treatments = () => {
   const carouselRef = useRef(null);
@@ -43,8 +33,8 @@ const Treatments = () => {
       className="group flex flex-col gap-6 h-full w-[350px] md:w-[400px] shrink-0 cursor-pointer"
     >
       {/* Image Container with Inverted Radius Cutout */}
-      <div className="relative w-full aspect-4/3 rounded-4xl overflow-hidden bg-slate-100 shadow-sm group-hover:shadow-xl transition-[shadow,transform] duration-500">
-        <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+      <div className="relative w-full aspect-4/3 rounded-4xl overflow-hidden bg-slate-100 shadow-sm group-hover:shadow-xl transition-[shadow,transform] duration-500 border border-hospital-mint/30">
+        <img draggable={false} src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
         
         {/* The Cutout Block (bottom right) */}
         <div className="absolute bottom-0 right-0 w-22 h-22 bg-[#fcfdfd] rounded-tl-[1.8rem] z-10 flex items-end justify-end">

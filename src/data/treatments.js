@@ -1,15 +1,37 @@
+import varicoseVeinsImg from "../assets/treatments/Varicose-Vein.webp";
+import dvtImg from "../assets/treatments/dvt-treatment.webp";
+import painInterventionImg from "../assets/treatments/pain-intervention.webp";
+import peripheralAngioplastyImg from "../assets/treatments/peripheral-angioplasty.webp";
+import thyroidAblationImg from "../assets/treatments/thyroid-ablation.webp";
+import ufeImg from "../assets/treatments/ufe.webp";
+import varicoceleImg from "../assets/treatments/Varicocele Embolization .webp";
+import bphImg from "../assets/treatments/BPH.webp";
+import pelvicCongestionImg from "../assets/treatments/pelvic-congestion.webp";
+import taeImg from "../assets/treatments/Thyroid Artery Embolization.webp";
+import drainageImg from "../assets/treatments/DrainAge.webp";
+import biopsyImg from "../assets/treatments/Biopsy.webp";
+import frozenShoulderImg from "../assets/treatments/frozen-shoulder.webp";
+import golfersElbowImg from "../assets/treatments/golfers-elbow-medial-epicondylitis.webp";
+import kneeOsteoarthritisImg from "../assets/treatments/knee-osteoarthritis.webp";
+import plantarFasciitisImg from "../assets/treatments/plantar-fasciitis.webp";
+import achillesTendinopathyImg from "../assets/treatments/Achilles tendonopathy.webp";
+import jointInjectionImg from "../assets/treatments/Joint-InjectionPRP.webp";
+import fistuloplastyImg from "../assets/treatments/Fistuloplasty.webp";
+import dialysisCatheterImg from "../assets/treatments/dialysis-catheter.webp";
+import liverCancerImg from "../assets/treatments/liver-cancer.webp";
+
 export const treatments = {
   tag: "ADVANCED MINIMALLY INVASIVE TREATMENTS",
   title: "Treatments",
   heading: "Advanced Minimally Invasive Treatments",
   description: "We offer a wide range of modern treatments designed to effectively manage vascular and interventional conditions.",
   items: [
-    {
-      title: "Varicose Veins Treatment",
-      description: "Advanced laser and radiofrequency treatments to close damaged veins and restore healthy blood circulation.",
-      icon: "Droplets",
-      slug: "varicose-veins"
-    },
+      {
+        title: "Varicose Veins Treatment",
+        description: "Advanced thermal and non-thermal solutions like EVLA, RFA, MWA, and VenaSeal™ to restore healthy circulation.",
+        icon: "Droplets",
+        slug: "varicose-veins"
+      },
     {
       title: "Thyroid Nodule Ablation",
       description: "Non-surgical treatment that reduces the size of benign thyroid nodules using thermal ablation.",
@@ -29,7 +51,7 @@ export const treatments = {
       slug: "varicocele"
     },
     {
-      title: "Deep Vein Thrombosis (DVT) Treatment",
+      title: "Deep Vein Thrombosis (DVT)",
       description: "Catheter-directed thrombolysis for safe and effective removal of blood clots.",
       icon: "HeartPulse",
       slug: "dvt"
@@ -53,7 +75,7 @@ export const treatments = {
       slug: "pain-intervention"
     },
     {
-      title: "Pelvic Congestion Syndrome",
+      title: "Pelvic Congestion Syndrome (PCS)",
       description: "Advanced embolization for chronic pelvic pain caused by varicose veins in the pelvis.",
       icon: "HeartPulse",
       slug: "pelvic-congestion"
@@ -73,7 +95,7 @@ export const treatmentsPage = {
     subheading: "Modern Minimally Invasive Procedures for Effective Medical Care",
     description: "At Venuva Vascular Center, we provide advanced minimally invasive treatments for a wide range of vascular and interventional conditions. Our specialists use modern imaging technology and catheter-based procedures to diagnose and treat complex medical problems safely and effectively.",
     cta: "Book Appointment",
-    image: "/treatments/varicose-veins.webp"
+    image: varicoseVeinsImg
   },
   intro: {
     title: "Our Treatments",
@@ -99,7 +121,7 @@ export const treatmentsPage = {
       icon: "Dna",
       treatments: [
         { name: "Uterine Fibroids (UFE)", slug: "ufe" },
-        { name: "Pelvic Congestion", slug: "pelvic-congestion" }
+        { name: "Pelvic Congestion Syndrome (PCS)", slug: "pelvic-congestion" }
       ]
     },
     {
@@ -150,41 +172,114 @@ export const treatmentsPage = {
       id: "varicose-veins",
       title: "Varicose Veins Treatment",
       heading: "Advanced Varicose Vein Treatments at Venuva Vascular",
-      description: "At Venuva Vascular, we specialize in minimally invasive, image-guided treatments for varicose veins and other venous disorders. Using US-FDA-approved laser and radiofrequency technologies, our expert specialists safely close damaged veins, restore healthy circulation, and relieve pain and swelling.",
-      fullContent: "Most procedures are day-care treatments, allowing patients to walk home the same day with minimal discomfort and fast recovery. With compassionate care and advanced precision, we help every patient regain comfort, confidence, and mobility.",
-      whatIs: "Varicose veins are enlarged, twisted veins that appear just beneath the skin, most commonly on the legs, ankles, or feet. While not always dangerous, untreated cases can lead to complications such as non-healing skin ulcers.",
-      symptomsDetailed: ["Bulging veins on the legs", "Leg pain, heaviness, or fatigue", "Burning, itching, or swelling"],
-      whyImportant: ["Worsening pain and swelling", "Skin ulcers or bleeding", "Deep vein thrombosis (DVT)"],
-      benefits: ["10+ years of experience", "Patient-centric care", "USFDA-certified technologies", "Painless day-care treatments", "Same-day recovery"],
+      description: "Varicose Veins are swollen, twisted veins that usually appear on the legs. We offer advanced, image-guided thermal and non-thermal solutions that require no hospital stay and minimal downtime.",
+      fullContent: "Most procedures are day-care treatments, allowing patients to walk home the same day with minimal discomfort and fast recovery. Using US-FDA-approved laser and radiofrequency technologies, our expert specialists safely close damaged veins, restore healthy circulation, and relieve pain and swelling.",
+      whatIs: "Varicose Veins occur when the small valves in the veins stop working properly, allowing blood to flow backward and pool (venous reflux). Ignoring them is not just a cosmetic issue; over time, increased pressure can lead to serious complications.",
+      symptomsDetailed: [
+        "Visible, bulging blue or dark purple veins",
+        "Aching, heavy legs, especially after standing for long periods",
+        "Swelling (Edema) in the ankles or feet",
+        "Skin changes, such as itching, thinning, or dark discoloration"
+      ],
+      whyImportant: [
+        "Spontaneous bleeding",
+        "Painful blood clots",
+        "Chronic venous ulcers (open sores) that are difficult to heal",
+        "Deep vein thrombosis (DVT)"
+      ],
+      benefits: [
+        "10+ years of experience",
+        "Minimal downtime (1–2 days)",
+        "No risk of nerve injury (with VenaSeal™)",
+        "Painless day-care treatments",
+        "No hospital stay required"
+      ],
       treatmentOptions: [
-        { name: "Radiofrequency Ablation (RFA)", desc: "Seals damaged veins using controlled heat. Quick and scar-free." },
-        { name: "Laser Ablation (EVLA)", desc: "Precision laser treatment to close diseased veins safely." },
-        { name: "Stab Phlebectomy", desc: "Micro-surgical technique to remove surface veins through tiny punctures." }
+        {
+          name: "Thermal Ablation (EVLA / RFA / MWA)",
+          desc: "Uses laser, radiofrequency, or microwave energy to seal the diseased vein from the inside. Once closed, the body naturally reroutes blood to healthy veins. Patients return to work within 1–2 days."
+        },
+        {
+          name: "VenaSeal™ (Medical Glue)",
+          desc: "A revolutionary non-thermal treatment using medical-grade adhesive to seal the vein permanently. No risk of nerve injury and many patients do not need to wear compression stockings afterward."
+        }
       ],
       faqs: [
-        { q: "What is the recovery time?", a: "Patients walk within hours and return home the same day." }
+        { q: "What is the recovery time?", a: "Patients are usually walking immediately after the procedure and can return to work within 1–2 days." },
+        { q: "Is VenaSeal™ better than thermal ablation?", a: "VenaSeal™ is a 'non-thermal' option that avoids nerve injury risk and the need for multiple anesthetic injections, often eliminating the need for compression stockings." }
       ],
       icon: "Droplets",
-      image: "/treatments/varicose-veins.webp"
+      image: varicoseVeinsImg
     },
     {
       id: "dvt",
-      title: "Deep Vein Thrombosis (DVT) Treatment",
-      heading: "DVT Treatment with Catheter-Directed Thrombolysis",
-      description: "DVT occurs when a blood clot forms in deep veins. Early diagnosis and treatment are critical to prevent life-threatening complications like pulmonary embolism.",
-      fullContent: "Catheter-directed thrombolysis offers direct clot removal or dissolution. It significantly reduces long-term post-thrombotic complications and restores vein patency through a minimally invasive approach.",
-      procedureSteps: [
-        { step: "Access", detail: "A thin catheter is inserted via a small puncture behind the knee or groin." },
-        { step: "Navigation", detail: "Guided directly into the clot using ultrasound and X-ray imaging." },
-        { step: "Dissolution", detail: "Thrombolytic medication is infused directly into the clot to dissolve it." }
+      title: "Deep Vein Thrombosis (DVT)",
+      heading: "Comprehensive DVT Diagnosis and Treatment",
+      description: "DVT is a medical condition where a blood clot forms in one or more deep veins, typically in the legs. If left untreated, these clots can travel to the lungs, causing a life-threatening pulmonary embolism.",
+      fullContent: "Deep vein thrombosis (DVT) is a medical condition in which a blood clot forms in one or more of the deep veins in the body, typically in the legs. DVT can cause serious health problems because the blood clots can break loose, travel through the bloodstream, and lodge in the lungs, causing a pulmonary embolism (PE). Our advanced interventional treatments focus on removing the clot safely and restoring healthy circulation.",
+      whatIs: "DVT occurs when a blood clot forms in deep veins. These clots can block blood flow or, more dangerously, break free and travel to the lungs (Pulmonary Embolism).",
+      symptomsDetailed: [
+        "Swelling in one leg (rarely both legs).",
+        "Pain or tenderness in the leg, often starting in the calf.",
+        "Red or discolored skin on the leg.",
+        "A feeling of warmth in the affected leg.",
+        "Note: Sometimes DVT can occur without any noticeable symptoms."
       ],
-      benefits: ["Direct clot removal", "Restoration of vein patency", "Minimally invasive", "Reduced long-term complications"],
-      recovery: "Hospital stay of 2-3 days for monitoring. Most resume normal activities within 1-2 weeks.",
+      riskFactors: [
+        "Prolonged immobility (sitting or lying down for long periods)",
+        "Injury or recent surgery causing vein damage",
+        "Medical conditions like cancer, heart disease, or inflammatory diseases",
+        "Genetics and inherited blood clotting disorders",
+        "Hormone therapy or birth control pills",
+        "Pregnancy and obesity causing increased vein pressure",
+        "Smoking and age (especially over 60)"
+      ],
+      treatmentOptions: [
+        {
+          name: "Anticoagulation Therapy",
+          desc: "Blood thinners (heparin, warfarin, or DOACs) to prevent clot growth and reduce the risk of new clots."
+        },
+        {
+          name: "Catheter-Directed Thrombolysis",
+          desc: "A minimally invasive procedure where a catheter delivers clot-dissolving drugs directly to the site of the blockage."
+        },
+        {
+          name: "Mechanical Thrombectomy",
+          desc: "Using a specialized catheter to physically remove the clot from the vein, often combined with thrombolysis."
+        },
+        {
+          name: "IVC Filter Placement",
+          desc: "Inserting a small metal device in the inferior vena cava to catch and prevent clots from reaching the lungs."
+        },
+        {
+          name: "Compression Therapy",
+          desc: "Use of medical-grade compression stockings to reduce swelling and prevent post-thrombotic syndrome."
+        }
+      ],
+      benefits: [
+        "Prevents life-threatening Pulmonary Embolism",
+        "Restores normal blood flow immediately",
+        "Reduces risk of long-term leg swelling (post-thrombotic syndrome)",
+        "Minimally invasive 'pinhole' procedures",
+        "Faster recovery than traditional surgery"
+      ],
+      procedureSteps: [
+        { step: "Access", detail: "A thin catheter is inserted via a small puncture, usually behind the knee or in the groin." },
+        { step: "Imaging", detail: "The clot is located precisely using real-time ultrasound and X-ray (fluoroscopy)." },
+        { step: "Removal", detail: "Clots are dissolved using medication or physically removed using mechanical thrombectomy devices." }
+      ],
+      prevention: [
+        "Regular leg exercises to improve circulation",
+        "Frequent movement during long travel",
+        "Maintaining a healthy weight and staying hydrated",
+        "Using compression stockings if at high risk"
+      ],
+      recovery: "Hospital stay of 2-3 days for monitoring. Most patients resume normal activities within 1-2 weeks.",
       faqs: [
-        { q: "What are the signs of DVT?", a: "Swelling, pain, redness, warmth, or heaviness in one leg." }
+        { q: "What are the warning signs of DVT?", a: "Look for sudden swelling, pain, redness, or warmth in one leg. If you also have chest pain or shortness of breath, seek emergency care immediately." }
       ],
       icon: "HeartPulse",
-      image: "/treatments/dvt-treatment.webp"
+      image: dvtImg
     },
     {
       id: "pain-intervention",
@@ -198,7 +293,7 @@ export const treatmentsPage = {
       ],
       benefits: ["Same-day discharge", "Targeted pain relief", "Reduced medication reliance", "Rapid recovery"],
       icon: "Smile",
-      image: "/treatments/pain-intervention.webp"
+      image: painInterventionImg
     },
     {
       id: "peripheral-angioplasty",
@@ -256,7 +351,7 @@ export const treatmentsPage = {
       benefits: ["No large cuts", "Faster recovery", "Improved walking ability", "Reduced risk of limb loss"],
       recovery: "Most patients stay overnight and are discharged the next day. Normal activity in 1 week.",
       icon: "Zap",
-      image: "/treatments/peripheral-angioplasty.webp"
+      image: peripheralAngioplastyImg
     },
     {
       id: "thyroid-ablation",
@@ -290,7 +385,7 @@ export const treatmentsPage = {
         "Preserves Function (no daily thyroid tablets needed)"
       ],
       icon: "Activity",
-      image: "/treatments/thyroid-ablation.webp"
+      image: thyroidAblationImg
     },
     {
       id: "ufe",
@@ -324,7 +419,7 @@ export const treatmentsPage = {
       ],
       recovery: "Typically recovery takes about 1 week, much shorter than traditional abdominal surgery.",
       icon: "Dna",
-      image: "/treatments/ufe.webp"
+      image: ufeImg
     },
     {
       id: "varicocele",
@@ -356,7 +451,7 @@ export const treatmentsPage = {
         "Excellent success rates for fertility preservation"
       ],
       icon: "Stethoscope",
-      image: "/treatments/varicocele-embolization.webp"
+      image: varicoceleImg
     },
     {
       id: "pae",
@@ -387,21 +482,40 @@ export const treatmentsPage = {
         "Rapid Recovery: Return home the same day and resume normal activities within 48 hours."
       ],
       icon: "Bone",
-      image: "/treatments/pae.webp"
+      image: bphImg
     },
     {
       id: "pelvic-congestion",
-      title: "Pelvic Congestion Syndrome",
-      heading: "Pelvic Congestion Syndrome Treatment",
-      description: "Advanced embolization treatment for chronic pelvic pain caused by varicose veins in the pelvis.",
-      fullContent: "Pelvic Congestion Syndrome is a common but often undiagnosed cause of chronic pelvic pain. Our specialists use minimally invasive embolization to block the abnormal veins and provide effective relief.",
-      benefits: ["Non-surgical", "Highly effective for pelvic pain", "Image-guided precision", "Minimal recovery"],
+      title: "Pelvic Congestion Syndrome (PCS)",
+      heading: "Ovarian Vein Embolization (OVE): The Gold Standard",
+      description: "Pelvic Congestion Syndrome (PCS) is a chronic pain condition in women caused by varicose veins in the pelvis. Much like varicose veins in the legs, the valves in the ovarian and internal iliac veins fail, causing blood to pool and the veins to become painfully engorged.",
+      fullContent: "At Venuva Vascular Center, we treat the root cause of the pain through a minimally invasive, image-guided procedure called Pelvic Vein Embolization. Up to 80–90% of women report significant pain relief after this procedure.",
+      whatIs: "PCS is often misdiagnosed as endometriosis or IBS. It occurs when ovarian veins become enlarged and congested, leading to chronic, debilitating pelvic pain. Ignoring it can lead to years of pain and more extensive leg varicosities.",
+      symptomsDetailed: [
+        "Chronic Pelvic Pain: A dull, heavy ache in the lower abdomen that worsens throughout the day, especially after standing.",
+        "Post-Coital Pain: Discomfort that increases after intercourse.",
+        "Visible Varicosities: Varicose veins appearing on the vulva, buttocks, or upper thighs.",
+        "Bladder Irritability: A frequent urge to urinate without an underlying infection."
+      ],
+      whyImportant: [
+        "Chronic pain significantly impacting mental health, physical activity, and intimacy.",
+        "Constant pressure can lead to more extensive leg varicosities that are difficult to treat.",
+        "Debilitating chronic pain lasting for years."
+      ],
       procedureSteps: [
-        { step: "Diagnosis", detail: "Confirmed via venogram showing valves that aren't working." },
-        { step: "Treatment", detail: "Embolization of the ovarian or internal iliac veins using coils." }
+        { step: "Access", detail: "Under local anesthesia, a tiny catheter is inserted through a 'pinhole' in the neck or groin." },
+        { step: "Navigation", detail: "Using X-ray guidance, the Interventional Radiologist navigates to the diseased ovarian veins." },
+        { step: "Mechanism", detail: "Small medical-grade coils or a specialized foam (sclerosant) are placed inside the malfunctioning veins to seal them shut permanently." },
+        { step: "Result", detail: "The pooled blood is naturally rerouted to healthy, functional veins, relieving the internal pressure and eliminating the source of chronic pain." }
+      ],
+      benefits: [
+        "High Success Rate: Up to 80–90% of women report significant pain relief.",
+        "No Hospital Stay: Most patients return home within a few hours.",
+        "Quick Recovery: You can typically resume normal activities within 2–3 days.",
+        "No surgical scars (pinhole procedure)."
       ],
       icon: "HeartPulse",
-      image: "/treatments/pelvic-congestion.webp"
+      image: pelvicCongestionImg
     },
     {
       id: "tae",
@@ -430,7 +544,7 @@ export const treatmentsPage = {
         "Preserves Parathyroid Glands: Highly precise targeting minimizes risk to surrounding vital structures."
       ],
       icon: "Activity",
-      image: "/treatments/tae.webp"
+      image: taeImg
     },
     {
       id: "drainage",
@@ -463,7 +577,7 @@ export const treatmentsPage = {
         "Targeted Treatment: Enables fluid analysis (e.g., culture) for precise diagnosis."
       ],
       icon: "Droplets",
-      image: "/treatments/drainage.webp"
+      image: drainageImg
     },
     {
       id: "biopsy-fnac",
@@ -492,7 +606,7 @@ export const treatmentsPage = {
         "Low Risk: Minimal discomfort, bleeding, or infection."
       ],
       icon: "Stethoscope",
-      image: "/treatments/biopsy-fnac.webp"
+      image: biopsyImg
     },
     {
       id: "frozen-shoulder",
@@ -521,7 +635,7 @@ export const treatmentsPage = {
       ],
       recovery: "Same-day discharge; physical therapy starts immediately. Full recovery takes 3-6 months.",
       icon: "Smile",
-      image: "/treatments/frozen-shoulder.webp"
+      image: frozenShoulderImg
     },
     {
       id: "tennis-elbow",
@@ -548,7 +662,7 @@ export const treatmentsPage = {
         "Improved function and profound pain relief."
       ],
       icon: "Bone",
-      image: "/treatments/tennis-elbow.webp"
+      image: golfersElbowImg
     },
     {
       id: "knee-osteoarthritis",
@@ -569,7 +683,7 @@ export const treatmentsPage = {
         { name: "Minimally Invasive Joint Offloading", desc: "Implants that absorb stress on the affected knee compartment." }
       ],
       icon: "Activity",
-      image: "/treatments/knee-osteoarthritis.webp"
+      image: kneeOsteoarthritisImg
     },
     {
       id: "plantar-fasciitis",
@@ -595,7 +709,7 @@ export const treatmentsPage = {
         "Long-lasting relief: Targets the exact root cause."
       ],
       icon: "Droplets",
-      image: "/treatments/plantar-fasciitis.webp"
+      image: plantarFasciitisImg
     },
     {
       id: "achilles-tendinopathy",
@@ -620,7 +734,7 @@ export const treatmentsPage = {
         "Highly effective non-surgical alternative."
       ],
       icon: "HeartPulse",
-      image: "/treatments/achilles.webp"
+      image: achillesTendinopathyImg
     },
     {
       id: "joint-injections",
@@ -646,7 +760,7 @@ export const treatmentsPage = {
       ],
       recovery: "Patients experience mild soreness for 2-5 days. Avoid NSAIDs for 2 weeks to allow inflammation-driven healing. Full tissue benefits seen in 2-6 months.",
       icon: "Dna",
-      image: "/treatments/joint-injections.webp"
+      image: jointInjectionImg
     },
     {
       id: "fistuloplasty",
@@ -677,7 +791,7 @@ export const treatmentsPage = {
         "Repeatable: This procedure can be performed multiple times over the years to keep the same fistula working for a decade or more."
       ],
       icon: "Droplets",
-      image: "/treatments/fistuloplasty.webp"
+      image: fistuloplastyImg
     },
     {
       id: "dialysis-catheter",
@@ -716,7 +830,7 @@ export const treatmentsPage = {
         "Regular flushing with heparin/saline to prevent blockage"
       ],
       icon: "Activity",
-      image: "/treatments/dialysis-catheter.webp"
+      image: dialysisCatheterImg
     },
     {
       id: "liver-cancer",
@@ -759,7 +873,7 @@ export const treatmentsPage = {
         "Can lead to significant tumor shrinkage"
       ],
       icon: "Activity",
-      image: "/treatments/liver-cancer.webp"
+      image: liverCancerImg
     }
   ],
   whyChoose: {

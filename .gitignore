@@ -51,8 +51,11 @@ typings/
 .env.production.local
 .env.local
 
+# Vite
+.vite/
+
 # Vercel
-.vercel
+.vercel/
 
 # next.js build output
 .next/
@@ -64,7 +67,7 @@ dist-ssr
 build-stats
 
 # npm
-package-lock.json
+# package-lock.json - Intentionally committed
 
 # misc
 .DS_Store
@@ -85,3 +88,5 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
+.vercel

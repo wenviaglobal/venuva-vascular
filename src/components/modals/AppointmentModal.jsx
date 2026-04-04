@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { X, Calendar, Phone, User, Send, CheckCircle } from "lucide-react";
 import { useAppointment } from "../../context/AppointmentContext";
+import { footer } from "../../data";
 
 const AppointmentModal = () => {
   const { isModalOpen, closeModal } = useAppointment();
@@ -15,15 +16,19 @@ const AppointmentModal = () => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-
   const handleWhatsAppSubmit = (e) => {
     e.preventDefault();
 
     const message = `Hello Venuva Vascular! I would like to book an appointment.\n\n*Details:*\n- Patient Name: ${formData.name}\n- Mobile Number: ${formData.phone}\n\nPlease let me know the availability.`;
 
-    const whatsappUrl = `https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    // Clean phone number: remove all non-digits
+    const rawNumber = import.meta.env.VITE_WHATSAPP_NUMBER || footer?.contactUs?.whatsapp || '919019900716';
+    const cleanNumber = rawNumber.replace(/\D/g, '');
 
-    window.open(whatsappUrl, '_blank');
+    const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
+
+    // Using window.location.href is more reliable for triggering deep links on mobile
+    window.location.href = whatsappUrl;
     setIsSubmitted(true);
 
     // Close modal after a short delay to show success state

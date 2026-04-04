@@ -25,7 +25,7 @@ const PageHeader = ({ title, subtitle, image }) => {
             {title}
           </h1>
           {subtitle && (
-            <p className="text-xs md:text-sm text-hospital-sky-blue font-black uppercase tracking-[0.4em] opacity-90">
+            <p className="text-xs md:text-sm text-white font-black uppercase tracking-[0.4em] opacity-90">
               {subtitle}
             </p>
           )}

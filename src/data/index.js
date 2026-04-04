@@ -4,6 +4,7 @@ import { treatments, treatmentsPage } from './treatments';
 import { doctorsSection, contact } from './team';
 import { videoGallery } from './videos';
 import { reviewsData } from './reviews';
+import { blogPosts } from './blog';
 
 export const hospitalData = {
   brand,
@@ -21,6 +22,7 @@ export const hospitalData = {
   videoGallery,
   reviewsData,
   footer,
+  blogPosts
 };
 
 export {
@@ -29,5 +31,6 @@ export {
   treatments, treatmentsPage,
   doctorsSection, contact,
   videoGallery,
-  reviewsData
+  reviewsData,
+  blogPosts
 };

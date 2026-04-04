@@ -49,7 +49,7 @@ const Navbar = () => {
     <header
       className="fixed top-0 left-0 w-full z-50 bg-white shadow-sm border-b border-hospital-mint h-[80px] flex items-center"
     >
-      <div className="container mx-auto px-4 sm:px-6 md:px-12 flex justify-between items-center">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 flex justify-between items-center relative">
         {/* Logo */}
         <Link to="/" onClick={handleHomeClick} className="flex items-center gap-4 group">
           <img src={logo} alt="Venuva Vascular" className="h-[65px] md:h-[75px] w-auto object-contain transition-transform group-hover:scale-110" />
@@ -66,18 +66,24 @@ const Navbar = () => {
                 <div
                   key={link.name}
                   ref={megaMenuRef}
-                  className="relative h-[80px] flex items-center"
+                  className="h-[80px] flex items-center"
                   onMouseEnter={() => setMegaMenuOpen(true)}
                 >
                   <Link
                     to={link.href}
-                    className={`text-xs font-black uppercase tracking-widest transition-all px-4 py-2 rounded-lg flex items-center gap-1 group/link ${isActive || megaMenuOpen
+                    className={`text-xs font-black uppercase tracking-widest transition-all px-4 py-2 rounded-lg flex items-center gap-1 group/link relative ${isActive || megaMenuOpen
                       ? "text-hospital-teal"
                       : "text-hospital-navy/70 hover:text-hospital-navy"
                       }`}
                   >
                     {link.name}
                     <ChevronDown size={14} className={`transition-transform duration-200 ${megaMenuOpen ? 'rotate-180' : ''}`} />
+                    {isActive && (
+                      <motion.div
+                        layoutId="navline"
+                        className="absolute bottom-[-22px] left-4 right-4 h-0.5 bg-hospital-teal"
+                      />
+                    )}
                   </Link>
 
                   {/* Mega Menu Panel */}
@@ -88,10 +94,10 @@ const Navbar = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.98 }}
                         onMouseLeave={() => setMegaMenuOpen(false)}
-                        className="absolute  top-[80px] left-1/2 -translate-x-1/2 w-[1050px] bg-white border border-hospital-soft-blue rounded-2xl shadow-2xl overflow-hidden z-100"
+                        className="absolute top-[80px] left-0 right-0 w-full bg-white border border-hospital-soft-blue rounded-2xl shadow-2xl overflow-hidden z-100"
                       >
                         {/* Top Header Bar */}
-                        <div className="flex items-center justify-between px-8 py-4 bg-hospital-soft-blue border-b border-hospital-mint">
+                        <div className="flex items-center justify-between px-4 sm:px-6 md:px-12 py-4 bg-hospital-soft-blue border-b border-hospital-mint">
                           <span className="text-xl font-black tracking-[3px] uppercase text-hospital-navy">
                             All Medical Treatments
                           </span>
@@ -104,14 +110,14 @@ const Navbar = () => {
                         </div>
 
                         {/* Dynamic Grid expanding to 5 Columns for Pain Management */}
-                        <div className="grid grid-cols-5 px-6 gap-6 pt-8 pb-12">
+                        <div className="grid grid-cols-6 px-4 sm:px-6 md:px-12 gap-4 pt-8 pb-12">
                           {treatmentsPage.categories.map((cat) => {
                             const Icon = iconMap[cat.icon] || ActivityIcon;
                             return (
                               <div key={cat.id}>
                                 <div className="flex items-center gap-3 mb-6 group/cat pb-2 border-b border-hospital-mint">
                               
-                                  <span className="text-[15px] text-wrap font-black tracking-widest uppercase text-hospital-navy leading-tight line-clamp-2">
+                                  <span className="text-[13px] text-wrap font-black tracking-widest uppercase text-hospital-navy leading-tight line-clamp-2">
                                     {cat.title}
                                   </span>
                                 </div>
@@ -120,7 +126,7 @@ const Navbar = () => {
                                     <li key={t.slug} className="border-b border-hospital-mint/60 last:border-0">
                                       <Link
                                         to={`/treatments/${t.slug}`}
-                                        className="block py-3 text-[14px] font-bold text-hospital-charcoal hover:text-hospital-teal no-underline hover:translate-x-1 transition-all duration-200 leading-snug"
+                                        className="block py-2.5 text-[13px] font-bold text-hospital-charcoal hover:text-hospital-teal no-underline hover:translate-x-1 transition-all duration-200 leading-snug"
                                       >
                                         {t.name}
                                       </Link>
@@ -133,9 +139,9 @@ const Navbar = () => {
                         </div>
 
                         {/* Bottom Footer Bar */}
-                        <div className="flex items-center justify-between px-8 py-4 bg-hospital-soft-blue/50 border-t border-hospital-mint">
+                        <div className="flex items-center justify-between px-4 sm:px-6 md:px-12 py-4 bg-hospital-soft-blue/50 border-t border-hospital-mint">
                           <span className="text-xs text-hospital-navy/40 font-bold uppercase tracking-widest">
-                            Venuva Stats: 10+ Yrs · 10k+ Cases Resolved
+                            Venuva Stats  10+ Yrs · 10k+ patients treated
                           </span>
                           <button
                             onClick={() => window.location.href = `tel:${header.emergency.replace(/[^\d+]/g, '')}`}

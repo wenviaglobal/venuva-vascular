@@ -3,37 +3,7 @@ import { useAppointment } from "../context/AppointmentContext";
 import { motion } from "framer-motion";
 import { treatmentsPage, header, doctorsSection } from "../data";
 import SEO from "../components/utils/SEO";
-
-const treatmentSEO = {
-  "varicose-veins": {
-    title: "Varicose Veins Treatment | EVLA & Minimally Invasive Care | Venuva Vascular Center",
-    description: "Get relief from varicose veins at Venuva Vascular Center. Our minimally invasive EVLA and Venaseal treatments provide fast recovery, high success, and improved leg circulation."
-  },
-  "thyroid-ablation": {
-    title: "Thyroid Nodule Embolization | Non-Surgical Thyroid Treatment | Venuva Vascular Center",
-    description: "Reduce benign thyroid nodules safely with minimally invasive embolization at Venuva Vascular Center. Preserve thyroid function and avoid surgery with expert care."
-  },
-  "ufe": {
-    title: "Uterine Fibroid Embolization (UFE) | Non-Surgical Fibroid Treatment | Venuva Vascular Center",
-    description: "Treat uterine fibroids effectively with non-surgical uterine artery embolization at Venuva Vascular Center. Enjoy quick recovery, minimal discomfort, and long-lasting relief."
-  },
-  "varicocele": {
-    title: "Varicocele Embolization | Fertility-Preserving Treatment | Venuva Vascular Center",
-    description: "Preserve fertility and treat varicocele with minimally invasive embolization at Venuva Vascular Center. Safe, fast, and effective procedure with high success rates."
-  },
-  "dvt": {
-    title: "Deep Vein Thrombosis (DVT) Treatment | Catheter-Directed Thrombolysis | Venuva Vascular Center",
-    description: "Restore healthy leg circulation with catheter-directed thrombolysis for DVT at Venuva Vascular Center. Minimize complications with minimally invasive, high-success treatment."
-  },
-  "peripheral-angioplasty": {
-    title: "Peripheral Vascular Disease (PVD) Treatment | Angioplasty & Stenting | Venuva Vascular Center",
-    description: "Treat blocked leg arteries safely with pinhole angioplasty and stenting at Venuva Vascular Center. Improve blood flow, reduce pain, and regain mobility."
-  },
-  "pain-intervention": {
-    title: "Pain Interventions | Minimally Invasive Pain Management | Venuva Vascular Center",
-    description: "Relieve chronic pain with minimally invasive pain interventions at Venuva Vascular Center. Expert nerve blocks, RFA, and joint injections for fast, effective results."
-  }
-};
+import { treatmentSEO } from "../data/home";
 
 const TreatmentDetail = () => {
   const { openModal } = useAppointment();
@@ -68,19 +38,19 @@ const TreatmentDetail = () => {
       />
       {/* ── 1. Hero Section ── */}
       <section className="relative pt-12 pb-0 overflow-hidden bg-linear-to-br from-hospital-navy via-[#1e3a8a] to-[#0f4c81]">
-        
+
         {/* Ambient Animated Glowing Meshes */}
-        <motion.div 
-          animate={{ y: [0, -30, 0], x: [0, 20, 0], scale: [1, 1.1, 1] }} 
+        <motion.div
+          animate={{ y: [0, -30, 0], x: [0, 20, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-0 right-0 w-160 h-160 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl pointer-events-none"
         />
-        <motion.div 
-          animate={{ y: [0, 40, 0], x: [0, -20, 0], scale: [1, 1.2, 1] }} 
+        <motion.div
+          animate={{ y: [0, 40, 0], x: [0, -20, 0], scale: [1, 1.2, 1] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute bottom-0 left-0 w-120 h-120 bg-hospital-sky-blue/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-3xl pointer-events-none"
         />
-        
+
         {/* Multiple Small Floating Bubbles  */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {[
@@ -93,40 +63,40 @@ const TreatmentDetail = () => {
             { size: 4, x: '88%', y: '45%', duration: 8, delay: 2.5 },
             { size: 3, x: '55%', y: '75%', duration: 7, delay: 1.2 },
           ].map((bubble, i) => (
-            <motion.div 
+            <motion.div
               key={i}
-              animate={{ 
-                y: [0, -40, 0], 
-                scale: [1, 1.2, 1], 
-                opacity: [0.03, 0.1, 0.03] 
-              }} 
+              animate={{
+                y: [0, -40, 0],
+                scale: [1, 1.2, 1],
+                opacity: [0.03, 0.1, 0.03]
+              }}
               transition={{ duration: bubble.duration, repeat: Infinity, ease: "easeInOut", delay: bubble.delay }}
               className="absolute bg-white rounded-full shadow-sm"
-              style={{ 
-                width: `${bubble.size}rem`, 
-                height: `${bubble.size}rem`, 
-                left: bubble.x, 
-                top: bubble.y 
+              style={{
+                width: `${bubble.size}rem`,
+                height: `${bubble.size}rem`,
+                left: bubble.x,
+                top: bubble.y
               }}
             />
           ))}
         </div>
 
-        <div className="container mx-auto px-6 md:px-8 relative z-10">
+        <div className="container mx-auto px-6 md:px-8 relative z-10 ">
           {/* Breadcrumbs */}
-          <nav className="flex items-center flex-wrap gap-4 mb-8 text-xs font-black uppercase tracking-wider text-white/60">
+          <nav className="flex items-center flex-wrap gap-4 mb-8 text-xs font-black uppercase tracking-[0.4em] text-white/60">
             <Link to="/" className="hover:text-white transition-colors">Home</Link>
             <Link to="/treatments" className="hover:text-white transition-colors">Treatments</Link>
             {category && (
-              <span className="text-white/80">{category.title}</span>
+              <span className="text-white/80  ">{category.title}</span>
             )}
             <span className="text-hospital-sun">{treatment.title}</span>
           </nav>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end pb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pb-16">
             {/* Left Content */}
             <div className="space-y-5">
-              <div className="inline-flex items-center bg-white/10 text-white px-5 py-2 rounded-full text-xs font-black tracking-widest uppercase">
+              <div className="inline-flex items-center bg-white/10 text-white px-5 py-2 rounded-full text-xs font-black tracking-[0.4em] uppercase">
                 {category?.title || "Specialized Treatment"}
               </div>
               <h1 className="text-4xl md:text-5xl font-black text-white leading-tight uppercase tracking-tighter">
@@ -153,7 +123,7 @@ const TreatmentDetail = () => {
                 <img
                   src={treatment.image}
                   alt={treatment.title}
-                  className="relative w-full h-[320px] object-cover rounded-t-4xl border-4 border-white shadow-xl"
+                  className="relative object-cover rounded-t-4xl  shadow-xl"
                 />
               </div>
             </div>
@@ -428,20 +398,28 @@ const TreatmentDetail = () => {
                 </h3>
                 <div className="space-y-3">
                   {team.map((doc, i) => (
-                    <div key={i} className="flex items-center gap-3 group">
+                    <Link
+                      key={i}
+                      to={`/doctors/${doc.slug}`}
+                      className="flex items-center gap-3 group cursor-pointer hover:bg-hospital-soft-blue p-2 rounded-xl transition-all duration-300"
+                    >
                       <div className="relative shrink-0">
                         <img
                           src={doc.image}
                           alt={doc.name}
-                          className="w-12 h-12 object-cover rounded-lg border border-slate-100 shadow-sm group-hover:scale-105 transition-transform duration-300"
+                          className="w-12 h-12 object-cover rounded-lg border border-slate-100 shadow-sm group-hover:scale-105 group-hover:border-hospital-teal/30 transition-all duration-300"
                         />
                         <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
                       </div>
                       <div className="min-w-0">
-                        <p className="font-black text-hospital-navy text-sm uppercase tracking-tight leading-relaxed truncate">{doc.name}</p>
-                        <p className="text-[11px] font-bold text-hospital-slate uppercase tracking-wider line-clamp-1">{doc.specialty}</p>
+                        <p className="font-black text-hospital-navy text-sm uppercase tracking-tight leading-relaxed truncate group-hover:text-hospital-teal transition-colors">
+                          {doc.name}
+                        </p>
+                        <p className="text-[11px] font-bold text-hospital-slate uppercase tracking-wider line-clamp-1">
+                          {doc.specialty}
+                        </p>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
