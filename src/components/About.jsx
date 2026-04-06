@@ -5,7 +5,7 @@ import { about } from "../data";
 const About = () => {
 
   return (
-    <section id="about" className="py-5 bg-hospital-soft-blue overflow-hidden">
+    <section id="about" className="py-5 h-screen bg-hospital-soft-blue overflow-hidden">
       <div className="container mx-auto px-6 sm:px-8 md:px-16">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           {/* Text Content */}
@@ -54,12 +54,14 @@ const About = () => {
             {/* Decorative Card */}
             <div className="absolute -bottom-6 -left-6 z-20 bg-white p-6 rounded-2xl shadow-xl hidden md:block">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-hospital-soft-blue flex items-center justify-center text-hospital-sun">
+                {/* <div className="w-12 h-12 rounded-full bg-hospital-soft-blue flex items-center justify-center text-hospital-sun shrink-0">
                   <Activity className="w-5 h-5" />
-                </div>
+                </div> */}
+                {/* Vertical Separator */}
+                {/* <div className="w-px h-16 bg-hospital-slate/20 mx-1" /> */}
                 <div>
-                  <p className="text-sm font-black text-hospital-sun uppercase tracking-tighter">10+ Years</p>
-                  <p className="text-xs text-hospital-slate font-bold uppercase tracking-widest">Experience</p>
+                  <p className="text-xl font-black text-hospital-sun uppercase tracking-widest">10+ Years</p>
+                  <p className="text-lg text-hospital-emerald font-bold capitalize tracking-widest">Experience</p>
                 </div>
               </div>
             </div>

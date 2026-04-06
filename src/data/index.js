@@ -1,4 +1,4 @@
-import { brand, header, footer } from './hospital';
+import { brand, header, footer,socialLinks } from './hospital';
 import { heroSlides, about, whyChooseUs, testimonial, finalCTA, appointment } from './home';
 import { treatments, treatmentsPage } from './treatments';
 import { doctorsSection, contact } from './team';
@@ -22,7 +22,8 @@ export const hospitalData = {
   videoGallery,
   reviewsData,
   footer,
-  blogPosts
+  blogPosts,
+  socialLinks
 };
 
 export {
@@ -32,5 +33,6 @@ export {
   doctorsSection, contact,
   videoGallery,
   reviewsData,
-  blogPosts
+  blogPosts,
+  socialLinks
 };

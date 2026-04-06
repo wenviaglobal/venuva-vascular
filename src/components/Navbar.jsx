@@ -1,5 +1,6 @@
 import { Phone, Activity, Menu, X, ChevronDown, Droplets, Dna, Stethoscope, Activity as ActivityIcon } from "lucide-react";
 import { header, brand, treatmentsPage } from "../data";
+import SocialLinks from "./utils/SocialLinks";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -181,6 +182,9 @@ const Navbar = () => {
 
         {/* Right Actions */}
         <div className="flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-6 mr-4 border-r border-hospital-mint/60 pr-6">
+            <SocialLinks />
+          </div>
           <motion.button
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.95 }}
@@ -265,6 +269,9 @@ const Navbar = () => {
                   </Link>
                 );
               })}
+              <div className="flex justify-center py-6 border-b border-hospital-mint mb-2">
+                <SocialLinks />
+              </div>
               <button
                 onClick={() => window.location.href = `tel:${header.emergency.replace(/[^\d+]/g, '')}`}
                 className="w-full bg-hospital-emerald text-white py-5 rounded-2xl font-black uppercase tracking-widest mt-6 shadow-xl shadow-hospital-emerald/20 hover:bg-hospital-navy transition-all flex items-center justify-center gap-3"

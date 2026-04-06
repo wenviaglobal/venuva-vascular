@@ -31,7 +31,7 @@ const TreatmentDetail = () => {
   const currentSEO = treatmentSEO[id] || { title: treatment.title, description: treatment.description };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen whitespace-pre-line" >
       <SEO
         title={currentSEO.title}
         description={currentSEO.description}
@@ -148,7 +148,7 @@ const TreatmentDetail = () => {
                   <h2 className="text-2xl font-black text-hospital-navy uppercase tracking-tight mb-4">
                     {treatment.heading || "About the Procedure"}
                   </h2>
-                  <p className="text-hospital-charcoal text-base leading-relaxed font-medium mb-6">
+                  <p className="text-hospital-charcoal text-base leading-relaxed font-medium mb-6 whitespace-pre-line">
                     {treatment.fullContent || treatment.description}
                   </p>
                   {treatment.whatIs && (
@@ -216,10 +216,10 @@ const TreatmentDetail = () => {
                     <div className="grid grid-cols-1 gap-3">
                       {treatment.treatmentOptions.map((opt, i) => (
                         <div key={i} className="p-5 rounded-xl bg-hospital-soft-blue border border-hospital-mint group hover:border-hospital-teal transition-all">
-                          <h4 className="font-black text-hospital-navy text-sm uppercase tracking-wider mb-2 group-hover:text-hospital-teal transition-colors">
+                          <h4 className="font-black text-hospital-navy text-lg uppercase tracking-wider mb-2 group-hover:text-hospital-teal transition-colors">
                             {opt.name}
                           </h4>
-                          <p className="text-hospital-slate text-sm font-medium leading-relaxed">{opt.desc}</p>
+                          <p className="text-hospital-slate text-md font-medium leading-relaxed whitespace-pre-line">{opt.desc}</p>
                         </div>
                       ))}
                     </div>
@@ -238,7 +238,7 @@ const TreatmentDetail = () => {
                           </div>
                           <div>
                             <h4 className="font-black text-hospital-navy text-xs uppercase tracking-widest mb-1">{s.step}</h4>
-                            <p className="text-hospital-slate text-sm font-medium leading-relaxed">{s.detail}</p>
+                            <p className="text-hospital-slate text-sm font-medium leading-relaxed whitespace-pre-line">{s.detail}</p>
                           </div>
                         </div>
                       ))}
@@ -343,7 +343,7 @@ const TreatmentDetail = () => {
                         className="group bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex items-center gap-4"
                       >
                         <div className="w-12 h-12 rounded-xl bg-hospital-soft-blue flex items-center justify-center text-hospital-navy group-hover:bg-hospital-navy group-hover:text-white transition-colors shrink-0 font-black text-xs">
-                          T
+                          {t.title.charAt(0)}
                         </div>
                         <div>
                           <h4 className="font-black text-hospital-navy group-hover:text-hospital-teal transition-colors uppercase tracking-tight text-xs line-clamp-1">

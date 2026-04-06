@@ -1,3 +1,4 @@
+import { Facebook } from "lucide-react";
 import brandLogo from "../assets/logo.png";
 
 export const brand = {
@@ -32,3 +33,11 @@ export const footer = {
   },
   newsletter: "Newsletter",
 };
+
+
+export const socialLinks ={
+  facebook:'https://www.facebook.com/venuvavascular',
+  instagram:'https://www.instagram.com/venuvavascular',
+  youtube:'https://www.youtube.com/venuvavascular',
+  whatsapp:'https://wa.me/919019900716'
+}

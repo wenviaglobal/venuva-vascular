@@ -19,6 +19,7 @@ import jointInjectionImg from "../assets/treatments/Joint-InjectionPRP.webp";
 import fistuloplastyImg from "../assets/treatments/Fistuloplasty.webp";
 import dialysisCatheterImg from "../assets/treatments/dialysis-catheter.webp";
 import liverCancerImg from "../assets/treatments/liver-cancer.webp";
+import GAE from '../assets/treatments/GAE.webp'
 
 export const treatments = {
   tag: "ADVANCED MINIMALLY INVASIVE TREATMENTS",
@@ -85,6 +86,12 @@ export const treatments = {
       description: "Placement of temporary or long-term catheters for effective hemodialysis or peritoneal dialysis.",
       icon: "Activity",
       slug: "dialysis-catheter"
+    },
+    {
+      title: "Genicular Artery Embolization (GAE)",
+      description: "A breakthrough minimally invasive treatment for chronic knee pain due to osteoarthritis.",
+      icon: "Activity",
+      slug: "genicular-artery-embolization"
     },
   ],
 };
@@ -155,7 +162,8 @@ export const treatmentsPage = {
         { name: "Knee Osteoarthritis", slug: "knee-osteoarthritis" },
         { name: "Plantar Fasciitis", slug: "plantar-fasciitis" },
         { name: "Achilles Tendinopathy", slug: "achilles-tendinopathy" },
-        { name: "Joint Injections", slug: "joint-injections" }
+        { name: "Joint Injections", slug: "joint-injections" },
+        { name: "Genicular artery Embolization (GAE)", slug: "genicular-artery-embolization" }
       ]
     },
     {
@@ -202,6 +210,10 @@ export const treatmentsPage = {
         {
           name: "VenaSeal™ (Medical Glue)",
           desc: "A revolutionary non-thermal treatment using medical-grade adhesive to seal the vein permanently. No risk of nerve injury and many patients do not need to wear compression stockings afterward."
+        },
+        {
+          name:'Sclerotherapy',
+          desc:'Sclerotherapy is a popular, minimally invasive medical procedure used to eliminate varicose veins and spider veins. It involves injecting a solution directly into the affected blood vessels.\n ​The procedure is straightforward and usually performed in a clinic without anesthesia:\n ​Injection: A healthcare provider uses a fine needle to inject a chemical solution (sclerosant) into the vein.'
         }
       ],
       faqs: [
@@ -611,55 +623,47 @@ export const treatmentsPage = {
     {
       id: "frozen-shoulder",
       title: "Frozen Shoulder (Adhesive Capsulitis)",
-      heading: "Arthroscopic Capsular Release for Frozen Shoulder",
-      description: "When non-surgical methods fail, arthroscopic capsular release is the gold standard surgical treatment.",
-      fullContent: "This treatment is a highly effective surgical intervention for frozen shoulder. It precisely releases the tight, inflamed joint capsule to restore full motion and immediately alleviate strict immobility.",
-      whyImportant: [
-        "Pain and stiffness persist >6 months",
-        "Night pain significantly disrupts sleep",
-        "Severe restriction of shoulder movement",
-        "Failure of conservative treatments like physiotherapy",
-        "Imaging shows abnormal vascularity indicating active inflammation"
-      ],
-      procedureSteps: [
-        { step: "Anesthesia", detail: "Performed under general anesthesia with nerve block." },
-        { step: "Access", detail: "Small incisions allow insertion of a camera and instruments." },
-        { step: "Release", detail: "The tight, inflamed joint capsule and coracohumeral ligament are precisely released using radiofrequency." },
-        { step: "Restoration", detail: "Full 360° release (anterior, inferior, posterior) restores motion." }
+      heading: "Advanced IR Treatments for Frozen Shoulder",
+      description: "Non-surgical, image-guided procedures to rapidly reduce inflammation and restore mobility.",
+      fullContent: "In interventional radiology, we don't just 'guess' where the needle goes. We use real-time imaging (usually Ultrasound or Fluoroscopy) to ensure the medication reaches the tiny space inside the shoulder capsule. These cutting-edge procedures offer rapid relief without the need for traditional surgery.",
+      treatmentOptions: [
+        {
+          name: "1. Image-Guided Joint Injection (Arthrography)",
+          desc: "The radiologist injects a mixture of a long-acting corticosteroid and a local anesthetic. Hydrodilatation (The 'Power' Version): Often, they will also inject a larger volume of sterile saline. This physically stretches the tightened, scarred joint capsule from the inside out—think of it like inflating a crumpled balloon to create more room for movement. The Goal: Rapidly reduce inflammation and physically break up some of the 'adhesions' (scar tissue)."
+        },
+        {
+          name: "2. TAME (Transcatheter Arterial Microembolization)",
+          desc: "This is a newer, cutting-edge IR procedure. Chronic inflammation in frozen shoulder causes neovascularization—the growth of tiny, abnormal new blood vessels and nerve fibers which cause pain and hypersensitivity. A tiny catheter is threaded through an artery up to the shoulder. Small particles are injected to temporarily block these abnormal vessels. By 'starving' these abnormal vessels, the associated pain-sensing nerves also quiet down, turning off the 'pain signal' at the source without surgery."
+        }
       ],
       benefits: [
-        "Immediate improvement in range of motion",
-        "Faster recovery compared to manipulation alone",
-        "Lower risk of fractures or tendon tears",
-        "Long-lasting results with proper post-op rehab"
+        "Non-Surgical: No large incisions or general anesthesia required.",
+        "Precision Guided: Real-time imaging ensures exact delivery of medication.",
+        "Rapid Relief: Quickly reduces inflammation and physically breaks up adhesions.",
+        "Hydrodilatation: Effectively stretches the joint capsule to restore movement.",
+        "Outpatient: Walk-in, walk-out procedure with minimal downtime."
       ],
-      recovery: "Same-day discharge; physical therapy starts immediately. Full recovery takes 3-6 months.",
       icon: "Smile",
       image: frozenShoulderImg
     },
     {
       id: "tennis-elbow",
-      title: "Tennis / Golfer's Elbow",
-      heading: "Definitive Treatment for Chronic Elbow Tendinopathy",
-      description: "Advanced surgical and minimally invasive interventions for persistent elbow pain that has failed conservative treatment.",
-      fullContent: "When conservative methods like physiotherapy, bracing, and injections fail, our specialized interventions offer a definitive solution. We utilize modern imaging and micro-surgical techniques to remove degenerated tissue and stimulate deep healing.",
-      whyImportant: [
-        "Persistent elbow pain >6 months",
-        "Failed conservative treatment",
-        "Moderate-to-severe discomfort affecting daily activities",
-        "Imaging confirms tendon degeneration, tears, or abnormal vascularity"
-      ],
-      treatmentOptions: [
-        { name: "Open Surgery", desc: "A small incision removes damaged tendon tissue, shaves the bone, and reattaches healthy tendon." },
-        { name: "Arthroscopic Surgery", desc: "Minimally invasive technique using a camera and small instruments." },
-        { name: "Percutaneous Tenotomy", desc: "Needle-based procedure to debride damaged tissue under imaging guidance." },
-        { name: "Radiofrequency Microtenotomy", desc: "Uses heat to remove degenerated tissue and stimulate healing." }
+      title: "Tennis / Golfer's Elbow (Epicondylitis)",
+      heading: "TAME for Tennis / Golfer's Elbow",
+      description: "A cutting-edge IR procedure targeting abnormal 'junk' blood vessels to stop chronic elbow pain at the source.",
+      fullContent: "For tennis elbow (Lateral Epicondylitis) and golfer’s elbow (Medial Epicondylitis), TAME (Transcatheter Arterial Microembolization) addresses the biological pain signal at the source. In chronic cases, the tendon develops angiofibroblastic hyperplasia—a web of new micro-vessels (neovascularization) and associated pain fibers that standard therapies often fail to address.",
+      procedureSteps: [
+        { step: "Identifying the 'Blush'", detail: "Using high-resolution fluoroscopy, the interventional radiologist identifies the 'hyperemic blush'—a visual representation of abnormal, leaky micro-vessels near the epicondyle." },
+        { step: "Access", detail: "Performed via a tiny puncture in the radial artery at the wrist, similar to a simple cardiac catheterization but much simpler." },
+        { step: "Targeting", detail: "A microcatheter is precisely navigated to the radial recurrent artery (for tennis elbow) or the ulnar recurrent artery (for golfer’s elbow) branches." },
+        { step: "Embolization", detail: "Temporary embolic particles are injected to prune the abnormal vessels, effectively 'turning off' pain signals at the source without surgery." }
       ],
       benefits: [
-        "High success rate: 80–90% of patients return to full activity.",
-        "Definitive solution for chronic, non-healing tendinopathy.",
-        "Faster recovery with minimally invasive techniques (2–6 weeks).",
-        "Improved function and profound pain relief."
+        "Biological Pain Relief: Addresses the pain at the source by cutting off blood supply to abnormal vessels.",
+        "Precision Guided: Uses fluoroscopy to identify the exact 'blush' of inflammation.",
+        "Non-Surgical: No large incisions or reconstruction of tendons required.",
+        "Rapid Results: Typically leads to a significant reduction in sharp, 'stabbing' pain.",
+        "Minimally Invasive: Outpatient procedure via a tiny radial artery puncture."
       ],
       icon: "Bone",
       image: golfersElbowImg
@@ -677,10 +681,14 @@ export const treatmentsPage = {
         "Failed conventional conservative management"
       ],
       treatmentOptions: [
-        { name: "Viscosupplementation (Gel Injections)", desc: "Injects hyaluronic acid into the joint to improve lubrication and cushioning for moderate short-term relief." },
-        { name: "Genicular Nerve Block / Ablation", desc: "Targets nerves around the knee to block pain signals, offering lasting relief (6–12 months)." },
-        { name: "Knee Realignment Osteotomy", desc: "Bone is cut and realigned to shift weight away from damaged areas. Excellent for active patients." },
-        { name: "Minimally Invasive Joint Offloading", desc: "Implants that absorb stress on the affected knee compartment." }
+        { name: "Viscosupplementation", desc: "Injects hyaluronic acid into the joint to improve lubrication and cushioning for moderate short-term relief." },
+        { name: "Genicular Nerve Block / RFA", desc: "Targets nerves around the knee to block pain signals, offering lasting relief (6–12 months)." },
+        {
+          name: "Genicular Artery Embolization (GAE)", desc: `A Breakthrough for Knee Pain If you suffer from chronic knee pain due to osteoarthritis and haven't found relief through injections or physical therapy—but aren't ready for a total knee replacement—Genicular Artery Embolization (GAE) may be the solution.
+          An interventional radiologist makes a tiny incision (the size of a grain of rice) in the upper thigh to access the arterial system.
+          Using real-time X-ray guidance, a thin catheter is threaded to the genicular arteries supplying the knee. Embolization
+          Tiny particles are injected into these specific arteries to slow the blood flow.
+          By reducing the blood flow, the procedure 'starves' the inflammation and calms the hyper-sensitive nerves, significantly reducing pain.` },
       ],
       icon: "Activity",
       image: kneeOsteoarthritisImg
@@ -738,27 +746,41 @@ export const treatmentsPage = {
     },
     {
       id: "joint-injections",
-      title: "Joint Injections (PRP)",
-      heading: "Advanced Platelet-Rich Plasma (PRP) Joint Injections",
-      description: "An advanced biological treatment that uses the patient's own concentrated blood platelets to promote profound natural healing.",
-      fullContent: "PRP (Platelet-Rich Plasma) injection is the frontier of regenerative medicine. By concentrating the healing growth factors naturally found in your blood and injecting them directly into damaged joints, we jumpstart cellular repair for osteoarthritis, tendinitis, and soft tissue injuries.",
+      title: "Joint Injections (PRP & Corticosteroids)",
+      heading: "Advanced Platelet-Rich Plasma (PRP) & Corticosteroid Injections",
+      description: "An advanced biological treatment (PRP) and non-surgical corticosteroid injections used to relieve pain, reduce inflammation, and promote natural healing in joints.",
+      fullContent: `1. PRP (Platelet-Rich Plasma) injection is the frontier of regenerative medicine. By concentrating the healing growth factors naturally found in your blood and injecting them directly into damaged joints, we jumpstart cellular repair for osteoarthritis, tendinitis, and soft tissue injuries.
+      \n 2. Corticosteroid injections are a non-surgical treatment used to relieve pain and reduce inflammation in joints affected by arthritis, tendonitis, or injury. Unlike \"anabolic\" steroids used for muscle building, these are synthetic versions of cortisol, a natural hormone your body produces to fight inflammation.`,
+      whatIs: `1. Platelet-rich plasma (PRP) injections are a therapeutic treatment derived from a patient's own blood, where platelets are concentrated and reinjected into injured or diseased tissue to accelerate healing.
+      2. Corticosteroid injections are synthetic versions of cortisol, a natural hormone your body produces to fight inflammation. They are used to suppress the immune response at the site of injection, providing long-term relief for chronic joint conditions.`,
       whyImportant: [
         "Mild to moderate osteoarthritis",
         "Chronic tendon injuries (e.g., tennis elbow, Achilles tendinopathy)",
-        "Failed response to standard corticosteroid injections or physical therapy"
+        "Failed response to standard corticosteroid injections or physical therapy",
+        "Knees (Osteoarthritis)",
+        "Shoulders (Bursitis or Rotator Cuff issues)",
+        "Hips",
+        "Elbows (Tennis or Golfer’s elbow)",
+        "Wrists and Ankles"
       ],
       procedureSteps: [
-        { step: "Blood Draw", detail: "A small, standard blood sample is taken from your arm." },
-        { step: "Centrifugation", detail: "The blood is instantly spun in a high-speed centrifuge to extract and concentrate the active platelets." },
-        { step: "Injection", detail: "The enriched plasma, now dense with growth factors, is precisely injected directly into the damaged joint." }
+        { step: "PRP: Blood Draw", detail: "A small, standard blood sample is taken from your arm." },
+        { step: "PRP: Centrifugation", detail: "The blood is instantly spun in a high-speed centrifuge to extract and concentrate the active platelets." },
+        { step: "PRP: Injection", detail: "The enriched plasma, now dense with growth factors, is precisely injected directly into the damaged joint." },
+        { step: "Steroid: Preparation", detail: "The skin over the joint is cleaned and sometimes numbed with a topical spray or local anesthetic." },
+        { step: "Steroid: The Injection", detail: "Using a fine needle, the specialist injects a mixture of a corticosteroid (for long-term relief) and a local anesthetic (for immediate, short-term numbing)." },
+        { step: "Steroid: Precision", detail: "In some cases, your doctor may use ultrasound or X-ray (fluoroscopy) guidance to ensure the medication is delivered precisely into the joint capsule." },
+        { step: "Steroid: Duration", detail: "The entire process usually takes less than 15 minutes." }
       ],
       benefits: [
         "Longer-lasting relief than traditional corticosteroids (often 6–12 months or more).",
         "Promotes actual structural healing rather than just temporarily masking pain.",
         "Virtually zero risk of allergic reaction or infection since it uses your own biology.",
-        "Completely safe for repeat use, unlike steroids which can damage tissue over time."
+        "Completely safe for repeat use, unlike steroids which can damage tissue over time.",
+        "Steroids: Provide rapid reduction of swelling and inflammation for weeks to months.",
+        "Steroids: Immediate numbing effect with local anesthetic included in the injection."
       ],
-      recovery: "Patients experience mild soreness for 2-5 days. Avoid NSAIDs for 2 weeks to allow inflammation-driven healing. Full tissue benefits seen in 2-6 months.",
+      recovery: "PRP: Patients experience mild soreness for 2-5 days. Avoid NSAIDs for 2 weeks to allow inflammation-driven healing. Full tissue benefits seen in 2-6 months.\n\nSteroid Relief Timeline:\n- Immediate (Hours 1–6): Relief due to local anesthetic.\n- The 'Flare' (Day 1–2): Temporary soreness as anesthetic wears off.\n- Long-Term (Days 3–7): Corticosteroid begins to work (lasts weeks to months).\n\nPost-Injection Care: Rest the joint for 24–48 hours. Apply ice packs (20 min on/off) for first 24 hours. Monitor blood sugar if diabetic. Minor flushing/skin changes may occur.",
       icon: "Dna",
       image: jointInjectionImg
     },
@@ -874,6 +896,40 @@ export const treatmentsPage = {
       ],
       icon: "Activity",
       image: liverCancerImg
+    },
+    {
+      id: "genicular-artery-embolization",
+      title: "Genicular Artery Embolization (GAE)",
+      heading: "Genicular Artery Embolization (GAE): A Breakthrough for Knee Pain",
+      description: "GAE is a minimally invasive, non-surgical procedure that reduces inflammation and provides long-term pain relief by targeting the blood flow to the lining of the knee.",
+      fullContent: "If you suffer from chronic knee pain due to osteoarthritis and haven't found relief through injections or physical therapy—but aren't ready for a total knee replacement—Genicular Artery Embolization (GAE) may be the solution.",
+      whatIs: "Osteoarthritis causes 'neovascularity'—the growth of new, abnormal blood vessels in the synovium (the lining of the knee joint). These vessels are accompanied by new sensory nerves that transmit pain signals to your brain.",
+      procedureSteps: [
+        { step: "Access", detail: "An interventional radiologist makes a tiny incision (the size of a grain of rice) in the upper thigh to access the arterial system." },
+        { step: "Navigation", detail: "Using real-time X-ray guidance, a thin catheter is threaded to the genicular arteries supplying the knee." },
+        { step: "Embolization", detail: "Tiny particles are injected into these specific arteries to slow the blood flow." },
+        { step: "Relief", detail: "By reducing the blood flow, the procedure 'starves' the inflammation and calms the hyper-sensitive nerves, significantly reducing pain." }
+      ],
+      benefits: [
+        "No Surgery: No large incisions, no stitches, and no general anesthesia.",
+        "Quick Recovery: Most patients return to light activity within 24–48 hours.",
+        "Preservation: It does not prevent you from having a knee replacement in the future if it eventually becomes necessary.",
+        "High Success Rate: Clinical studies show that a majority of patients experience significant pain reduction and improved mobility for 12 months or longer."
+      ],
+      whyImportant: [
+        "Moderate to severe osteoarthritis diagnosis.",
+        "Localized knee pain (tender to the touch).",
+        "Conservative treatments like cortisone shots or physical therapy are no longer working.",
+        "Desire to delay or avoid major surgery like Total Knee Replacement (TKR)."
+      ],
+      recovery: "The entire process typically takes about 45 to 90 minutes. Performed under 'moderate sedation' (twilight sleep), you remain comfortable and go home the same day with nothing more than a small bandage on your hip. Pro Tip: While many patients feel relief within the first week, the 'peak' benefits are usually felt around 2 to 4 weeks as the internal inflammation fully subsides.",
+      faqs: [
+        { q: "Does it hurt?", a: "Most patients feel a slight pressure during the procedure but no significant pain. Some minor 'aching' in the knee is common for a few days after as the body adjusts." },
+        { q: "Will insurance cover GAE?", a: "Coverage varies by provider. Since GAE is a newer procedure, our office can help you navigate the prior authorization process to determine your specific benefits." },
+        { q: "How long do the results last?", a: "Current clinical data suggests that many patients enjoy significant relief for 1 to 2 years, with some studies showing even longer-lasting results." }
+      ],
+      icon: "Activity",
+      image: GAE
     }
   ],
   whyChoose: {
