@@ -648,23 +648,24 @@ export const treatmentsPage = {
     },
     {
       id: "tennis-elbow",
-      title: "Tennis / Golfer's Elbow (Epicondylitis)",
-      heading: "TAME for Tennis / Golfer's Elbow",
-      description: "A cutting-edge IR procedure targeting abnormal 'junk' blood vessels to stop chronic elbow pain at the source.",
-      fullContent: "For tennis elbow (Lateral Epicondylitis) and golfer’s elbow (Medial Epicondylitis), TAME (Transcatheter Arterial Microembolization) addresses the biological pain signal at the source. In chronic cases, the tendon develops angiofibroblastic hyperplasia—a web of new micro-vessels (neovascularization) and associated pain fibers that standard therapies often fail to address.",
+      title: "Tennis / Golfer's Elbow (TAME)",
+      heading: "TAME for Tennis / Golfer's Elbow: Cutting Off the Source of Pain",
+      description: "Alternative to tennis elbow straps or physical therapy, TAME addresses the biological pain signal at the source, targeting 'junk' blood vessels.",
+      fullContent: "For tennis elbow (Lateral Epicondylitis) and golfer’s elbow (Medial Epicondylitis), the application of TAME (Transcatheter Arterial Microembolization) follows the same fascinating principle as it does for the shoulder: targeting the \"junk\" blood vessels that shouldn't be there. In chronic cases of these conditions, the tendon doesn't just have \"inflammation\"—it develops angiofibroblastic hyperplasia. Basically, the body tries to heal a tiny tear by growing a messy web of new micro-vessels (neovascularization) and associated pain fibers.",
+      whatIs: "While traditional treatments like 'tennis elbow straps' or physical therapy focus on offloading the tendon, TAME addresses the biological pain signal at the source. By cutting off the blood supply to these abnormal vessels, the accompanying 'pain nerves' stop firing.",
       procedureSteps: [
-        { step: "Identifying the 'Blush'", detail: "Using high-resolution fluoroscopy, the interventional radiologist identifies the 'hyperemic blush'—a visual representation of abnormal, leaky micro-vessels near the epicondyle." },
-        { step: "Access", detail: "Performed via a tiny puncture in the radial artery at the wrist, similar to a simple cardiac catheterization but much simpler." },
-        { step: "Targeting", detail: "A microcatheter is precisely navigated to the radial recurrent artery (for tennis elbow) or the ulnar recurrent artery (for golfer’s elbow) branches." },
-        { step: "Embolization", detail: "Temporary embolic particles are injected to prune the abnormal vessels, effectively 'turning off' pain signals at the source without surgery." }
+        { step: "Identifying the 'Blush'", detail: "Using high-resolution fluoroscopy, the interventional radiologist looks for a 'hyperemic blush' near the epicondyle. This blush is the visual representation of those abnormal, leaky micro-vessels." },
+        { step: "Access", detail: "Usually performed via a tiny puncture in the radial artery at the wrist (similar to a heart cath but much simpler)." },
+        { step: "Targeting", detail: "A microcatheter is navigated to the branches of the radial recurrent artery (for tennis elbow) or the ulnar recurrent artery (for golfer’s elbow)." },
+        { step: "Embolization", detail: "Temporary embolic particles (often a suspension of antibiotic particles or specialized beads) are injected to prune away the abnormal vessels." }
       ],
       benefits: [
-        "Biological Pain Relief: Addresses the pain at the source by cutting off blood supply to abnormal vessels.",
-        "Precision Guided: Uses fluoroscopy to identify the exact 'blush' of inflammation.",
-        "Non-Surgical: No large incisions or reconstruction of tendons required.",
-        "Rapid Results: Typically leads to a significant reduction in sharp, 'stabbing' pain.",
-        "Minimally Invasive: Outpatient procedure via a tiny radial artery puncture."
+        "Significant reduction in the sharp, 'stabbing' pain felt when gripping or lifting objects.",
+        "Targets the biological pain signal at its source.",
+        "Minimally invasive procedure performed via the wrist.",
+        "No large incisions or physical therapy required for pain cessation."
       ],
+      recovery: "By cutting off the blood supply to these abnormal vessels, the accompanying 'pain nerves' stop firing. This typically leads to a significant reduction in the sharp, 'stabbing' pain felt when gripping or lifting objects.",
       icon: "Bone",
       image: golfersElbowImg
     },

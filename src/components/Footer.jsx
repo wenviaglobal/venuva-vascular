@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { Send, Linkedin, Facebook, Instagram, Activity, MapPin, Phone, Mail, MessageCircle, Twitter } from "lucide-react";
-import { brand, footer, header, socialLinks, treatments } from "../data";
+import { brand, footer, header, treatments } from "../data";
 import { Link, useLocation } from "react-router-dom";
 import logo from '../assets/venuva-logo.png'
-import SocialLinks from "./utils/SocialLinks";
 
 const Footer = () => {
   const location = useLocation();
@@ -17,13 +16,13 @@ const Footer = () => {
   return (
     <footer className="bg-linear-to-br from-hospital-navy via-[#1e3a8a] to-[#0f4c81] text-white pt-24 pb-12 overflow-hidden relative">
       {/* Ambient Animated Glowing Meshes */}
-      <motion.div 
-        animate={{ y: [0, -30, 0], x: [0, 20, 0], scale: [1, 1.1, 1] }} 
+      <motion.div
+        animate={{ y: [0, -30, 0], x: [0, 20, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl pointer-events-none"
       />
-      <motion.div 
-        animate={{ y: [0, 40, 0], x: [0, -20, 0], scale: [1, 1.2, 1] }} 
+      <motion.div
+        animate={{ y: [0, 40, 0], x: [0, -20, 0], scale: [1, 1.2, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         className="absolute bottom-0 left-0 w-80 h-80 bg-hospital-sky-blue/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-3xl pointer-events-none"
       />
@@ -36,7 +35,7 @@ const Footer = () => {
             <Link to="/" onClick={handleHomeClick} className="flex flex-col items-start gap-4 group">
               <div className="flex items-center gap-4">
                 <img src={logo} alt="Venuva Vascular" className="h-[65px] md:h-[75px] w-auto object-contain  group-hover:scale-110 transition-transform" />
-               
+
               </div>
               <span className="text-xs font-bold text-hospital-sun tracking-[0.3em] uppercase">
                 {brand.tagline || "Medical Excellence"}
@@ -45,14 +44,13 @@ const Footer = () => {
             <p className="text-white/60 leading-relaxed font-bold text-sm max-w-sm">
               Providing comprehensive vascular care with compassion and precision for over 10+ years.
             </p>
-            {/* <div className="flex gap-4">
+            <div className="flex gap-4">
               {[Facebook, Instagram, Twitter].map((Icon, i) => (
                 <button key={i} className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/50 hover:bg-hospital-sun hover:text-white transition-all">
                   <Icon size={18} />
                 </button>
               ))}
-            </div> */}
-            <SocialLinks/>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -79,7 +77,7 @@ const Footer = () => {
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-hospital-sun rounded-full"></span>
             </h3>
             <ul className="mt-10 space-y-4">
-              {treatments.items.slice(0, 12).map((item) => (
+              {treatments.items.slice(0, 7).map((item) => (
                 <li key={item.slug}>
                   <Link to={`/treatments/${item.slug}`} className="text-white/60 hover:text-white transition-colors font-bold text-sm block">
                     {item.title}
