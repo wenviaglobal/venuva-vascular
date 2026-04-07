@@ -152,8 +152,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-bold text-white/40">
-          <p>© 2026 {brand.name}. All rights reserved.</p>
+        <div className="pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-xs  text-white">
+          <p className="text-base">© 2026 {brand.name}. All rights reserved. | <a  target="blank" href="https://wenvia.global">Designed and Developed by Wenvia Global Solutions Pvt Ltd</a></p>
           <div className="flex gap-8">
             <button className="hover:text-white transition-colors uppercase tracking-widest">Privacy Policy</button>
             <button className="hover:text-white transition-colors uppercase tracking-widest">Terms & Conditions</button>
