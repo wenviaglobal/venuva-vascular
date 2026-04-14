@@ -3,6 +3,7 @@ import { Send, Linkedin, Facebook, Instagram, Activity, MapPin, Phone, Mail, Mes
 import { brand, footer, header, treatments } from "../data";
 import { Link, useLocation } from "react-router-dom";
 import logo from '../assets/venuva-logo.png'
+import SocialLinks from "./utils/SocialLinks";
 
 const Footer = () => {
   const location = useLocation();
@@ -45,11 +46,7 @@ const Footer = () => {
               Providing comprehensive vascular care with compassion and precision for over 10+ years.
             </p>
             <div className="flex gap-4">
-              {[Facebook, Instagram, Twitter].map((Icon, i) => (
-                <button key={i} className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/50 hover:bg-hospital-sun hover:text-white transition-all">
-                  <Icon size={18} />
-                </button>
-              ))}
+              <SocialLinks/>
             </div>
           </div>
 
@@ -77,7 +74,7 @@ const Footer = () => {
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-hospital-sun rounded-full"></span>
             </h3>
             <ul className="mt-10 space-y-4">
-              {treatments.items.slice(0, 7).map((item) => (
+              {treatments.items.slice(0, 12).map((item) => (
                 <li key={item.slug}>
                   <Link to={`/treatments/${item.slug}`} className="text-white/60 hover:text-white transition-colors font-bold text-sm block">
                     {item.title}
@@ -152,8 +149,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-xs  text-white">
-          <p className="text-base">© 2026 {brand.name}. All rights reserved. | <a  target="blank" href="https://wenvia.global">Designed and Developed by Wenvia Global Solutions Pvt Ltd</a></p>
+        <div className="pt-5 flex flex-col md:flex-row justify-between items-center gap-6 text-xs  text-white">
+          <p className="text-md">© 2026 {brand.name}. All rights reserved. | <a  target="blank" href="https://wenvia.global">Designed and Developed by Wenvia Global Solutions Pvt Ltd</a></p>
           <div className="flex gap-8">
             <button className="hover:text-white transition-colors uppercase tracking-widest">Privacy Policy</button>
             <button className="hover:text-white transition-colors uppercase tracking-widest">Terms & Conditions</button>
