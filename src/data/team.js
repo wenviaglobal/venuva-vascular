@@ -35,7 +35,7 @@ export const doctorsSection = {
       name: "Dr. Monish V",
       specialty: "Vascular Interventional Radiologist ",
       image: imgMonish,
-      bio: "An expert in interventional radiology, Dr. Shishir Kumar specializes in minimally invasive treatments for DVT, Peripheral Angioplasty, and other complex vascular conditions.",
+      bio: "An expert in interventional radiology, Dr. Monish V specializes in minimally invasive treatments for DVT, Peripheral Angioplasty, and other complex vascular conditions.",
       // qualifications: ["MBBS", "MD Radiology", "DNB"],
       certifications: ["Vascular Society of India", "ISVIR member"],
       achievements: ["Success in 3000+ Vascular Interventions", "Renowned Specialist in Bangalore"],
@@ -48,10 +48,34 @@ export const doctorsSection = {
         biography: `Dr. Monish V is a Vascular Interventional Radiologist with over a decade of experience in minimally invasive, image-guided treatments. He specializes in helping patients avoid major surgery by providing proven non-surgical and catheter-based solutions wherever possible.\n
          His clinical focus includes conditions such as varicose veins, varicocele, uterine fibroids, thyroid nodules, enlarged prostate, blocked leg arteries, and selected cases of deep vein thrombosis. Most procedures are performed as day-care treatments with faster recovery, minimal discomfort, and no surgical scars.\n
          Dr. Monish has been published in reputed national and international journals and has presented his work at leading interventional radiology conferences. He is actively involved in advancing evidence-based, minimally invasive care.`,
-        expertise: ["Varicose Veins","Uterine Fibroids Embolization (UFE)","Enlarged Prostate (BPH)","Blocked Leg Arteries (PAD)","Varicocele (Male Infertility)","Thyroid Nodules","Image-Guided Biopsies & FNAC","Deep Vein Thrombosis (DVT)"],
-        education: ["MBBS", "MD Radiology", "DNB"],
-        publications: ["Advancements in DVT Treatment - Vascular Journal", "Minimal Access Procedures in Modern Medicine"],
-        memberships: ["Vascular Society of India", "Indian Society of Vascular & Interventional Radiology (ISVIR)"]
+        expertise: [
+    "Vascular Interventions - Peripheral & central angioplasty/stenting",
+    "DVT & IVC filter management",
+    "Varicose vein treatments (EVLT/Venaseal)",
+    "Vascular malformation embolization",
+    "AV fistula care",
+    "Catheter placements (Permacath, PICC, Hickman, Mahurkar)",
+    "Head & Neck Interventions - Carotid stenting, pre-operative tumor embolization, diagnostic angiograms, intra-arterial chemotherapy, JNA embolization",
+    "Chest Interventions - Bronchial artery embolization, pulmonary embolism management",
+    "Hepatobiliary Interventions - Transjugular liver biopsy, PTBD & biliary stenting, hepatic/IVC stenting, HCC therapies (TACE, RFA, MWA), BRTO/PRTO, portal vein embolization",
+    "Gastrointestinal Interventions - Embolization for pancreatitis vascular complications, splenic embolization, emergency GI bleed control, SMA thrombosis/mesenteric ischemia management",
+    "Urological Interventions - Percutaneous nephrostomy, renal artery embolization, ureteric stenting, dialysis catheters, renal angioplasty/stenting",
+    "Gynecological Interventions - Uterine fibroid embolization, uterine AVM treatment, PPH management",
+    "Prostate & Male Infertility Interventions - TRUS-guided prostate biopsy, prostate artery embolization, varicocele embolization",
+    "Bone & Musculoskeletal Interventions - Bone biopsy, bone tumor ablation (RFA), intra-articular injections",
+    "Other Image-Guided Procedures - Pigtail drainage, biopsies (liver, kidney, lung, prostate, bone), pancreatic collection drainage"
+  ],
+        education: ["MBBS", "MD (Radiology)", "FVIR"],
+                publications: [
+            "primary Intracranial Leiomyoma – A Case Report And Literature Review (Indian Journal Of Radiology And Imaging, 2019)",
+            "Carotid Body Tumour – Case Series And Literature Review (2024)",
+            "Endovascular Embolization As The Keystone Therapeutic Strategy In Management Of Renal Artery Pseudoaneurysms And AV Fistula : A Case Series (2024)",
+            "Bronchial Dieulafoy Lesion: A Rare Cause Of Massive Hemoptysis Controlled By Endovascular Embolization – Case Report (Indian Journal Of Basic And Applied Medical Research, 2024)",
+            "Talk In Indian Medical Association On Importance Of Interventional Radiology (June 2024)",
+            "Talk In Workshop In Circon 2023 On Angiojet Mechanical Thrombectomy Device",
+            "Talk In Workshop In Circon 2024 On Angiojet Mechanical Thrombectomy Device"
+        ],
+                memberships: ["Indian Radiology and Imaging Association","Indian Society of Vascular and Interventional Radiology","Cardiovascular and Interventional Radiological Society of Europe","Society of Interventional Radiology"]
       }
     }
   ],

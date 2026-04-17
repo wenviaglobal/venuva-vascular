@@ -149,7 +149,7 @@ const RecoveryJourney = () => {
                         </div>
                       }
                       itemTwo={
-                        <div className="relative h-full w-full aspect-[4/5] md:aspect-auto">
+                        <div className="relative h-full w-full aspect-4/5 md:aspect-auto">
                           <ReactCompareSliderImage
                             src={activeCase.comparison.after.image}
                             alt={activeCase.comparison.after.label}

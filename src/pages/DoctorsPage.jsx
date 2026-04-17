@@ -193,19 +193,16 @@ const DoctorsPage = () => {
                                 <div className="w-1.5 h-8 bg-hospital-teal rounded-full" />
                                 <h4 className="text-xl font-black text-hospital-navy uppercase tracking-tight">Clinical Expertise</h4>
                               </div>
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
                                 {doctor.tabs.expertise.map((item, i) => (
                                   <motion.div 
                                     key={i} 
                                     initial={{ opacity: 0, x: -10 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: i * 0.05 }}
-                                    className="group p-5 bg-white rounded-2xl border border-slate-100 hover:border-hospital-teal/40 hover:shadow-2xl hover:shadow-hospital-teal/10 hover:ring-2 hover:ring-hospital-teal/5 transition-all flex items-center gap-4"
+                                    className="group p-5 bg-white rounded-2xl border border-slate-100 hover:border-hospital-teal/40 hover:shadow-2xl hover:shadow-hospital-teal/10 hover:ring-2 hover:ring-hospital-teal/5 transition-all flex items-center gap-4 "
                                   >
-                                    <div className="w-10 h-10 rounded-xl bg-hospital-teal/5 flex items-center justify-center text-hospital-teal group-hover:bg-hospital-teal group-hover:text-white transition-all shadow-inner">
-                                      <Stethoscope size={18} />
-                                    </div>
-                                    <p className="font-bold text-hospital-navy text-sm leading-tight tracking-tight">{item}</p>
+                                    <p className="font-bold text-hospital-navy text-sm leading-tight tracking-wide">{item}</p>
                                   </motion.div>
                                 ))}
                               </div>
