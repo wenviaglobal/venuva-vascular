@@ -53,7 +53,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 md:px-12 flex justify-between items-center relative">
         {/* Logo */}
         <Link to="/" onClick={handleHomeClick} className="flex items-center gap-4 group">
-          <img src={logo} alt="Venuva Vascular" className="h-[65px] md:h-[75px] w-auto object-contain transition-transform group-hover:scale-110" />
+          <img src={logo} alt="Venuva Vascular Logo" className="h-[65px] md:h-[75px] w-auto object-contain transition-transform group-hover:scale-110" loading="eager" />
         </Link>
 
         {/* Desktop Nav */}
@@ -72,7 +72,7 @@ const Navbar = () => {
                 >
                   <Link
                     to={link.href}
-                    className={`text-xs font-black uppercase tracking-widest transition-all px-4 py-2 rounded-lg flex items-center gap-1 group/link relative ${isActive || megaMenuOpen
+                    className={`text-xs font-black uppercase tracking-widest transition-all px-4 py-2 rounded-lg flex items-center gap-1 group/link relative outline-none focus-visible:ring-2 focus-visible:ring-hospital-teal ${isActive || megaMenuOpen
                       ? "text-hospital-teal"
                       : "text-hospital-navy/70 hover:text-hospital-navy"
                       }`}
@@ -163,7 +163,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className={`text-xs font-black uppercase tracking-widest transition-all relative px-4 py-2 ${isActive
+                className={`text-xs font-black uppercase tracking-widest transition-all relative px-4 py-2 outline-none focus-visible:ring-2 focus-visible:ring-hospital-teal ${isActive
                   ? "text-hospital-teal"
                   : "text-hospital-navy/70 hover:text-hospital-navy"
                   }`}
@@ -189,7 +189,7 @@ const Navbar = () => {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => window.location.href = `tel:${header.emergency.replace(/[^\d+]/g, '')}`}
-            className="hidden sm:flex bg-hospital-emerald text-white px-8 py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase hover:bg-hospital-navy transition-all shadow-xl shadow-hospital-navy/10 items-center gap-3"
+            className="hidden sm:flex bg-hospital-emerald text-white px-8 py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase hover:bg-hospital-navy transition-all shadow-xl shadow-hospital-navy/10 items-center gap-3 outline-none focus-visible:ring-2 focus-visible:ring-hospital-teal focus-visible:ring-offset-2"
           >
             <Phone size={16} />
             Call Us

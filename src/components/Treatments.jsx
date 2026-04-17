@@ -34,7 +34,7 @@ const Treatments = () => {
     >
       {/* Image Container with Inverted Radius Cutout */}
       <div className="relative w-full aspect-4/3 rounded-4xl overflow-hidden bg-slate-100 shadow-sm group-hover:shadow-xl transition-[shadow,transform] duration-500 border border-hospital-mint/30">
-        <img draggable={false} src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+        <img draggable={false} src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
         
         {/* The Cutout Block (bottom right) */}
         <div className="absolute bottom-0 right-0 w-22 h-22 bg-[#fcfdfd] rounded-tl-[1.8rem] z-10 flex items-end justify-end">

@@ -35,7 +35,7 @@ const Footer = () => {
           <div className="lg:col-span-3 space-y-8">
             <Link to="/" onClick={handleHomeClick} className="flex flex-col items-start gap-4 group">
               <div className="flex items-center gap-4">
-                <img src={logo} alt="Venuva Vascular" className="h-[65px] md:h-[75px] w-auto object-contain  group-hover:scale-110 transition-transform" />
+                <img src={logo} alt="Venuva Vascular Center Logo Footer" className="h-[65px] md:h-[75px] w-auto object-contain  group-hover:scale-110 transition-transform" loading="lazy" />
 
               </div>
               <span className="text-xs font-bold text-hospital-sun tracking-[0.3em] uppercase">

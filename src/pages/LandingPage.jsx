@@ -72,12 +72,12 @@ const LandingPage = () => {
       <header className="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-hospital-sky-blue/20">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <img src={logo} alt="Venuva Logo" className="h-[60px] w-auto object-contain" />
+            <img src={logo} alt="Venuva Vascular Logo" className="h-[60px] w-auto object-contain" />
 
           </div>
           <a
             href="tel:+919876543210"
-            className="bg-hospital-navy text-white px-6 py-2.5 rounded-full font-black text-sm flex items-center gap-2 hover:bg-hospital-teal transition-colors shadow-lg shadow-hospital-navy/20"
+            className="bg-hospital-navy text-white px-6 py-2.5 rounded-full font-black text-sm flex items-center gap-2 hover:bg-hospital-teal transition-colors shadow-lg shadow-hospital-navy/20 outline-none focus-visible:ring-2 focus-visible:ring-hospital-teal focus-visible:ring-offset-2"
           >
             <Phone size={16} /> CALL NOW
           </a>
@@ -194,7 +194,7 @@ const LandingPage = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full py-5 rounded-2xl font-black text-sm uppercase tracking-widest flex items-center justify-center gap-3 transition-all ${isSubmitting ? 'bg-hospital-slate cursor-not-allowed' : 'bg-hospital-teal hover:bg-white hover:text-hospital-navy shadow-xl shadow-hospital-teal/20'
+                    className={`w-full py-5 rounded-2xl font-black text-sm uppercase tracking-widest flex items-center justify-center gap-3 transition-all outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-hospital-navy ${isSubmitting ? 'bg-hospital-slate cursor-not-allowed' : 'bg-hospital-teal hover:bg-white hover:text-hospital-navy shadow-xl shadow-hospital-teal/20'
                       }`}
                   >
                     {isSubmitting ? 'Processing...' : 'Reserve My Slot'} <ArrowRight size={18} />
@@ -267,8 +267,8 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="lg:w-1/2 grid grid-cols-2 gap-4">
-              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800" alt="Hospital Interior" className="rounded-3xl shadow-xl" />
-              <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=800" alt="Specialist Doctor" className="rounded-3xl shadow-xl mt-12" />
+              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800" alt="Venuva Vascular Hospital Interior" className="rounded-3xl shadow-xl" loading="lazy" />
+              <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=800" alt="Vascular Specialist Doctor at Venuva" className="rounded-3xl shadow-xl mt-12" loading="lazy" />
             </div>
           </div>
         </div>
@@ -278,7 +278,7 @@ const LandingPage = () => {
       <footer className="py-12 bg-white border-t border-hospital-sky-blue/20">
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-2 mb-8">
-            <img src={logo} alt="Venuva Logo" className="h-8 w-auto grayscale opacity-50" />
+            <img src={logo} alt="Venuva Vascular Logo Footer" className="h-8 w-auto grayscale opacity-50" loading="lazy" />
             <span className="font-black text-hospital-slate uppercase tracking-tighter">Venuva Vascular</span>
           </div>
           <p className="text-xs font-black uppercase tracking-[0.4em] text-hospital-slate">

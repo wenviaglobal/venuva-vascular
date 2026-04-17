@@ -88,7 +88,7 @@ const TreatmentDetail = () => {
             <Link to="/" className="hover:text-white transition-colors">Home</Link>
             <Link to="/treatments" className="hover:text-white transition-colors">Treatments</Link>
             {category && (
-              <span className="text-white/80  ">{category.title}</span>
+              <span className="text-white/80">{category.title}</span>
             )}
             <span className="text-hospital-sun">{treatment.title}</span>
           </nav>
@@ -122,8 +122,9 @@ const TreatmentDetail = () => {
                 <div className="absolute -inset-4 rounded-4xl bg-hospital-sky-blue/20 blur-xl" />
                 <img
                   src={treatment.image}
-                  alt={treatment.title}
+                  alt={`Vascular Procedure: ${treatment.title}`}
                   className="relative object-cover rounded-t-4xl  shadow-xl"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -406,8 +407,9 @@ const TreatmentDetail = () => {
                       <div className="relative shrink-0">
                         <img
                           src={doc.image}
-                          alt={doc.name}
+                          alt={`Specialist: ${doc.name}`}
                           className="w-12 h-12 object-cover rounded-lg border border-slate-100 shadow-sm group-hover:scale-105 group-hover:border-hospital-teal/30 transition-all duration-300"
+                          loading="lazy"
                         />
                         <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
                       </div>

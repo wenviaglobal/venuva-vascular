@@ -96,6 +96,7 @@ const DoctorsPage = () => {
                       src={doctor.image}
                       alt={doctor.name}
                       className="w-full max-h-[60vh] lg:aspect-4/5 object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-hospital-navy/90 via-transparent to-transparent flex flex-col justify-end p-6">
                       <h2 className="text-2xl font-black text-white mb-1">{doctor.name}</h2>

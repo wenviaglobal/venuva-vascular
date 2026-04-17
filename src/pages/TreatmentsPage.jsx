@@ -164,6 +164,7 @@ const TreatmentsPage = () => {
                             src={item.image}
                             alt={item.title}
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            loading="lazy"
                           />
                           <div className="absolute inset-0 bg-linear-to-t from-hospital-dark-navy/80 via-hospital-navy/20 to-transparent" />
                         </Link>

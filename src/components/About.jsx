@@ -45,8 +45,9 @@ const About = () => {
             <div className="relative mt-12 z-10 rounded-4xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
               <img
                 src={about.image}
-                alt="Vascular Specialists"
+                alt="Expert Vascular Specialists at Venuva Center"
                 className="w-full h-[500px] object-cover"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-linear-to-t from-hospital-navy/40 to-transparent"></div>
             </div>
@@ -61,7 +62,7 @@ const About = () => {
                 {/* <div className="w-px h-16 bg-hospital-slate/20 mx-1" /> */}
                 <div>
                   <p className="text-xl font-black text-hospital-sun uppercase tracking-widest">10+ Years</p>
-                  <p className="text-lg text-hospital-emerald font-bold capitalize tracking-widest">Experience</p>
+                  <p className="text-lg text-hospital-navy font-bold capitalize tracking-widest">Experience</p>
                 </div>
               </div>
             </div>
