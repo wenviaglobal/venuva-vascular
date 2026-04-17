@@ -20,39 +20,58 @@ const HomeSlider = ({ slides }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
+    }, 7000);
     return () => clearInterval(timer);
   }, [slides.length]);
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
+  const dragThreshold = 50;
+  const onDragEnd = (event, info) => {
+    if (info.offset.x < -dragThreshold) {
+      nextSlide();
+    } else if (info.offset.x > dragThreshold) {
+      prevSlide();
+    }
+  };
+
   if (!slides || slides.length === 0) return null;
 
   return (
-    <div className="relative w-full h-[calc(100vh-80px)] min-h-[550px] md:min-h-full overflow-hidden bg-hospital-navy flex items-center group">
+    <div className="relative w-full h-[calc(100vh-80px)] min-h-[550px] md:min-h-full overflow-hidden bg-hospital-navy flex items-center group touch-pan-y">
       
-      {/* 1. Background Layers */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentSlide}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="absolute inset-0 z-0"
-        >
-          <img
-            src={slides[currentSlide].image}
-            alt={slides[currentSlide].heading}
-            className="w-full h-full object-cover object-top"
-          />
-          <div className="absolute inset-x-0 inset-y-0 bg-linear-to-r from-hospital-navy/60 via-hospital-navy/10 to-transparent z-10" />
-        </motion.div>
-      </AnimatePresence>
+      {/* 1. Draggable Slider Surface */}
+      <motion.div 
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.2}
+        onDragEnd={onDragEnd}
+        className="absolute inset-x-0 inset-y-0 z-0 cursor-grab active:cursor-grabbing"
+      >
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <img
+              src={slides[currentSlide].image}
+              alt={slides[currentSlide].heading}
+              className="w-full h-full object-cover object-top pointer-events-none select-none"
+              fetchpriority="high"
+              loading="eager"
+            />
+            <div className="absolute inset-x-0 inset-y-0 bg-linear-to-r from-hospital-navy/60 via-hospital-navy/10 to-transparent z-10" />
+          </motion.div>
+        </AnimatePresence>
+      </motion.div>
 
       {/* 2. Content Layer */}
-      <div className="absolute inset-0 z-10 container mx-auto px-4 sm:px-6 md:px-12 flex flex-col justify-center pb-32 sm:pb-40 md:pb-24">
+      <div className="absolute inset-0 z-10 container mx-auto px-4 sm:px-6 md:px-12 flex flex-col justify-center pb-28 sm:pb-32 md:pb-24">
         <div className="w-full md:w-2/3 lg:w-[55%]">
           <AnimatePresence mode="wait">
             <motion.div
@@ -67,7 +86,7 @@ const HomeSlider = ({ slides }) => {
                 {slides[currentSlide].subheading}
               </p>
 
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 md:mb-6">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-3 md:mb-6">
                 {slides[currentSlide].heading}
               </h1>
 
@@ -94,29 +113,35 @@ const HomeSlider = ({ slides }) => {
             </motion.div>
           </AnimatePresence>
         </div>
-      </div>
 
-      {/* 3. Stationary Navigation Arrows */}
-      <div className="absolute bottom-28 md:bottom-32 left-0 w-full z-40 pointer-events-none">
-        <div className="container mx-auto px-4 sm:px-6 md:px-12 flex justify-center">
-          <div className="flex items-center gap-2 pointer-events-auto">
-            <button
-              onClick={prevSlide}
-              className="w-12 h-12 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-lg border border-white/10 transition-all shadow-xl"
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="w-12 h-12 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-lg border border-white/10 transition-all shadow-xl"
-            >
-              <ChevronRight size={20} />
-            </button>
+        {/* 4. Options & Navigation Controls (Locked Position) */}
+        <div className="absolute min-[450px]:bottom-32 bottom-36 md:bottom-28 left-4 sm:left-6 md:left-12 z-50">
+          <div className="flex items-center gap-3">
+            {slides.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                className={`group relative h-1.5 rounded-full transition-all duration-500 overflow-hidden ${
+                  currentSlide === idx ? "w-12 md:w-16 bg-white" : "w-6 md:w-8 bg-white/20 hover:bg-white/40"
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              >
+                {currentSlide === idx && (
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    key={`progress-${currentSlide}`}
+                    transition={{ duration: 7, ease: "linear" }}
+                    className="absolute inset-0 bg-hospital-sun shadow-[0_0_15px_rgba(245,158,11,0.6)]"
+                  />
+                )}
+              </button>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* 4. Stats Banner */}
+      {/* 3. Stats Banner */}
       <div className="absolute bottom-0 left-0 w-full z-30 bg-hospital-navy/80 backdrop-blur-xl border-t border-white/10 py-6">
         <div className="container mx-auto px-4 sm:px-6 md:px-12">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">

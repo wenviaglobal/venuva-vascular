@@ -1,4 +1,4 @@
-import slide1 from "../assets/1st-Slide.webp";
+import slide1 from "../assets/hero-lcp.webp";
 import slide2 from "../assets/2nd-slide.webp";
 import slide3 from "../assets/3rd_Slide.webp";
 import slide4 from '../assets/4th-Slide.webp'
