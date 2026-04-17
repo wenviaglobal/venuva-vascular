@@ -1,48 +1,91 @@
 import nodemailer from 'nodemailer';
-import { render } from '@react-email/components';
-import Email, { ContactEmail } from '../src/components/utils/Email';
 
+export default async function handler(req, res) {
+  // 1. Only allow POST requests
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
+  }
 
+  const { name, email, phone, subject, message } = req.body;
 
-export default async function handler(req,res){
-    if (req.method !== 'POST') return res.status(405).end();
+  // 2. Basic Validation
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: 'Missing required fields (name, email, message)' });
+  }
 
-    const {name, email, phone, subject, message}=req.body;
+  try {
+    // 3. Configure Transporter using existing .env names
+    const transporter = nodemailer.createTransport({
+      host: process.env.VITE_SMTP_HOST || 'smtp.gmail.com',
+      port: parseInt(process.env.VITE_SMTP_PORT || '587'),
+      secure: process.env.VITE_SMTP_PORT === '465', // True for 465, false for 587
+      auth: {
+        user: process.env.VITE_AUTH_USERNAME,
+        pass: process.env.VITE_AUTH_PASSWOrD, 
+      },
+      tls: {
+        rejectUnauthorized: false // Helps with some hosting providers
+      }
+    });
 
-    try {
-        const transporter = nodemailer.createTransport({
-            host: process.env.VITE_SITE_URL,
-            port: VITE_SMTP_PORT,
-            secure: true,
-            auth: {
-                user: process.env.VITE_AUTH_USERNAME,
-                pass: VITE_AUTH_PASSWOrD
-            }
-        })
+    // 4. Build a high-quality HTML template (Matched to Venuva Branding)
+    const emailHtml = `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
+        <div style="background-color: #005F56; padding: 30px; text-align: center; border-bottom: 4px solid #F59E0B;">
+          <h1 style="color: white; margin: 0; font-size: 24px;">Venuva Vascular Center</h1>
+          <p style="color: #B2D1CE; margin: 5px 0 0; font-size: 12px; letter-spacing: 1px;">NEW PATIENT INQUIRY</p>
+        </div>
+        <div style="padding: 30px; background-color: white;">
+          <h2 style="color: #005F56; font-size: 20px; margin-top: 0;">Inquiry Details</h2>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="padding: 10px 0; color: #64748b; font-size: 12px; font-weight: bold; text-transform: uppercase; width: 100px;">Name</td>
+              <td style="padding: 10px 0; color: #1e1b4b; font-weight: bold;">${name}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; color: #64748b; font-size: 12px; font-weight: bold; text-transform: uppercase;">Email</td>
+              <td style="padding: 10px 0; color: #0891B2; font-weight: bold;"><a href="mailto:${email}" style="color: #0891B2; text-decoration: none;">${email}</a></td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; color: #64748b; font-size: 12px; font-weight: bold; text-transform: uppercase;">Phone</td>
+              <td style="padding: 10px 0; color: #1e1b4b; font-weight: bold;">${phone || 'Not provided'}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; color: #64748b; font-size: 12px; font-weight: bold; text-transform: uppercase;">Subject</td>
+              <td style="padding: 10px 0; color: #1e1b4b;">${subject || 'General Inquiry'}</td>
+            </tr>
+          </table>
+          
+          <div style="margin-top: 30px; padding: 20px; background-color: #F8FAFC; border-left: 4px solid #F59E0B; border-radius: 4px;">
+            <p style="margin: 0; color: #64748b; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px;">Message</p>
+            <p style="margin: 0; color: #334155; line-height: 1.6;">${message}</p>
+          </div>
+        </div>
+        <div style="background-color: #F8FAFC; padding: 20px; text-align: center; font-size: 11px; color: #94a3b8; border-top: 1px solid #e2e8f0;">
+          <p>This inquiry was sent from the Venuva Vascular contact form.</p>
+        </div>
+      </div>
+    `;
 
-        const emailhtml=await render(
-            <Email
-            name={name}
-            email={email}
-            phone={phone}
-            subject={subject}
-            message={message}
-            />
-        );
+    // 5. Email Options
+    const mailOptions = {
+      from: `"Venuva Website" <${process.env.VITE_AUTH_USERNAME}>`,
+      to: process.env.VITE_RECEIVER_MAIL || process.env.VITE_AUTH_USERNAME,
+      subject: `New Patient Inquiry: ${subject || 'Website Lead'} - From ${name}`,
+      html: emailHtml,
+      replyTo: email,
+    };
 
-        const options = {
-            from: `Venuva Vascular Center, ${process.env.VITE_AUTH_USERNAME}`,
-            to: process.env.VITE_RECEIVER_MAIL,
-            subject: `New Patient Enquiry ${subject}`,
-            html: emailhtml
-        }
+    // 6. Send
+    await transporter.sendMail(mailOptions);
 
-
-        await transporter.sendMail(options)
-
-        res.status(200).json({sucess : true})
-    } catch (error) {
-        res.status(500).json({error:error.message})
-    }
-
+    return res.status(200).json({ success: true, message: 'Email sent successfully' });
+    
+  } catch (error) {
+    console.error('SMTP Error:', error);
+    return res.status(500).json({ 
+      error: 'Failed to send email', 
+      details: error.message 
+    });
+  }
 }
