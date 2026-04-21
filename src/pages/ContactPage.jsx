@@ -17,7 +17,15 @@ const iconMap = {
 
 const ContactPage = () => {
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, watch, formState: { errors, isValid } } = useForm({
+    mode: "onChange"
+  });
+  const phoneValue = watch("phone", "");
+  const nameValue = watch("name", "");
+  const emailValue = watch("email", "");
+  const messageValue = watch("message", "");
+  const isPhoneValid = /^[6-9]\d{9}$/.test(phoneValue.replace(/\s/g, ''));
+  const isFormComplete = nameValue && emailValue && isPhoneValid && messageValue;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('idle'); // 'idle' | 'success' | 'error'
 
@@ -123,11 +131,23 @@ const ContactPage = () => {
                     <label className="text-xs font-black uppercase tracking-widest text-hospital-slate ml-4">Phone Number</label>
                     <input 
                       type="tel" 
-                      {...register("phone", { required: "Phone number is required" })}
-                      className={`w-full px-6 py-4 rounded-2xl bg-hospital-soft-blue border ${errors.phone ? 'border-red-400' : 'border-hospital-mint'} focus:border-hospital-teal focus:bg-white outline-hidden transition-all font-bold text-hospital-navy`} 
+                      {...register("phone", { 
+                        required: "Phone number is required",
+                        pattern: {
+                          value: /^[6-9]\d{9}$/,
+                          message: "Please enter a valid 10-digit mobile number"
+                        }
+                      })}
+                      className={`w-full px-6 py-4 rounded-2xl bg-hospital-soft-blue border outline-hidden transition-all font-bold text-hospital-navy ${
+                        !phoneValue 
+                          ? 'border-hospital-mint focus:border-hospital-teal focus:bg-white' 
+                          : isPhoneValid 
+                            ? 'border-green-500 bg-green-50/30 focus:border-green-600' 
+                            : 'border-red-400 bg-red-50/30 focus:border-red-500'
+                      }`} 
                       placeholder="+91 98765 43210" 
                     />
-                    {errors.phone && <p className="text-red-500 text-xs font-bold ml-4">{errors.phone.message}</p>}
+                    {errors.phone && <p className="text-red-500 text-[10px] font-bold ml-4 uppercase tracking-wider">{errors.phone.message}</p>}
                   </div>
                   <div className="space-y-3">
                     <label className="text-xs font-black uppercase tracking-widest text-hospital-slate ml-4">Subject</label>
@@ -152,13 +172,23 @@ const ContactPage = () => {
                   {errors.message && <p className="text-red-500 text-xs font-bold ml-4">{errors.message.message}</p>}
                 </div>
 
-                <motion.button
+                  {/* Honeypot field - Keep hidden from users */}
+                  <div style={{ display: 'none' }}>
+                    <input
+                      type="text"
+                      {...register("website")}
+                      tabIndex="-1"
+                      autoComplete="off"
+                    />
+                  </div>
+
+                  <motion.button
                   type="submit"
-                  disabled={isSubmitting}
-                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
-                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  disabled={isSubmitting || !isFormComplete}
+                  whileHover={{ scale: (isSubmitting || !isFormComplete) ? 1 : 1.02 }}
+                  whileTap={{ scale: (isSubmitting || !isFormComplete) ? 1 : 0.98 }}
                   className={`w-full text-white py-5 rounded-2xl font-black text-sm uppercase tracking-[0.15em] flex items-center justify-center gap-4 shadow-xl transition-colors ${
-                    isSubmitting ? 'bg-hospital-slate cursor-not-allowed' : 'bg-hospital-navy shadow-hospital-navy/20'
+                    (isSubmitting || !isFormComplete) ? 'bg-hospital-slate cursor-not-allowed opacity-70' : 'bg-hospital-navy shadow-hospital-navy/20 hover:bg-hospital-teal'
                   }`}
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'} <Send size={18} />

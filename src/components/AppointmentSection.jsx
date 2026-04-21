@@ -13,13 +13,13 @@ const AppointmentSection = () => {
   const handleWhatsAppSubmit = (e) => {
     e.preventDefault();
     const message = `Hello Venuva Vascular! I would like to book an appointment.\n\n*Details:*\n- Patient Name: ${formData.name}\n- Mobile Number: ${formData.phone}\n\nPlease let me know the availability.`;
-    
+
     // Clean phone number: remove all non-digits
     const rawNumber = import.meta.env.VITE_WHATSAPP_NUMBER || appointment?.whatsapp || '919019900716';
     const cleanNumber = rawNumber.replace(/\D/g, '');
-    
+
     const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
-    
+
     // Using window.location.href is more reliable for triggering deep links on mobile
     window.location.href = whatsappUrl;
   };

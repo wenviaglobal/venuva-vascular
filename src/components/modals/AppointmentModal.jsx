@@ -1,42 +1,52 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { X, Calendar, Phone, User, Send, CheckCircle } from "lucide-react";
+import { X, Calendar, Phone, User, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import axios from "axios";
 import { useAppointment } from "../../context/AppointmentContext";
-import { footer } from "../../data";
 
 const AppointmentModal = () => {
   const { isModalOpen, closeModal } = useAppointment();
   const [formData, setFormData] = useState({
     name: "",
-    phone: ""
+    phone: "",
+    website: "" // Honeypot field
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-  const handleWhatsAppSubmit = (e) => {
+
+  const isPhoneValid = (num) => /^[6-9]\d{9}$/.test(num.replace(/\s/g, ''));
+  const phoneStarted = formData.phone.length > 0;
+  const isFormValid = formData.name.length > 2 && isPhoneValid(formData.phone);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitStatus('submitting');
 
-    const message = `Hello Venuva Vascular! I would like to book an appointment.\n\n*Details:*\n- Patient Name: ${formData.name}\n- Mobile Number: ${formData.phone}\n\nPlease let me know the availability.`;
-
-    // Clean phone number: remove all non-digits
-    const rawNumber = import.meta.env.VITE_WHATSAPP_NUMBER || footer?.contactUs?.whatsapp || '919019900716';
-    const cleanNumber = rawNumber.replace(/\D/g, '');
-
-    const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
-
-    // Using window.location.href is more reliable for triggering deep links on mobile
-    window.location.href = whatsappUrl;
-    setIsSubmitted(true);
-
-    // Close modal after a short delay to show success state
-    setTimeout(() => {
-      closeModal();
-      setIsSubmitted(false);
-      setFormData({ name: "", phone: "" });
-    }, 2000);
+    // 1. Capture Lead in Background
+    try {
+      const response = await axios.post('/api/book-appointment', formData);
+      if (response.status === 200) {
+        setSubmitStatus('success');
+        
+        // Close modal after a delay to show success state
+        setTimeout(() => {
+          closeModal();
+          setSubmitStatus('idle');
+          setFormData({ name: "", phone: "" });
+        }, 4000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Lead capture failed:', error);
+      setSubmitStatus('error');
+      // Reset to idle after 5 seconds to let them try again
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    }
   };
 
   return (
@@ -81,7 +91,7 @@ const AppointmentModal = () => {
 
             {/* Form Body */}
             <div className="p-8 md:p-10">
-              {isSubmitted ? (
+              {submitStatus === 'success' ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -90,11 +100,25 @@ const AppointmentModal = () => {
                   <div className="w-20 h-20 bg-amber-50 rounded-full flex items-center justify-center mx-auto text-hospital-sun mb-6">
                     <CheckCircle size={48} />
                   </div>
-                  <h4 className="text-2xl font-black text-hospital-navy uppercase">Success!</h4>
-                  <p className="font-bold text-hospital-slate">Redirecting to WhatsApp...</p>
+                  <h4 className="text-2xl font-black text-hospital-navy uppercase">Thank You!</h4>
+                  <p className="font-bold text-hospital-slate text-lg">Your request has been received.</p>
+                  <p className="font-semibold text-hospital-teal italic">Our care team will call you shortly to confirm your appointment slot.</p>
+                </motion.div>
+              ) : submitStatus === 'error' ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="py-12 text-center space-y-4"
+                >
+                  <div className="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto text-red-500 mb-6">
+                    <AlertCircle size={48} />
+                  </div>
+                  <h4 className="text-2xl font-black text-hospital-navy uppercase">Submission Failed</h4>
+                  <p className="font-bold text-hospital-slate">We couldn't process your request at this moment.</p>
+                  <p className="font-semibold text-red-500">Please try again in a few seconds or call us directly.</p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleWhatsAppSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-4">
                     <div className="space-y-2">
                       <label className="text-xs font-black uppercase tracking-widest text-hospital-slate ml-4">Full Name</label>
@@ -103,11 +127,12 @@ const AppointmentModal = () => {
                         <input
                           type="text"
                           name="name"
+                          disabled={submitStatus === 'submitting'}
                           value={formData.name}
                           onChange={handleInputChange}
                           required
                           placeholder="Patient Name"
-                          className="w-full bg-hospital-soft-blue border border-hospital-mint rounded-2xl pl-12 pr-4 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-hospital-teal/20 transition-all font-bold"
+                          className="w-full bg-hospital-soft-blue border border-hospital-mint rounded-2xl pl-12 pr-4 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-hospital-teal/20 transition-all font-bold disabled:opacity-50"
                         />
                       </div>
                     </div>
@@ -115,33 +140,66 @@ const AppointmentModal = () => {
                     <div className="space-y-2">
                       <label className="text-xs font-black uppercase tracking-widest text-hospital-slate ml-4">Phone Number</label>
                       <div className="relative">
-                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
+                        <Phone className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors ${
+                          !phoneStarted ? 'text-slate-300' : isPhoneValid(formData.phone) ? 'text-green-500' : 'text-red-400'
+                        }`} size={18} />
                         <input
                           type="tel"
                           name="phone"
+                          disabled={submitStatus === 'submitting'}
                           value={formData.phone}
                           onChange={handleInputChange}
                           required
-                          pattern="[0-9]{10}"
-                          title="Please enter a 10 digit mobile number"
                           placeholder="10 Digit Mobile Number"
-                          className="w-full bg-hospital-soft-blue border border-hospital-mint rounded-2xl pl-12 pr-4 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-hospital-teal/20 transition-all font-bold"
+                          className={`w-full bg-hospital-soft-blue border rounded-2xl pl-12 pr-4 py-4 text-sm focus:outline-none focus:ring-2 transition-all font-bold disabled:opacity-50 ${
+                            !phoneStarted 
+                              ? 'border-hospital-mint focus:ring-hospital-teal/20' 
+                              : isPhoneValid(formData.phone)
+                                ? 'border-green-500 bg-green-50/30 focus:ring-green-500/10'
+                                : 'border-red-400 bg-red-50/30 focus:ring-red-400/10'
+                          }`}
                         />
                       </div>
+                      {phoneStarted && !isPhoneValid(formData.phone) && (
+                        <p className="text-[10px] text-red-500 font-bold ml-4 mt-1 uppercase tracking-wider">
+                          Please enter a valid 10-digit mobile number
+                        </p>
+                      )}
                     </div>
                   </div>
 
-                  <div className="bg-hospital-soft-blue/50 p-4 rounded-2xl mb-8">
-                    <p className="text-xs text-hospital-navy font-bold leading-relaxed">
-                      * By clicking the button below, you will be redirected to WhatsApp to confirm your slot with our care coordinator.
+                  {/* Honeypot field - Keep hidden from users */}
+                  <div style={{ display: 'none' }}>
+                    <input
+                      type="text"
+                      name="website"
+                      value={formData.website}
+                      onChange={handleInputChange}
+                      tabIndex="-1"
+                      autoComplete="off"
+                    />
+                  </div>
+
+                  <div className="bg-hospital-soft-blue/50 p-6 rounded-2xl mb-8 border border-hospital-mint/30">
+                    <p className="text-xs text-hospital-navy font-bold leading-relaxed text-center">
+                      Expert consultation for Varicose Veins, DVT, and other vascular conditions.
                     </p>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-hospital-sun text-white py-5 rounded-2xl font-black text-sm uppercase tracking-[0.15em] shadow-xl hover:shadow-hospital-sun/20 hover:bg-hospital-sun transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3"
+                    disabled={submitStatus === 'submitting' || !isFormValid}
+                    className={`w-full py-5 rounded-2xl font-black text-sm uppercase tracking-[0.15em] shadow-xl transition-all flex items-center justify-center gap-3 ${
+                      (submitStatus === 'submitting' || !isFormValid)
+                      ? 'bg-hospital-slate opacity-70 cursor-not-allowed text-white/50' 
+                      : 'bg-hospital-sun text-white hover:shadow-hospital-sun/20 hover:bg-hospital-sun hover:scale-[1.02] active:scale-[0.98]'
+                    }`}
                   >
-                    Confirm Appointment <Send size={16} />
+                    {submitStatus === 'submitting' ? (
+                      <>Processing... <Loader2 className="animate-spin" size={18} /></>
+                    ) : (
+                      <>Confirm Appointment <Send size={16} /></>
+                    )}
                   </button>
                 </form>
               )}

@@ -6,22 +6,42 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  const { name, email, phone, subject, message } = req.body;
+  const { name, email, phone, subject, message, website } = req.body;
 
-  // 2. Basic Validation
+  // 1. Bot Protection (Honeypot)
+  if (website) {
+    return res.status(200).json({ success: true, message: 'Email sent successfully' }); // Quietly reject
+  }
+
+  // 2. Security Check (Origin/Referer)
+  const referer = req.headers.referer;
+  const allowedOrigin = process.env.VITE_SITE_URL || 'venuvavascular.com';
+  if (process.env.NODE_ENV === 'production' && referer && !referer.includes(allowedOrigin)) {
+    return res.status(403).json({ error: 'Unauthorized origin' });
+  }
+
+  // 3. Basic Validation
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Missing required fields (name, email, message)' });
+  }
+
+  // 4. Phone Validation (Guard)
+  if (phone) {
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+      return res.status(400).json({ error: 'Invalid phone number format' });
+    }
   }
 
   try {
     // 3. Configure Transporter using existing .env names
     const transporter = nodemailer.createTransport({
-      host: process.env.VITE_SMTP_HOST || 'smtp.gmail.com',
-      port: parseInt(process.env.VITE_SMTP_PORT || '587'),
-      secure: process.env.VITE_SMTP_PORT === '465', // True for 465, false for 587
+      host: process.env.SMTP_HOST || 'smtp.gmail.com',
+      port: parseInt(process.env.SMTP_PORT || '587'),
+      secure: process.env.SMTP_PORT === '465', // True for 465, false for 587
       auth: {
-        user: process.env.VITE_AUTH_USERNAME,
-        pass: process.env.VITE_AUTH_PASSWOrD, 
+        user: process.env.AUTH_USERNAME,
+        pass: process.env.AUTH_PASSWOrD,
       },
       tls: {
         rejectUnauthorized: false // Helps with some hosting providers
@@ -69,8 +89,8 @@ export default async function handler(req, res) {
 
     // 5. Email Options
     const mailOptions = {
-      from: `"Venuva Website" <${process.env.VITE_AUTH_USERNAME}>`,
-      to: process.env.VITE_RECEIVER_MAIL || process.env.VITE_AUTH_USERNAME,
+      from: `"Venuva Website" <${process.env.AUTH_USERNAME}>`,
+      to: process.env.RECEIVER_MAIL || process.env.AUTH_USERNAME,
       subject: `New Patient Inquiry: ${subject || 'Website Lead'} - From ${name}`,
       html: emailHtml,
       replyTo: email,
@@ -80,12 +100,12 @@ export default async function handler(req, res) {
     await transporter.sendMail(mailOptions);
 
     return res.status(200).json({ success: true, message: 'Email sent successfully' });
-    
+
   } catch (error) {
     console.error('SMTP Error:', error);
-    return res.status(500).json({ 
-      error: 'Failed to send email', 
-      details: error.message 
+    return res.status(500).json({
+      error: 'Failed to send email',
+      details: error.message
     });
   }
 }
