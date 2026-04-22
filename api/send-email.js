@@ -14,11 +14,16 @@ export default async function handler(req, res) {
   }
 
   // 2. Security Check (Origin/Referer)
-  const referer = req.headers.referer;
-  const allowedOrigin = process.env.VITE_SITE_URL || 'venuvavascular.com';
-  if (process.env.NODE_ENV === 'production' && referer && !referer.includes(allowedOrigin)) {
-    return res.status(403).json({ error: 'Unauthorized origin' });
+  const referer = req.headers.referer || req.headers.origin || '';
+  if (process.env.NODE_ENV === 'production' && referer) {
+    const isLocal = referer.includes('localhost') || referer.includes('127.0.0.1');
+    const isMainSite = referer.includes('venuvavascular.com');
+    
+    if (!isLocal && !isMainSite) {
+      return res.status(403).json({ error: 'Unauthorized origin' });
+    }
   }
+
 
   // 3. Basic Validation
   if (!name || !email || !message) {
