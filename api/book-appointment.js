@@ -82,7 +82,7 @@ export default async function handler(req, res) {
             <p><strong>Patient Name:</strong> ${name}</p>
             <p><strong>Phone Number:</strong> <a href="tel:${phone}">${phone}</a></p>
             <hr />
-            <p style="font-size: 12px; color: #666;">This lead was captured via the web modal before WhatsApp redirection.</p>
+            <p style="font-size: 12px; color: #666;">This lead was captured securely via the Venuva Vascular website.</p>
           </div>
         `,
       };

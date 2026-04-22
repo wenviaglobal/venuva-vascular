@@ -62,7 +62,7 @@ const HomeSlider = ({ slides }) => {
               src={slides[currentSlide].image}
               alt={slides[currentSlide].heading}
               className="w-full h-full object-cover object-top pointer-events-none select-none"
-              fetchpriority="high"
+              fetchPriority="high"
               loading="eager"
             />
             <div className="absolute inset-x-0 inset-y-0 bg-linear-to-r from-hospital-navy/60 via-hospital-navy/10 to-transparent z-10" />
