@@ -13,16 +13,10 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true, message: 'Email sent successfully' }); // Quietly reject
   }
 
-  // 2. Security Check (Origin/Referer)
-  const referer = req.headers.referer || req.headers.origin || '';
-  if (process.env.NODE_ENV === 'production' && referer) {
-    const isLocal = referer.includes('localhost') || referer.includes('127.0.0.1');
-    const isMainSite = referer.includes('venuvavascular.com');
-    
-    if (!isLocal && !isMainSite) {
-      return res.status(403).json({ error: 'Unauthorized origin' });
-    }
-  }
+  // 2. Security Check (Relaxed)
+  // Removed strict Origin/Referer check to prevent 403 errors when users open the site
+  // via Google App WebViews or Caches. Bots can easily spoof this header anyway, 
+  // so we rely on the Honeypot above instead.
 
 
   // 3. Basic Validation
@@ -30,10 +24,11 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing required fields (name, email, message)' });
   }
 
-  // 4. Phone Validation (Guard)
+  // 4. Phone Validation (Guard) - Relaxed to allow +91, 0, and punctuation
   if (phone) {
-    const phoneRegex = /^[6-9]\d{9}$/;
-    if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+    const cleanPhoneInput = phone.replace(/[\s\-\(\)]/g, ''); 
+    const phoneRegex = /^(\+91|0)?[6-9]\d{9}$/;
+    if (!phoneRegex.test(cleanPhoneInput)) {
       return res.status(400).json({ error: 'Invalid phone number format' });
     }
   }

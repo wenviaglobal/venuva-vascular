@@ -15,24 +15,20 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true, message: 'Message "sent" successfully' });
   }
 
-  // 2. Security Check (Origin/Referer)
-  const referer = req.headers.referer || req.headers.origin || '';
-  if (process.env.NODE_ENV === 'production' && referer) {
-    const isLocal = referer.includes('localhost') || referer.includes('127.0.0.1');
-    const isMainSite = referer.includes('venuvavascular.com');
-    
-    if (!isLocal && !isMainSite) {
-      return res.status(403).json({ error: 'Unauthorized origin' });
-    }
-  }
+  // 2. Security Check (Relaxed)
+  // Removed strict Origin/Referer check. When users open the site via Google App WebViews, 
+  // Google Cache, or if the Google Business Profile links to a Vercel preview domain,
+  // the Referer header might not exactly match 'venuvavascular.com', causing a 403 Forbidden.
+  // Bots can easily spoof this header anyway, so we rely on the Honeypot above instead.
 
   if (!name || !phone) {
     return res.status(400).json({ error: 'Name and Phone are required' });
   }
 
-  // 3. Phone Validation (Guard)
-  const phoneRegex = /^[6-9]\d{9}$/;
-  if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+  // 3. Phone Validation (Guard) - Relaxed to allow +91, 0, and punctuation
+  const cleanPhoneInput = phone.replace(/[\s\-\(\)]/g, ''); 
+  const phoneRegex = /^(\+91|0)?[6-9]\d{9}$/;
+  if (!phoneRegex.test(cleanPhoneInput)) {
     return res.status(400).json({ error: 'Invalid phone number format' });
   }
 
