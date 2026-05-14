@@ -15,10 +15,38 @@ const SEO = ({
     const siteUrl = 'https://venuvascular.com'; // Placeholder - Update with your actual domain
     const fullUrl = `${siteUrl}${pathname}`;
 
-    const seoTitle = title || 'Venuva Vascular | Leading Vascular & Interventional Radiology Center';
-    const seoDescription = description || 'Expert minimally invasive treatments for varicose veins, thyroid nodules, UFE, and more at Venuva Vascular Center.';
-    const seoKeywords = keywords || 'vascular surgery india, interventional radiology, varicose veins treatment, thyroid ablation, UFE, Venuva Vascular';
+    const seoTitle = title || 'Best Varicose Vein & Vascular Treatment in Bengaluru | Venuva Vascular Center';
+    const seoDescription = description || 'Venuva Vascular Center offers advanced varicose vein and vascular treatments in Bengaluru with expert minimally invasive procedures.';
+    const seoKeywords = keywords || 'vascular treatment Bengaluru, varicose vein treatment Bengaluru, vascular clinic Bangalore, DVT treatment Bangalore, diabetic foot treatment Bangalore, angioplasty treatment Bengaluru, EVLT treatment Bangalore, vascular surgeon Bangalore';
     const seoCanonical = canonical || fullUrl;
+
+    const defaultSchema = {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Venuva Vascular Center",
+        "url": "https://venuvavascular.com/",
+        "logo": "https://venuvavascular.com/assets/venuva-logo-OgticSHR.png",
+        "image": "https://venuvavascular.com/assets/AboutUs-laHemSoL.webp",
+        "description": "Venuva Vascular Center offers advanced varicose vein and vascular treatments in Bengaluru with minimally invasive procedures and expert vascular care.",
+        "telephone": "+919019900716",
+        "medicalSpecialty": "Vascular Surgery",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "No. 38, 8th Cross Road, 5th Main Road, Malleshwaram",
+            "addressLocality": "Bengaluru",
+            "addressRegion": "Karnataka",
+            "postalCode": "560003",
+            "addressCountry": "IN"
+        },
+        "areaServed": "Bengaluru",
+        "sameAs": [
+            "https://www.instagram.com/",
+            "https://www.facebook.com/",
+            "https://www.linkedin.com/"
+        ]
+    };
+
+    const finalSchema = schema || defaultSchema;
 
     return (
         <Helmet>
@@ -31,25 +59,25 @@ const SEO = ({
             <meta name="googlebot" content="index, follow" />
             
             {/* OG Tags */}
-            <meta property="og:site_name" content="Venuva Vascular" />
+            <meta property="og:site_name" content="Venuva Vascular Center" />
             <meta property="og:locale" content="en_IN" />
             <meta property="og:title" content={seoTitle} />
             <meta property="og:description" content={seoDescription} />
             <meta property="og:url" content={seoCanonical} />
             <meta property="og:type" content={type} />
-            {image && <meta property="og:image" content={image} />}
+            <meta property="og:image" content={image || "https://venuvavascular.com/assets/AboutUs-laHemSoL.webp"} />
 
             {/* Twitter Tags */}
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={seoTitle} />
-            <meta name="twitter:description" content={seoDescription} />
-            {image && <meta name="twitter:image" content={image} />}
+            <meta name="twitter:description" content={description || "Advanced vascular and minimally invasive vein treatments in Bengaluru."} />
+            <meta name="twitter:image" content={image || "https://venuvavascular.com/assets/AboutUs-laHemSoL.webp"} />
             
             {/* JSON-LD Schema */}
-            {schema && (
+            {finalSchema && (
                 <script
                     type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(finalSchema) }}
                 />
             )}
         </Helmet>
