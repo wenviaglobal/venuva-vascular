@@ -1,4 +1,5 @@
 import PageHeader from "../components/PageHeader";
+import SEO from "../components/utils/SEO";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Megaphone } from "lucide-react";
 
@@ -20,6 +21,10 @@ const NewsPage = () => {
 
   return (
     <div className="bg-hospital-soft-blue/20 min-h-screen pb-24">
+      <SEO 
+        title="Hospital News & Updates | Venuva Vascular Center" 
+        description="Stay updated with the latest news, institutional milestones, and operational updates from Venuva Vascular Center." 
+      />
       <PageHeader
         title="Hospital News"
         subtitle="Operational Updates & Institutional Milestones"
