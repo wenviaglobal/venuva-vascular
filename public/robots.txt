@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://venuvascular.com/sitemap.xml
+Sitemap: https://venuvavascular.com/sitemap.xml
