@@ -12,7 +12,7 @@ const SEO = ({
     schema,
 }) => {
     const { pathname } = useLocation();
-    const siteUrl = 'https://venuvascular.com'; // Placeholder - Update with your actual domain
+    const siteUrl = 'https://venuvavascular.com'; // Placeholder - Update with your actual domain
     const fullUrl = `${siteUrl}${pathname}`;
 
     const seoTitle = title || 'Best Varicose Vein & Vascular Treatment in Bengaluru | Venuva Vascular Center';
