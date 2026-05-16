@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../components/utils/SEO";
 import { blogPosts } from "../data";
 import { 
   ArrowRight, Calendar, Clock, Search, 
@@ -47,6 +48,10 @@ const BlogPage = () => {
 
   return (
     <div className="bg-[#fcfdfd] min-h-screen relative">
+      <SEO 
+        title="Vascular Insights Blog | Venuva Vascular Center" 
+        description="Expert guidance, clinical updates, and medical insights on vascular health and interventional radiology." 
+      />
       <PageHeader 
         title="Vascular Insights" 
         subtitle="Expert Guidance & Clinical Updates" 

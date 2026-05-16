@@ -1,4 +1,5 @@
 import PageHeader from "../components/PageHeader";
+import SEO from "../components/utils/SEO";
 import { motion } from "framer-motion";
 import { Shield, Clock, Stethoscope, Microscope, Zap, Heart } from "lucide-react";
 
@@ -44,6 +45,10 @@ const ServicesPage = () => {
 
   return (
     <div className="bg-white min-h-screen pb-24">
+      <SEO 
+        title="Vascular Services | Venuva Vascular Center" 
+        description="Comprehensive clinical support, advanced diagnostics, and specialist consultations for vascular care." 
+      />
       <PageHeader
         title="Our Services"
         subtitle="Comprehensive Clinical Support & Patient Care"

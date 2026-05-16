@@ -1,4 +1,5 @@
 import PageHeader from "../components/PageHeader";
+import SEO from "../components/utils/SEO";
 import { motion } from "framer-motion";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { useState } from "react";
@@ -35,6 +36,10 @@ const FAQPage = () => {
 
   return (
     <div className="bg-hospital-soft-blue min-h-screen pb-24">
+      <SEO 
+        title="Patient FAQs | Venuva Vascular Center" 
+        description="Frequently asked questions about interventional radiology, varicose vein treatments, and vascular care at Venuva Vascular Center." 
+      />
       <PageHeader
         title="Patient FAQ"
         subtitle="Common Questions & Expert Answers"
