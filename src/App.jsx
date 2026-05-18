@@ -18,6 +18,7 @@ const FAQPage = lazy(() => import("./pages/FAQPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const NewsPage = lazy(() => import("./pages/NewsPage"));
 const TreatmentDetail = lazy(() => import("./pages/TreatmentDetail"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 // const LandingPage = lazy(() => import("./pages/LandingPage"));
 
 // Scroll to top or hash on route change
@@ -73,6 +74,7 @@ function AppContent() {
               <Route path="/news" element={<NewsPage />} />
               <Route path="/faq" element={<FAQPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="*" element={<NotFound />} />
               {/* <Route path="/checkup-offer" element={<LandingPage />} /> */}
             </Routes>
           </Suspense>
