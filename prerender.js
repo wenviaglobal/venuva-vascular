@@ -55,7 +55,10 @@ async function prerender() {
   console.log(`Found ${routes.length} routes to prerender.`);
 
   const server = await startServer();
-  const browser = await puppeteer.launch({ headless: 'new' });
+  const browser = await puppeteer.launch({
+    headless: 'new',
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
   const page = await browser.newPage();
 
   for (const route of routes) {
