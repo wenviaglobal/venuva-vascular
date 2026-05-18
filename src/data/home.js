@@ -7,32 +7,92 @@ import aboutUsImage from '../assets/images/AboutUs.webp'
 
 export const treatmentSEO = {
   "varicose-veins": {
-    title: "Varicose Veins Treatment | EVLA & Minimally Invasive Care | Venuva Vascular Center",
-    description: "Get relief from varicose veins at Venuva Vascular Center. Our minimally invasive EVLA and Venaseal treatments provide fast recovery, high success, and improved leg circulation."
+    title: "Varicose Veins Treatment in Bengaluru | Minimally Invasive Care | Venuva Vascular Center",
+    description: "Get relief from varicose veins at Venuva Vascular Center in Bengaluru. Our minimally invasive EVLA and Venaseal treatments provide fast recovery and high success."
   },
   "thyroid-ablation": {
-    title: "Thyroid Nodule Embolization | Non-Surgical Thyroid Treatment | Venuva Vascular Center",
-    description: "Reduce benign thyroid nodules safely with minimally invasive embolization at Venuva Vascular Center. Preserve thyroid function and avoid surgery with expert care."
+    title: "Thyroid Nodule Ablation in Bengaluru | Non-Surgical Treatment | Venuva Vascular Center",
+    description: "Reduce benign thyroid nodules safely with minimally invasive thermal ablation in Bengaluru. Preserve thyroid function and avoid surgery with our expert care."
   },
   "ufe": {
-    title: "Uterine Fibroid Embolization (UFE) | Non-Surgical Fibroid Treatment | Venuva Vascular Center",
-    description: "Treat uterine fibroids effectively with non-surgical uterine artery embolization at Venuva Vascular Center. Enjoy quick recovery, minimal discomfort, and long-lasting relief."
+    title: "Uterine Fibroid Embolization (UFE) in Bengaluru | Non-Surgical Treatment | Venuva",
+    description: "Treat uterine fibroids effectively with non-surgical UFE at Venuva Vascular Center in Bengaluru. Enjoy quick recovery, minimal discomfort, and long-lasting relief."
   },
   "varicocele": {
-    title: "Varicocele Embolization | Fertility-Preserving Treatment | Venuva Vascular Center",
-    description: "Preserve fertility and treat varicocele with minimally invasive embolization at Venuva Vascular Center. Safe, fast, and effective procedure with high success rates."
+    title: "Varicocele Embolization in Bengaluru | Fertility Treatment | Venuva Vascular Center",
+    description: "Preserve fertility and treat varicocele with minimally invasive embolization in Bengaluru. Safe, fast, and effective procedure with high success rates."
   },
   "dvt": {
-    title: "Deep Vein Thrombosis (DVT) Treatment | Catheter-Directed Thrombolysis | Venuva Vascular Center",
-    description: "Restore healthy leg circulation with catheter-directed thrombolysis for DVT at Venuva Vascular Center. Minimize complications with minimally invasive, high-success treatment."
+    title: "Deep Vein Thrombosis (DVT) Treatment in Bengaluru | Catheter-Directed Thrombolysis",
+    description: "Restore healthy leg circulation with catheter-directed thrombolysis for DVT at Venuva Vascular Center in Bengaluru. Minimally invasive, high-success treatment."
   },
   "peripheral-angioplasty": {
-    title: "Peripheral Vascular Disease (PVD) Treatment | Angioplasty & Stenting | Venuva Vascular Center",
-    description: "Treat blocked leg arteries safely with pinhole angioplasty and stenting at Venuva Vascular Center. Improve blood flow, reduce pain, and regain mobility."
+    title: "Peripheral Vascular Disease (PVD) Treatment in Bengaluru | Angioplasty & Stenting",
+    description: "Treat blocked leg arteries safely with pinhole angioplasty and stenting in Bengaluru. Improve blood flow, reduce pain, and regain mobility."
   },
   "pain-intervention": {
-    title: "Pain Interventions | Minimally Invasive Pain Management | Venuva Vascular Center",
-    description: "Relieve chronic pain with minimally invasive pain interventions at Venuva Vascular Center. Expert nerve blocks, RFA, and joint injections for fast, effective results."
+    title: "Pain Interventions in Bengaluru | Minimally Invasive Pain Management | Venuva Vascular",
+    description: "Relieve chronic pain with minimally invasive interventions in Bengaluru. Expert nerve blocks, RFA, and joint injections for fast, effective results."
+  },
+  "pae": {
+    title: "Prostate Artery Embolization (PAE) in Bengaluru | Non-Surgical BPH Treatment | Venuva",
+    description: "Effective treatment for enlarged prostate (BPH) without traditional surgery. Explore Prostate Artery Embolization (PAE) at Venuva Vascular Center in Bengaluru."
+  },
+  "pelvic-congestion": {
+    title: "Pelvic Congestion Syndrome (PCS) Treatment in Bengaluru | Venuva Vascular Center",
+    description: "Find relief from chronic pelvic pain caused by Pelvic Congestion Syndrome. Advanced ovarian vein embolization in Bengaluru with high success rates."
+  },
+  "tae": {
+    title: "Thyroid Artery Embolization (TAE) in Bengaluru | Venuva Vascular Center",
+    description: "Shrink the thyroid without surgery. Thyroid Artery Embolization (TAE) is an advanced vascular procedure available at Venuva Vascular Center in Bengaluru."
+  },
+  "drainage": {
+    title: "Percutaneous Drainage Procedures in Bengaluru | Venuva Vascular Center",
+    description: "Safe and minimally invasive percutaneous drainage for abscesses and fluid collections. Expert interventional radiology care in Bengaluru."
+  },
+  "biopsy-fnac": {
+    title: "Image-Guided Biopsy & FNAC in Bengaluru | Venuva Vascular Center",
+    description: "Accurate, minimally invasive image-guided Biopsy and FNAC procedures in Bengaluru. Fast recovery and precise diagnostics without large incisions."
+  },
+  "frozen-shoulder": {
+    title: "Frozen Shoulder Treatment in Bengaluru | Non-Surgical Relief | Venuva Vascular",
+    description: "Rapid relief for frozen shoulder (Adhesive Capsulitis) without surgery. Advanced interventional treatments in Bengaluru to restore your mobility."
+  },
+  "tennis-elbow": {
+    title: "Tennis & Golfer's Elbow Treatment in Bengaluru | TAME Procedure | Venuva",
+    description: "Address chronic elbow pain at the source. Transcatheter Arterial Microembolization (TAME) for Tennis and Golfer's elbow in Bengaluru."
+  },
+  "knee-osteoarthritis": {
+    title: "Knee Osteoarthritis Treatment in Bengaluru | Advanced Pain Relief | Venuva Vascular",
+    description: "Non-surgical pain relief for mild to moderate knee osteoarthritis. Delay knee replacement with advanced interventional treatments in Bengaluru."
+  },
+  "plantar-fasciitis": {
+    title: "Plantar Fasciitis Embolization in Bengaluru | Chronic Heel Pain Treatment | Venuva",
+    description: "Get permanent relief from chronic plantar fasciitis. Minimally invasive embolization procedure in Bengaluru targets the root cause of heel pain."
+  },
+  "achilles-tendinopathy": {
+    title: "Achilles Tendinopathy Treatment in Bengaluru | Transarterial Embolization (TAE)",
+    description: "Avoid tendon weakening and surgery. Highly effective TAE for chronic Achilles tendinopathy pain at Venuva Vascular Center in Bengaluru."
+  },
+  "joint-injections": {
+    title: "PRP & Corticosteroid Joint Injections in Bengaluru | Venuva Vascular Center",
+    description: "Promote natural healing and reduce inflammation with advanced PRP and corticosteroid joint injections in Bengaluru. Ideal for arthritis and tendonitis."
+  },
+  "fistuloplasty": {
+    title: "Fistuloplasty for Dialysis Access in Bengaluru | Venuva Vascular Center",
+    description: "Restore your AV fistula for dialysis. Minimally invasive fistuloplasty to open narrowings and prolong fistula lifespan in Bengaluru."
+  },
+  "liver-cancer": {
+    title: "Liver Cancer Treatment in Bengaluru | TACE, TARE & Tumor Ablation | Venuva",
+    description: "Targeted interventional oncology for primary liver cancer and metastases. Advanced TACE, TARE, and Ablation therapies in Bengaluru."
+  },
+  "dialysis-catheter": {
+    title: "Dialysis Catheter Insertion in Bengaluru | Hemodialysis & Peritoneal Dialysis",
+    description: "Expert placement of temporary and long-term dialysis catheters guided by ultrasound and fluoroscopy at Venuva Vascular Center in Bengaluru."
+  },
+  "genicular-artery-embolization": {
+    title: "Genicular Artery Embolization (GAE) in Bengaluru | Non-Surgical Knee Pain Relief",
+    description: "A breakthrough for chronic knee pain. Genicular Artery Embolization (GAE) significantly reduces inflammation without surgery in Bengaluru."
   }
 };
 

@@ -86,9 +86,9 @@ const HomeSlider = ({ slides }) => {
                 {slides[currentSlide].subheading}
               </p>
 
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-3 md:mb-6">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-3 md:mb-6">
                 {slides[currentSlide].heading}
-              </h1>
+              </h2>
 
               <p className="text-base md:text-lg text-white/80 leading-relaxed font-medium mb-6 md:mb-10 max-w-lg">
                 {slides[currentSlide].description}

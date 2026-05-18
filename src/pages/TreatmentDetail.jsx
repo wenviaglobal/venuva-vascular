@@ -35,6 +35,18 @@ const TreatmentDetail = () => {
       <SEO
         title={currentSEO.title}
         description={currentSEO.description}
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "MedicalProcedure",
+          "name": treatment.title,
+          "description": treatment.description,
+          "procedureType": "Non-surgical",
+          "bodyLocation": category ? category.title : "Vascular System",
+          "provider": {
+            "@type": "MedicalClinic",
+            "name": "Venuva Vascular Center"
+          }
+        }}
       />
       {/* ── 1. Hero Section ── */}
       <section className="relative pt-12 pb-0 overflow-hidden bg-linear-to-br from-hospital-navy via-[#1e3a8a] to-[#0f4c81]">

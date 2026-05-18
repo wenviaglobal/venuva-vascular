@@ -15,7 +15,9 @@ const SEO = ({
     const siteUrl = 'https://venuvavascular.com'; // Placeholder - Update with your actual domain
     const fullUrl = `${siteUrl}${pathname}`;
 
-    const seoTitle = title || 'Best Varicose Vein & Vascular Treatment in Bengaluru | Venuva Vascular Center';
+    const brandSuffix = ' | Venuva Vascular Center';
+    let baseTitle = title || 'Best Varicose Vein & Vascular Treatment in Bengaluru';
+    const seoTitle = baseTitle.includes('Venuva') ? baseTitle : `${baseTitle}${brandSuffix}`;
     const seoDescription = description || 'Venuva Vascular Center offers advanced varicose vein and vascular treatments in Bengaluru with expert minimally invasive procedures.';
     const seoKeywords = keywords || 'vascular treatment Bengaluru, varicose vein treatment Bengaluru, vascular clinic Bangalore, DVT treatment Bangalore, diabetic foot treatment Bangalore, angioplasty treatment Bengaluru, EVLT treatment Bangalore, vascular surgeon Bangalore';
     const seoCanonical = canonical || fullUrl;

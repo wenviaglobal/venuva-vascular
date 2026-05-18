@@ -28,6 +28,7 @@ const Home = () => {
           description="Discover expert vascular care at Venuva Vascular Center. We offer advanced treatments for varicose veins, DVT, PVD, and minimally invasive procedures for a healthy circulatory system."
         />
       )}
+      <h1 className="sr-only">Venuva Vascular Center - Best Vascular Treatments in Bengaluru</h1>
       <HomeSlider slides={heroSlides} />
       <About />
       <Treatments />

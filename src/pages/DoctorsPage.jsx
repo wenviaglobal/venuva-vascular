@@ -65,6 +65,17 @@ const DoctorsPage = () => {
       <SEO
         title="Our Expert Specialists | Venuva Vascular Center"
         description="Meet our highly qualified vascular and interventional specialists dedicated to providing advanced minimally invasive care."
+        schema={doctorsSection.doctors.map(doc => ({
+          "@context": "https://schema.org",
+          "@type": "Physician",
+          "name": doc.name,
+          "medicalSpecialty": doc.specialty,
+          "image": `https://venuvavascular.com${doc.image}`,
+          "worksFor": {
+            "@type": "MedicalClinic",
+            "name": "Venuva Vascular Center"
+          }
+        }))}
       />
 
       <PageHeader
