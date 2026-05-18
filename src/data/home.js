@@ -7,34 +7,33 @@ import aboutUsImage from '../assets/images/AboutUs.webp'
 
 export const treatmentSEO = {
   "varicose-veins": {
-    title: "Varicose Veins Treatment in Bengaluru | Minimally Invasive Care | Venuva Vascular Center",
-    description: "Get relief from varicose veins at Venuva Vascular Center in Bengaluru. Our minimally invasive EVLA and Venaseal treatments provide fast recovery and high success."
+    title: "Varicose Veins Treatment | EVLA & Minimally Invasive Care | Venuva Vascular Center",
+    description: "Get relief from varicose veins at Venuva Vascular Center. Our minimally invasive EVLA and Venaseal treatments provide fast recovery, high success, and improved leg circulation."
   },
   "thyroid-ablation": {
-    title: "Thyroid Nodule Ablation in Bengaluru | Non-Surgical Treatment | Venuva Vascular Center",
-    description: "Reduce benign thyroid nodules safely with minimally invasive thermal ablation in Bengaluru. Preserve thyroid function and avoid surgery with our expert care."
+    title: "Thyroid Nodule Embolization | Non-Surgical Thyroid Treatment | Venuva Vascular Center",
+    description: "Reduce benign thyroid nodules safely with minimally invasive embolization at Venuva Vascular Center. Preserve thyroid function and avoid surgery with expert care."
   },
   "ufe": {
-    title: "Uterine Fibroid Embolization (UFE) in Bengaluru | Non-Surgical Treatment | Venuva",
-    description: "Treat uterine fibroids effectively with non-surgical UFE at Venuva Vascular Center in Bengaluru. Enjoy quick recovery, minimal discomfort, and long-lasting relief."
+    title: "Uterine Fibroid Embolization (UFE) | Non-Surgical Fibroid Treatment | Venuva Vascular Center",
+    description: "Treat uterine fibroids effectively with non-surgical uterine artery embolization at Venuva Vascular Center. Enjoy quick recovery, minimal discomfort, and long-lasting relief."
   },
   "varicocele": {
-    title: "Varicocele Embolization in Bengaluru | Fertility Treatment | Venuva Vascular Center",
-    description: "Preserve fertility and treat varicocele with minimally invasive embolization in Bengaluru. Safe, fast, and effective procedure with high success rates."
+    title: "Varicocele Embolization | Fertility-Preserving Treatment | Venuva Vascular Center",
+    description: "Preserve fertility and treat varicocele with minimally invasive embolization at Venuva Vascular Center. Safe, fast, and effective procedure with high success rates."
   },
   "dvt": {
-    title: "Deep Vein Thrombosis (DVT) Treatment in Bengaluru | Catheter-Directed Thrombolysis",
-    description: "Restore healthy leg circulation with catheter-directed thrombolysis for DVT at Venuva Vascular Center in Bengaluru. Minimally invasive, high-success treatment."
+    title: "Deep Vein Thrombosis (DVT) Treatment | Catheter-Directed Thrombolysis | Venuva Vascular Center",
+    description: "Restore healthy leg circulation with catheter-directed thrombolysis for DVT at Venuva Vascular Center. Minimize complications with minimally invasive, high-success treatment."
   },
   "peripheral-angioplasty": {
-    title: "Peripheral Vascular Disease (PVD) Treatment in Bengaluru | Angioplasty & Stenting",
-    description: "Treat blocked leg arteries safely with pinhole angioplasty and stenting in Bengaluru. Improve blood flow, reduce pain, and regain mobility."
+    title: "Peripheral Vascular Disease (PVD) Treatment | Angioplasty & Stenting | Venuva Vascular Center",
+    description: "Treat blocked leg arteries safely with pinhole angioplasty and stenting at Venuva Vascular Center. Improve blood flow, reduce pain, and regain mobility."
   },
   "pain-intervention": {
-    title: "Pain Interventions in Bengaluru | Minimally Invasive Pain Management | Venuva Vascular",
-    description: "Relieve chronic pain with minimally invasive interventions in Bengaluru. Expert nerve blocks, RFA, and joint injections for fast, effective results."
-  },
-  "pae": {
+    title: "Pain Interventions | Minimally Invasive Pain Management | Venuva Vascular Center",
+    description: "Relieve chronic pain with minimally invasive pain interventions at Venuva Vascular Center. Expert nerve blocks, RFA, and joint injections for fast, effective results."
+  },"pae": {
     title: "Prostate Artery Embolization (PAE) in Bengaluru | Non-Surgical BPH Treatment | Venuva",
     description: "Effective treatment for enlarged prostate (BPH) without traditional surgery. Explore Prostate Artery Embolization (PAE) at Venuva Vascular Center in Bengaluru."
   },
