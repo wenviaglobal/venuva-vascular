@@ -24,8 +24,12 @@ const Home = () => {
         />
       ) : (
         <SEO
-          title="Venuva Vascular Center | Advanced Vascular & Vein Treatments in India"
-          description="Discover expert vascular care at Venuva Vascular Center. We offer advanced treatments for varicose veins, DVT, PVD, and minimally invasive procedures for a healthy circulatory system."
+          title="Best Varicose Vein & Vascular Treatment in Bengaluru | Venuva Vascular Center"
+          description="Venuva Vascular Center offers advanced varicose vein and vascular treatments in Bengaluru. Expert care for DVT, diabetic foot, angioplasty, embolization, and minimally invasive procedures."
+          keywords="vascular treatment Bengaluru, varicose vein treatment Bengaluru, vascular clinic Bangalore, DVT treatment Bangalore, diabetic foot treatment Bangalore, angioplasty treatment Bengaluru, EVLT treatment Bangalore, vascular surgeon Bangalore"
+          ogDescription="Venuva Vascular Center offers advanced varicose vein and vascular treatments in Bengaluru with expert minimally invasive procedures."
+          twitterDescription="Advanced vascular and minimally invasive vein treatments in Bengaluru."
+          image="https://venuvavascular.com/assets/AboutUs-laHemSoL.webp"
         />
       )}
       <h1 className="sr-only">Venuva Vascular Center - Best Vascular Treatments in Bengaluru</h1>
