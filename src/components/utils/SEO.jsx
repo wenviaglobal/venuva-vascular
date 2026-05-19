@@ -10,6 +10,8 @@ const SEO = ({
     type = 'website',
     canonical,
     schema,
+    ogDescription,
+    twitterDescription,
 }) => {
     const { pathname } = useLocation();
     const siteUrl = 'https://venuvavascular.com'; // Placeholder - Update with your actual domain
@@ -18,9 +20,12 @@ const SEO = ({
     const brandSuffix = ' | Venuva Vascular Center';
     let baseTitle = title || 'Best Varicose Vein & Vascular Treatment in Bengaluru';
     const seoTitle = baseTitle.includes('Venuva') ? baseTitle : `${baseTitle}${brandSuffix}`;
-    const seoDescription = description || 'Venuva Vascular Center offers advanced varicose vein and vascular treatments in Bengaluru with expert minimally invasive procedures.';
+    const seoDescription = description || 'Venuva Vascular Center offers advanced varicose vein and vascular treatments in Bengaluru. Expert care for DVT, diabetic foot, angioplasty, embolization, and minimally invasive procedures.';
     const seoKeywords = keywords || 'vascular treatment Bengaluru, varicose vein treatment Bengaluru, vascular clinic Bangalore, DVT treatment Bangalore, diabetic foot treatment Bangalore, angioplasty treatment Bengaluru, EVLT treatment Bangalore, vascular surgeon Bangalore';
     const seoCanonical = canonical || fullUrl;
+    
+    const seoOgDescription = ogDescription || seoDescription;
+    const seoTwitterDescription = twitterDescription || seoDescription;
 
     const defaultSchema = {
         "@context": "https://schema.org",
@@ -64,7 +69,7 @@ const SEO = ({
             <meta property="og:site_name" content="Venuva Vascular Center" />
             <meta property="og:locale" content="en_IN" />
             <meta property="og:title" content={seoTitle} />
-            <meta property="og:description" content={seoDescription} />
+            <meta property="og:description" content={seoOgDescription} />
             <meta property="og:url" content={seoCanonical} />
             <meta property="og:type" content={type} />
             <meta property="og:image" content={image || "https://venuvavascular.com/assets/AboutUs-laHemSoL.webp"} />
@@ -72,7 +77,7 @@ const SEO = ({
             {/* Twitter Tags */}
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={seoTitle} />
-            <meta name="twitter:description" content={description || "Advanced vascular and minimally invasive vein treatments in Bengaluru."} />
+            <meta name="twitter:description" content={seoTwitterDescription} />
             <meta name="twitter:image" content={image || "https://venuvavascular.com/assets/AboutUs-laHemSoL.webp"} />
             
             {/* JSON-LD Schema */}
