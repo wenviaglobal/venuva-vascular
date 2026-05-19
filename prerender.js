@@ -74,7 +74,17 @@ async function prerender() {
         }
       });
       
-      const html = await page.content();
+      let html = await page.content();
+      
+      // Decode &amp; to & inside title tags for clean page source display
+      html = html.replace(/<title>(.*?)<\/title>/gi, (match, p1) => {
+        return `<title>${p1.replace(/&amp;/g, '&')}</title>`;
+      });
+      
+      // Decode &amp; to & inside meta content attributes for clean page source display
+      html = html.replace(/<meta\s+([^>]*?)content="([^"]*?)"([^>]*?)>/gi, (match, p1, p2, p3) => {
+        return `<meta ${p1}content="${p2.replace(/&amp;/g, '&')}"${p3}>`;
+      });
       
       const filePath = route === '/' 
         ? path.join(DIST_DIR, 'index.html') 
