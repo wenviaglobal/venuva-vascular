@@ -63,6 +63,14 @@ async function prerender() {
     try {
       await page.goto(`${BASE_URL}${route}`, { waitUntil: 'networkidle0', timeout: 30000 });
       
+      // Move canonical URL tag to the very first position inside <head> for strict SEO compliance
+      await page.evaluate(() => {
+        const canonical = document.head.querySelector('link[rel="canonical"]');
+        if (canonical) {
+          document.head.insertBefore(canonical, document.head.firstChild);
+        }
+      });
+      
       const html = await page.content();
       
       const filePath = route === '/' 
