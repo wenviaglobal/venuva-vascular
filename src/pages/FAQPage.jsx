@@ -3,9 +3,22 @@ import SEO from "../components/utils/SEO";
 import { motion } from "framer-motion";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { useState } from "react";
+import { trackEvent } from "../utils/analytics";
 
 const FAQPage = () => {
   const [openIdx, setOpenIdx] = useState(0);
+
+  const toggleFaq = (idx, question) => {
+    const willOpen = openIdx !== idx;
+    setOpenIdx(willOpen ? idx : -1);
+    if (willOpen) {
+      trackEvent("faq_open", {
+        faq_question: question,
+        faq_index: idx + 1,
+        page_section: "Patient FAQ",
+      });
+    }
+  };
 
   const faqs = [
     {
@@ -57,7 +70,7 @@ const FAQPage = () => {
               className={`bg-white rounded-3xl border border-hospital-mint overflow-hidden shadow-md transition-all ${openIdx === idx ? 'shadow-xl' : ''}`}
             >
               <button
-                onClick={() => setOpenIdx(openIdx === idx ? -1 : idx)}
+                onClick={() => toggleFaq(idx, faq.q)}
                 className="w-full p-8 flex items-center justify-between text-left"
               >
                 <div className="flex items-center gap-4">

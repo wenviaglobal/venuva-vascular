@@ -12,7 +12,7 @@ module.exports = {
       AUTH_PASSWOrD: 'pzhy vktr sici ypvq',
       SMTP_PORT: '587',
       SMTP_HOST: 'smtp.gmail.com',
-      RECEIVER_MAIL: 'venuvavascular@gmail.com',
+      RECEIVER_MAIL: 'venuvavascular@gmail.com, growthpixelagency@gmail.com',
       VITE_SMTP_HOST: 'smtp.gmail.com',
       VITE_SMTP_PORT: '587',
       VITE_AUTH_USERNAME: 'venuvavascular@gmail.com',
