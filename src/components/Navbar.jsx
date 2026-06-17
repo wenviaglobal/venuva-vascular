@@ -1,5 +1,5 @@
 import { Phone, Activity, Menu, X, ChevronDown, Droplets, Dna, Stethoscope, Activity as ActivityIcon } from "lucide-react";
-import { header, brand, treatmentsPage } from "../data";
+import { header, brand, treatmentsPage, footer } from "../data";
 import SocialLinks from "./utils/SocialLinks";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
@@ -144,13 +144,13 @@ const Navbar = () => {
                           <span className="text-xs text-hospital-navy/40 font-bold uppercase tracking-widest">
                             Venuva Stats  10+ Yrs · 10k+ patients treated
                           </span>
-                          <button
-                            onClick={() => window.location.href = `tel:${header.emergency.replace(/[^\d+]/g, '')}`}
+                          <a
+                            href={`tel:${(footer?.contactUs?.phones?.[0] || '').replace(/\D/g, '')}`}
                             className="bg-hospital-emerald text-white px-6 py-2 rounded-lg font-black text-xs tracking-widest uppercase hover:bg-hospital-navy transition-all flex items-center gap-2"
                           >
                             <Phone size={14} />
                             Call Us
-                          </button>
+                          </a>
                         </div>
                       </motion.div>
                     )}
@@ -185,15 +185,15 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-6 mr-4 border-r border-hospital-mint/60 pr-6">
             <SocialLinks />
           </div>
-          <motion.button
+          <motion.a
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => window.location.href = `tel:${header.emergency.replace(/[^\d+]/g, '')}`}
+            href={`tel:${(footer?.contactUs?.phones?.[0] || '').replace(/\D/g, '')}`}
             className="hidden sm:flex bg-hospital-emerald text-white px-8 py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase hover:bg-hospital-navy transition-all shadow-xl shadow-hospital-navy/10 items-center gap-3 outline-none focus-visible:ring-2 focus-visible:ring-hospital-teal focus-visible:ring-offset-2"
           >
             <Phone size={16} />
             Call Us
-          </motion.button>
+          </motion.a>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -272,13 +272,13 @@ const Navbar = () => {
               <div className="flex justify-center py-6 border-b border-hospital-mint mb-2">
                 <SocialLinks />
               </div>
-              <button
-                onClick={() => window.location.href = `tel:${header.emergency.replace(/[^\d+]/g, '')}`}
+              <a
+                href={`tel:${(footer?.contactUs?.phones?.[0] || '').replace(/\D/g, '')}`}
                 className="w-full bg-hospital-emerald text-white py-5 rounded-2xl font-black uppercase tracking-widest mt-6 shadow-xl shadow-hospital-emerald/20 hover:bg-hospital-navy transition-all flex items-center justify-center gap-3"
               >
                 <Phone size={20} />
                 Call Us
-              </button>
+              </a>
             </div>
           </motion.div>
         )}

@@ -1,22 +1,9 @@
 import { Phone, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
 import { footer } from "../../data";
 
 const FloatingAction = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
+  const isVisible = true;
 
   return (
     <div className="fixed bottom-6 right-3 sm:bottom-8 sm:right-8 z-50 flex flex-col gap-2.5 sm:gap-4">
