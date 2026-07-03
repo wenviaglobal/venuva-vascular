@@ -72,13 +72,36 @@ async function prerender() {
         if (canonical) {
           document.head.insertBefore(canonical, document.head.firstChild);
         }
+
+        // Mark every head tag that react-helmet-async manages so the client can
+        // remove these prerendered copies before Helmet re-injects its own set.
+        // Without this the client appends a second set on hydration, producing
+        // duplicate <title>/meta tags in the live DOM.
+        const managedNames = [
+          'description', 'keywords', 'author', 'robots', 'googlebot',
+          'twitter:card', 'twitter:title', 'twitter:description', 'twitter:image',
+        ];
+        const managedProps = [
+          'og:site_name', 'og:locale', 'og:title', 'og:description',
+          'og:url', 'og:type', 'og:image',
+        ];
+        const selectors = [
+          'title',
+          'link[rel="canonical"]',
+          'script[type="application/ld+json"]',
+          ...managedNames.map((n) => `meta[name="${n}"]`),
+          ...managedProps.map((p) => `meta[property="${p}"]`),
+        ];
+        document.head
+          .querySelectorAll(selectors.join(','))
+          .forEach((el) => el.setAttribute('data-prerendered', 'true'));
       });
       
       let html = await page.content();
       
       // Decode &amp; to & inside title tags for clean page source display
-      html = html.replace(/<title>(.*?)<\/title>/gi, (match, p1) => {
-        return `<title>${p1.replace(/&amp;/g, '&')}</title>`;
+      html = html.replace(/<title([^>]*)>(.*?)<\/title>/gi, (match, attrs, p1) => {
+        return `<title${attrs}>${p1.replace(/&amp;/g, '&')}</title>`;
       });
       
       // Decode &amp; to & inside meta content attributes for clean page source display
