@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import { User, Award, ArrowRight, Linkedin, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
 import { doctorsSection } from "../data/team";
+import { useCollection } from "../context/ContentContext";
 
 const Doctors = () => {
+  const doctors = useCollection("doctors");
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       {/* Background Decorations */}
@@ -49,7 +51,7 @@ const Doctors = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {doctorsSection.doctors.map((doctor, index) => (
+          {doctors.map((doctor, index) => (
             <motion.div
               key={doctor.id}
               initial={{ opacity: 0, y: 30 }}

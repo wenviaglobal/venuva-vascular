@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { treatmentsPage } from "../data";
+import { useCollection } from "../context/ContentContext";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAppointment } from "../context/AppointmentContext";
 import { useState, useMemo, useEffect } from "react";
@@ -9,7 +10,8 @@ const TreatmentsPage = () => {
   const { openModal } = useAppointment();
   const navigate = useNavigate();
   const location = useLocation();
-  const { hero, specialties, whyChoose, whenToConsult, intro, categories } = treatmentsPage;
+  const { hero, whyChoose, whenToConsult, intro, categories } = treatmentsPage;
+  const specialties = useCollection("treatments");
 
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState(location.state?.category || "all");

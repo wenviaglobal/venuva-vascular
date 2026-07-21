@@ -4,9 +4,19 @@ import { brand, footer, header, treatments } from "../data";
 import { Link, useLocation } from "react-router-dom";
 import logo from '../assets/venuva-logo.png'
 import SocialLinks from "./utils/SocialLinks";
+import { useSettings } from "../context/ContentContext";
 
 const Footer = () => {
   const location = useLocation();
+  const contact = useSettings("contact");
+  // CMS-managed contact info, falling back to the static values.
+  const contactUs = {
+    address: contact.address ?? footer.contactUs.address,
+    addressDetail: contact.addressDetail ?? footer.contactUs.addressDetail,
+    whatsapp: contact.whatsapp ?? footer.contactUs.whatsapp,
+    phones: contact.phones?.length ? contact.phones : footer.contactUs.phones,
+    email: contact.email ?? footer.contactUs.email,
+  };
 
   const handleHomeClick = (e) => {
     if (location.pathname === '/') {
@@ -98,9 +108,9 @@ const Footer = () => {
                   <MapPin size={22} fill="currentColor" fillOpacity={0.2} />
                 </div>
                 <div>
-                  <p className="text-white font-black text-sm tracking-wide">{footer?.contactUs?.address || 'Address'}</p>
+                  <p className="text-white font-black text-sm tracking-wide">{contactUs?.address || 'Address'}</p>
                   <p className="text-white/60 text-xs leading-relaxed font-bold mt-2 max-w-[280px]">
-                    {footer?.contactUs?.addressDetail || 'Contact us for more details'}
+                    {contactUs?.addressDetail || 'Contact us for more details'}
                   </p>
                 </div>
               </li>
@@ -117,15 +127,15 @@ const Footer = () => {
                   </svg>
                 </div>
                 <a
-                  href={footer?.contactUs?.whatsapp === "#" ? "#" : `https://wa.me/${(footer?.contactUs?.whatsapp || '').replace(/\D/g, '')}`}
+                  href={contactUs?.whatsapp === "#" ? "#" : `https://wa.me/${(contactUs?.whatsapp || '').replace(/\D/g, '')}`}
                   className="text-white/60 hover:text-white text-sm font-bold transition-colors"
                 >
-                  {footer?.contactUs?.whatsapp === "#" ? "WhatsApp" : `${footer?.contactUs?.whatsapp || 'WhatsApp'} (WhatsApp)`}
+                  {contactUs?.whatsapp === "#" ? "WhatsApp" : `${contactUs?.whatsapp || 'WhatsApp'} (WhatsApp)`}
                 </a>
               </li>
 
               {/* Phones */}
-              {footer.contactUs.phones.map((num, i) => (
+              {contactUs.phones.map((num, i) => (
                 <li key={i} className="flex items-center gap-4">
                   <div className="text-hospital-sun">
                     <Phone size={20} fill="currentColor" fillOpacity={0.2} />
@@ -141,8 +151,8 @@ const Footer = () => {
                 <div className="text-hospital-sun">
                   <Mail size={20} fill="currentColor" fillOpacity={0.2} />
                 </div>
-                <a href={`mailto:${footer?.contactUs?.email || ''}`} className="text-white/60 hover:text-white text-sm font-bold transition-colors break-all">
-                  {footer?.contactUs?.email || 'Email Us'}
+                <a href={`mailto:${contactUs?.email || ''}`} className="text-white/60 hover:text-white text-sm font-bold transition-colors break-all">
+                  {contactUs?.email || 'Email Us'}
                 </a>
               </li>
             </ul>

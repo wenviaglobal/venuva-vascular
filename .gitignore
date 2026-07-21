@@ -90,3 +90,7 @@ Thumbs.db
 *.sw?
 
 .vercel
+
+# Admin CMS uploaded images (runtime, not source)
+public/uploads/*
+!public/uploads/.gitkeep

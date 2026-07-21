@@ -2,14 +2,16 @@ import { useParams, Link, Navigate, useNavigate } from "react-router-dom";
 import { useAppointment } from "../context/AppointmentContext";
 import { motion } from "framer-motion";
 import { treatmentsPage, header, doctorsSection } from "../data";
+import { useCollection } from "../context/ContentContext";
 import SEO from "../components/utils/SEO";
 import { treatmentSEO } from "../data/home";
 
 const TreatmentDetail = () => {
   const { openModal } = useAppointment();
   const { id } = useParams();
-  const { specialties, categories } = treatmentsPage;
-  const team = doctorsSection.doctors
+  const { categories } = treatmentsPage;
+  const specialties = useCollection("treatments");
+  const team = useCollection("doctors");
 
   // Find the treatment
   const treatment = specialties.find(s => s.id === id);

@@ -1,6 +1,6 @@
 import PageHeader from "../components/PageHeader";
 import { motion } from "framer-motion";
-import { contact } from "../data";
+import { useSettings } from "../context/ContentContext";
 import { Phone, Mail, MapPin, Clock, Send, PhoneCall } from "lucide-react";
 import SEO from "../components/utils/SEO";
 import { useState} from "react";
@@ -16,6 +16,14 @@ const iconMap = {
 
 
 const ContactPage = () => {
+  const c = useSettings("contact");
+  // Cards are derived from the CMS-managed contact settings.
+  const cards = [
+    { title: "Call Us", info1: c.emergencyPhone, info2: "Emergency & Appointments", icon: "PhoneCall" },
+    { title: "Email Us", info1: c.email, info2: "For general inquiries", icon: "Mail" },
+    { title: "Visit Us", info1: c.address, info2: c.addressDetail, icon: "MapPin" },
+    { title: "Working Hours", info1: c.workHours, info2: "Everyday (Mon-Sun)", icon: "Clock" },
+  ];
 
   const { register, handleSubmit, reset, watch, formState: { errors, isValid } } = useForm({
     mode: "onChange"
@@ -68,7 +76,7 @@ const ContactPage = () => {
           <div className="lg:w-1/3 space-y-6">
             <h2 className="text-3xl font-black text-hospital-navy mb-8">Reach Out to Us</h2>
 
-            {contact.cards.map((card, idx) => {
+            {cards.map((card, idx) => {
               const Icon = iconMap[card.icon] || Phone;
               return (
                 <motion.div

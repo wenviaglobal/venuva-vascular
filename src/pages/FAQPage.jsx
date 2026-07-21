@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { useState } from "react";
 import { trackEvent } from "../utils/analytics";
+import { useCollection } from "../context/ContentContext";
 
 const FAQPage = () => {
   const [openIdx, setOpenIdx] = useState(0);
+  const faqItems = useCollection("faqs");
 
   const toggleFaq = (idx, question) => {
     const willOpen = openIdx !== idx;
@@ -20,32 +22,9 @@ const FAQPage = () => {
     }
   };
 
-  const faqs = [
-    {
-      q: "What is Interventional Radiology?",
-      a: "Interventional Radiology (IR) is a medical specialty that uses image-guided procedures (like X-rays, ultrasound, or CT) to treat diseases minimally invasively. It often replaces the need for open surgery, resulting in less pain and faster recovery."
-    },
-    {
-      q: "Is local or general anesthesia used for these procedures?",
-      a: "Most interventional procedures are performed under local anesthesia and conscious sedation. This means you stay relaxed and comfortable but typically don't require full general anesthesia, allowing for quicker discharge."
-    },
-    {
-      q: "How long does the recovery take after Varicose Vein Laser treatment?",
-      a: "Recovery is very fast. Most patients can walk immediately after the procedure and return to light office work the next day. Strenuous exercise is typically avoided for about 7-10 days."
-    },
-    {
-      q: "Does UFE affect the ability to get pregnant?",
-      a: "While many women have had successful pregnancies after Uterine Fibroid Embolization (UFE), it's important to discuss your fertility goals with your specialist. UFE is often chosen as a uterus-sparing alternative to hysterectomy."
-    },
-    {
-      q: "Are these procedures covered by health insurance?",
-      a: "Yes, many vascular and interventional radiology treatments are covered by standard health insurance plans and TPAs. Our billing desk can help you with the pre-authorization process."
-    },
-    {
-      q: "What should I bring for my first consultation?",
-      a: "Please bring any previous imaging reports (Ultrasound, CT, MRI scans), current list of medications, and your insurance card to ensure a comprehensive evaluation."
-    }
-  ];
+  // FAQ content comes from the CMS; each item is { question, answer } (with
+  // legacy { q, a } tolerated for the static fallback).
+  const faqs = faqItems.map((f) => ({ q: f.question ?? f.q, a: f.answer ?? f.a }));
 
   return (
     <div className="bg-hospital-soft-blue min-h-screen pb-24">

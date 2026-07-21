@@ -1,0 +1,55 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: venuva-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: venuva
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: venuva
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U venuva -d venuva"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+
+  api:
+    build:
+      context: .
+      target: api
+    container_name: venuva-api
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      PORT: 3002
+      # Override the .env value (which points at the host) to reach the db service.
+      DATABASE_URL: postgres://venuva:${DB_PASSWORD}@db:5432/venuva
+      UPLOAD_DIR: public/uploads
+    volumes:
+      - uploads:/app/public/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build:
+      context: .
+      target: web
+    container_name: venuva-web
+    restart: unless-stopped
+    ports:
+      # Bound to localhost only; host nginx terminates TLS and proxies to this.
+      - "127.0.0.1:8095:80"
+    depends_on:
+      - api
+
+volumes:
+  # Reuses the Postgres volume created during initial setup so seeded data persists.
+  pgdata:
+    external: true
+    name: venuva-vascular-pgdata
+  uploads:
+    name: venuva-vascular-uploads

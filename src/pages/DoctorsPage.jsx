@@ -18,22 +18,24 @@ import {
   Twitter
 } from "lucide-react";
 import { doctorsSection } from "../data/team";
+import { useCollection } from "../context/ContentContext";
 import SEO from "../components/utils/SEO";
 import PageHeader from "../components/PageHeader";
 
 const DoctorsPage = () => {
   const { slug } = useParams();
   const location = useLocation();
+  const doctors = useCollection("doctors");
   const [activeTabs, setActiveTabs] = useState({});
 
   // Initialize active tabs for each doctor
   useEffect(() => {
     const initialTabs = {};
-    doctorsSection.doctors.forEach(doc => {
+    doctors.forEach(doc => {
       initialTabs[doc.id] = 'biography';
     });
     setActiveTabs(initialTabs);
-  }, []);
+  }, [doctors]);
 
   // Handle scrolling to specific doctor if slug is provided
   useEffect(() => {
@@ -65,7 +67,7 @@ const DoctorsPage = () => {
       <SEO
         title="Our Expert Specialists | Venuva Vascular Center"
         description="Meet our highly qualified vascular and interventional specialists dedicated to providing advanced minimally invasive care."
-        schema={doctorsSection.doctors.map(doc => ({
+        schema={doctors.map(doc => ({
           "@context": "https://schema.org",
           "@type": "Physician",
           "name": doc.name,
@@ -85,7 +87,7 @@ const DoctorsPage = () => {
 
       <div className="container mx-auto px-4 sm:px-6 md:px-12 mt-12">
         <div className="space-y-20">
-          {doctorsSection.doctors.map((doctor, index) => (
+          {doctors.map((doctor, index) => (
             <motion.section
               key={doctor.id}
               id={doctor.slug}

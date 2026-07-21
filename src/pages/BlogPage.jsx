@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import SEO from "../components/utils/SEO";
-import { blogPosts } from "../data";
+import { useCollection } from "../context/ContentContext";
 import { 
   ArrowRight, Calendar, Clock, Search, 
   ChevronRight, Filter, X, Sparkles
@@ -11,6 +11,7 @@ import { useAppointment } from "../context/AppointmentContext";
 
 const BlogPage = () => {
   const { openModal } = useAppointment();
+  const blogPosts = useCollection("blogs");
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedId, setSelectedId] = useState(null);
@@ -31,7 +32,7 @@ const BlogPage = () => {
       stats[post.category] = (stats[post.category] || 0) + 1;
     });
     return stats;
-  }, []);
+  }, [blogPosts]);
 
   const categories = Object.keys(categoryStats);
 
@@ -42,7 +43,7 @@ const BlogPage = () => {
       const matchesCategory = activeCategory === "All" || post.category === activeCategory;
       return matchesSearch && matchesCategory;
     });
-  }, [searchQuery, activeCategory]);
+  }, [searchQuery, activeCategory, blogPosts]);
 
   const activePost = selectedId ? blogPosts.find(p => p.id === selectedId) : null;
 

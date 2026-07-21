@@ -5,6 +5,7 @@ import {
   HeartPulse, Zap, Bone, Smile, ArrowRight, CheckCircle2
 } from "lucide-react";
 import { treatmentsPage } from "../data";
+import { useCollection } from "../context/ContentContext";
 import { Link } from "react-router-dom";
 
 
@@ -25,7 +26,8 @@ const Treatments = () => {
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  const displayItems = treatmentsPage.specialties;
+  const apiTreatments = useCollection("treatments");
+  const displayItems = apiTreatments.length ? apiTreatments : treatmentsPage.specialties;
 
   const renderCard = (item, idx, keyPrefix) => (
     <div

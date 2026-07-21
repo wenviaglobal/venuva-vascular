@@ -1,7 +1,7 @@
   import { useLocation } from "react-router-dom";
 import SEO from "../components/utils/SEO";
 import HomeSlider from "../components/HomeSlider";
-import { heroSlides } from "../data";
+import { useCollection } from "../context/ContentContext";
 import About from "../components/About";
 import Treatments from "../components/Treatments";
 import WhyChooseUs from "../components/WhyChooseUs";
@@ -14,6 +14,7 @@ import Contact from "../components/Contact";
 const Home = () => {
   const location = useLocation();
   const isAboutPage = location.pathname === '/about';
+  const heroSlides = useCollection("hero");
 
   return (
     <>

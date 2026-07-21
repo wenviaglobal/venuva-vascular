@@ -1,5 +1,5 @@
 import { PhoneCall, MapPin, Mail, Clock } from "lucide-react";
-import { contact } from "../data";
+import { useSettings } from "../context/ContentContext";
 
 const iconMap = {
   PhoneCall: PhoneCall,
@@ -9,20 +9,28 @@ const iconMap = {
 };
 
 const Contact = () => {
+  const c = useSettings("contact");
+  // Cards derived from CMS-managed contact settings (styling kept as before).
+  const cards = [
+    { title: "Call Us", info1: c.emergencyPhone, info2: "Emergency & Appointments", icon: "PhoneCall", color: "bg-hospital-navy", textColor: "text-white", iconColor: "text-hospital-sky-blue" },
+    { title: "Email Us", info1: c.email, info2: "For general inquiries", icon: "Mail", color: "bg-white", textColor: "text-hospital-navy", iconColor: "text-hospital-sky-blue" },
+    { title: "Visit Us", info1: c.address, info2: c.addressDetail, icon: "MapPin", color: "bg-white", textColor: "text-hospital-navy", iconColor: "text-hospital-sky-blue" },
+    { title: "Working Hours", info1: c.workHours, info2: "Everyday (Mon-Sun)", icon: "Clock", color: "bg-white", textColor: "text-hospital-navy", iconColor: "text-hospital-sky-blue" },
+  ];
   return (
     <section id="contact" className="py-24 bg-white">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
           <p className="text-hospital-sun font-bold tracking-[0.2em] mb-4 uppercase text-xs">
-            {contact.tag}
+            GET IN TOUCH
           </p>
           <h2 className="text-4xl md:text-5xl font-black text-hospital-navy">
-            {contact.title}
+            Contact Venuva Vascular Center
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {contact.cards.map((card, idx) => {
+          {cards.map((card, idx) => {
             const Icon = iconMap[card.icon];
             return (
               <div

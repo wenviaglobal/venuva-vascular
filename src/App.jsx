@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import LoadingSpinner from "./components/utils/LoadingSpinner";
 import FloatingAction from "./components/utils/FloatingAction";
 import { AppointmentProvider } from "./context/AppointmentContext";
+import { ContentProvider } from "./context/ContentContext";
 import AppointmentModal from "./components/modals/AppointmentModal";
 
 // Lazy load pages for performance
@@ -19,6 +20,8 @@ const ContactPage = lazy(() => import("./pages/ContactPage"));
 const NewsPage = lazy(() => import("./pages/NewsPage"));
 const TreatmentDetail = lazy(() => import("./pages/TreatmentDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const AdminApp = lazy(() => import("./admin/AdminApp"));
+import { ADMIN_BASE } from "./admin/base";
 // const LandingPage = lazy(() => import("./pages/LandingPage"));
 
 // Scroll to top or hash on route change
@@ -44,6 +47,14 @@ function AppContent() {
   const location = useLocation();
   const isLandingPage = location.pathname === "/checkup-offer";
 
+  // The admin CMS is served ONLY from the admin subdomain (admin.<domain>) at its
+  // root. In local dev (localhost) it's reachable at /admin for convenience.
+  // On the public domain, /admin is NOT the admin — it falls through to NotFound.
+  const host = typeof window !== "undefined" ? window.location.hostname : "";
+  const isAdminHost = host.startsWith("admin.");
+  const isLocalDev = host === "localhost" || host === "127.0.0.1";
+  const showAdmin = isAdminHost || (isLocalDev && location.pathname.startsWith("/admin"));
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -51,7 +62,19 @@ function AppContent() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Admin CMS renders full-screen without the public navbar/footer/loader.
+  if (showAdmin) {
+    return (
+      <Suspense fallback={<LoadingSpinner />}>
+        <Routes>
+          <Route path={`${ADMIN_BASE}/*`} element={<AdminApp />} />
+        </Routes>
+      </Suspense>
+    );
+  }
+
   return (
+    <ContentProvider>
     <AppointmentProvider>
       <ScrollToTop />
       <AnimatePresence mode="wait">
@@ -84,6 +107,7 @@ function AppContent() {
         <AppointmentModal />
       </div>
     </AppointmentProvider>
+    </ContentProvider>
   );
 }
 

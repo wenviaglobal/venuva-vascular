@@ -1,8 +1,9 @@
 import { Phone, Activity, Menu, X, ChevronDown, Droplets, Dna, Stethoscope, Activity as ActivityIcon } from "lucide-react";
 import { header, brand, treatmentsPage, footer } from "../data";
 import SocialLinks from "./utils/SocialLinks";
+import { useCollection } from "../context/ContentContext";
 import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/venuva-logo.png";
 
@@ -20,6 +21,19 @@ const Navbar = () => {
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [mobileTreatmentsOpen, setMobileTreatmentsOpen] = useState(false);
   const megaMenuRef = useRef(null);
+
+  // Build the treatments mega-menu from live CMS content, grouped by category.
+  // Category titles/order/icons stay from the static config; the treatment links
+  // come from the DB so newly-added treatments appear here automatically.
+  const cmsTreatments = useCollection("treatments");
+  const menuCategories = useMemo(() => {
+    return treatmentsPage.categories.map((cat) => {
+      const items = cmsTreatments
+        .filter((t) => (t.category || null) === cat.id)
+        .map((t) => ({ name: t.title, slug: t.slug || t.id }));
+      return { ...cat, treatments: items.length ? items : cat.treatments };
+    });
+  }, [cmsTreatments]);
 
   // Smooth scroll to top when clicking home while already on home
   const handleHomeClick = (e) => {
@@ -112,7 +126,7 @@ const Navbar = () => {
 
                         {/* Dynamic Grid expanding to 5 Columns for Pain Management */}
                         <div className="grid grid-cols-6 px-4 sm:px-6 md:px-12 gap-4 pt-8 pb-12">
-                          {treatmentsPage.categories.map((cat) => {
+                          {menuCategories.map((cat) => {
                             const Icon = iconMap[cat.icon] || ActivityIcon;
                             return (
                               <div key={cat.id}>
@@ -233,7 +247,7 @@ const Navbar = () => {
                             exit={{ height: 0, opacity: 0 }}
                             className="overflow-hidden bg-hospital-soft-blue px-4"
                           >
-                            {treatmentsPage.categories.map((cat) => (
+                            {menuCategories.map((cat) => (
                               <div key={cat.id} className="py-4 border-b border-hospital-mint last:border-0">
                                 <div className="flex items-center gap-2 mb-3">
                                   <div className="w-6 h-6 rounded-md bg-hospital-sky-blue/10 flex items-center justify-center text-hospital-sky-blue">
