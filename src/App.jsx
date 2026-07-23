@@ -19,6 +19,7 @@ const FAQPage = lazy(() => import("./pages/FAQPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const NewsPage = lazy(() => import("./pages/NewsPage"));
 const TreatmentDetail = lazy(() => import("./pages/TreatmentDetail"));
+const Landingpage = lazy(() => import("./pages/VenuvaLanding"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const AdminApp = lazy(() => import("./admin/AdminApp"));
 import { ADMIN_BASE } from "./admin/base";
@@ -97,6 +98,7 @@ function AppContent() {
               <Route path="/news" element={<NewsPage />} />
               <Route path="/faq" element={<FAQPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/landingpage" element={<Landingpage />} />
               <Route path="*" element={<NotFound />} />
               {/* <Route path="/checkup-offer" element={<LandingPage />} /> */}
             </Routes>
